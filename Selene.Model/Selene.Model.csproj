@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{311FDDE0-24C5-4CDE-96A3-6E9D224ED843}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Selene.Model</RootNamespace>
+    <AssemblyName>Selene.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clansman.cs" />
+    <Compile Include="CommonSetting.cs" />
+    <Compile Include="Enums\ChildrenType.cs" />
+    <Compile Include="Enums\HeaderFooter\HeaderFooterStyle.cs" />
+    <Compile Include="Enums\Lineage\LineageMapStyle.cs" />
+    <Compile Include="Enums\HeaderFooter\LineStyle.cs" />
+    <Compile Include="Enums\Lineage\LinellaeThicknessStyle.cs" />
+    <Compile Include="Enums\SexStatus.cs" />
+    <Compile Include="Enums\YesNo.cs" />
+    <Compile Include="Genealogy.cs" />
+    <Compile Include="Lineage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingModel\Book\CheatSheetsSetting.cs" />
+    <Compile Include="SettingModel\Book\HeaderFooterStyleSetting.cs" />
+    <Compile Include="SettingModel\Book\HFStyle\HFStyleModern.cs" />
+    <Compile Include="SettingModel\Book\HFStyle\HFStyleTradition.cs" />
+    <Compile Include="SettingModel\Book\LineageMapStyleSetting.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\BoxLineageMapStyleSetting.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\MessengerWireLineageMapStyleSetting.cs" />
+    <Compile Include="SettingModel\Factory\CommonSettingFactory.cs" />
+    <Compile Include="SettingModel\Book\ConventionalSetting.cs" />
+    <Compile Include="SettingModel\Factory\HeaderFooterStyleSettingFactory.cs" />
+    <Compile Include="SettingModel\Factory\LineageMapStyleSettingFactory.cs" />
+    <Compile Include="SettingModel\Factory\TextValueFactory.cs" />
+    <Compile Include="TextValue.cs" />
+    <Compile Include="Volume.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Selene.DB\Selene.DB.csproj">
+      <Project>{fd8e2717-5268-472f-9510-4cc185900bb9}</Project>
+      <Name>Selene.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

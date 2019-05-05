@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D89EEF0-60FF-42C7-BFEA-FB1117F14A84}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Selene</RootNamespace>
+    <AssemblyName>Selene</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseControl\DataCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataCtrlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataCtrlBase.Designer.cs">
+      <DependentUpon>DataCtrlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseControl\DataRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\BaseSettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseControl\BaseSettingCtrl.Designer.cs">
+      <DependentUpon>BaseSettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseControl\MyPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\PropertyExtend\Converter\ComboBoxItemTypeConverter.cs" />
+    <Compile Include="BaseControl\PropertyExtend\CustomPropertyDescriptor.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\EmptyModelMetadataAttributeConfiguration.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\Interface\IModelMetadataAttribute.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\Interface\IPropertyMetadataAttribute.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\MetadataAttributeConfiguration.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\PropertyMetadataAttributeConfiguration.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Metadata\ModelMetadataAttributeConfiguration.cs" />
+    <Compile Include="BaseControl\PropertyExtend\Property.cs" />
+    <Compile Include="BaseControl\PropertyExtend\PropertyGridBase.cs" />
+    <Compile Include="BaseControl\PropertyExtend\PropertyManageCls.cs" />
+    <Compile Include="BaseControl\Utils\DataUtil.cs" />
+    <Compile Include="Draw\CalcStruct\Block.cs" />
+    <Compile Include="Draw\CalcStruct\BlockContainer.cs" />
+    <Compile Include="Draw\CalcStruct\Border.cs" />
+    <Compile Include="Draw\CalcStruct\BaseContainer.cs" />
+    <Compile Include="Draw\CalcStruct\Margin.cs" />
+    <Compile Include="Draw\CalcStruct\Padding.cs" />
+    <Compile Include="Draw\CheatSheetsDraw.cs" />
+    <Compile Include="BaseControl\DataComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataNumberBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\DataTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseControl\Enums\FormObjectModel.cs" />
+    <Compile Include="BaseControl\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseControl\Interface\IDataControl.cs" />
+    <Compile Include="BaseControl\Interface\IDataBase.cs" />
+    <Compile Include="BaseControl\LabelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Draw\Enums\ContainsRegion.cs" />
+    <Compile Include="Draw\Enums\Direction.cs" />
+    <Compile Include="Draw\Enums\Align.cs" />
+    <Compile Include="Draw\GenealogyDraw.cs" />
+    <Compile Include="Draw\LineageMapDraw.cs" />
+    <Compile Include="Draw\Message\Pigment.cs" />
+    <Compile Include="Extension\CheatSheetsSettingEx.cs" />
+    <Compile Include="Forms\CreateZP\CreateZPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateZP\CreateZPForm.Designer.cs">
+      <DependentUpon>CreateZPForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\ClansmanAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\ClansmanAddForm.Designer.cs">
+      <DependentUpon>ClansmanAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\ClansmanDetailedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\ClansmanDetailedForm.Designer.cs">
+      <DependentUpon>ClansmanDetailedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\GenealogyEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenealogyInfo\GenealogyEditForm.Designer.cs">
+      <DependentUpon>GenealogyEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\EditLineageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\EditLineageForm.Designer.cs">
+      <DependentUpon>EditLineageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\InsertLineageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\InsertLineageForm.Designer.cs">
+      <DependentUpon>InsertLineageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\LineageManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LineageInfo\LineageManageForm.Designer.cs">
+      <DependentUpon>LineageManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PreambleInfo\PreambleCategoryManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreambleInfo\PreambleCategoryManageForm.Designer.cs">
+      <DependentUpon>PreambleCategoryManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PreambleInfo\PreambleManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreambleInfo\PreambleManageForm.Designer.cs">
+      <DependentUpon>PreambleManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintPreview\PrintPreviewMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintPreview\PrintPreviewMainForm.Designer.cs">
+      <DependentUpon>PrintPreviewMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintPreview\PrintPreviewSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintPreview\PrintPreviewSelectForm.Designer.cs">
+      <DependentUpon>PrintPreviewSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseControl\BasePropertyGridSettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseControl\BasePropertyGridSettingCtrl.Designer.cs">
+      <DependentUpon>BasePropertyGridSettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\Catalogue\CatalogueSettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\Catalogue\CatalogueSettingCtrl.Designer.cs">
+      <DependentUpon>CatalogueSettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\Conventional\ConventionalSettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\Conventional\ConventionalSettingCtrl.Designer.cs">
+      <DependentUpon>ConventionalSettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\HFStyle\HeaderFooterStyleCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\HFStyle\HeaderFooterStyleCtrl.Designer.cs">
+      <DependentUpon>HeaderFooterStyleCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\LayoutSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\LayoutSettingForm.Designer.cs">
+      <DependentUpon>LayoutSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeManage\PartVolumeDetailedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeManage\PartVolumeDetailedForm.Designer.cs">
+      <DependentUpon>PartVolumeDetailedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeManage\PartVolumeManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeManage\PartVolumeManageForm.Designer.cs">
+      <DependentUpon>PartVolumeManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PartVolume\PartVolumeSettingForm.Designer.cs">
+      <DependentUpon>PartVolumeSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\LMStyle\LineageMapStyleCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\LMStyle\LineageMapStyleCtrl.Designer.cs">
+      <DependentUpon>LineageMapStyleCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setting\Style\StyleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Setting\Style\StyleEditForm.Designer.cs">
+      <DependentUpon>StyleEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tools\CopyGenealogySettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tools\CopyGenealogySettingForm.Designer.cs">
+      <DependentUpon>CopyGenealogySettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tools\DBToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tools\DBToolForm.Designer.cs">
+      <DependentUpon>DBToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\CommonMessage.cs" />
+    <Compile Include="Manage\DrawModelData.cs" />
+    <Compile Include="Manage\WaitPrintPage.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyGridTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertyGridTest.Designer.cs">
+      <DependentUpon>PropertyGridTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\Base\IDataListItemProvider.cs" />
+    <Compile Include="Providers\Base\ListItem.cs" />
+    <Compile Include="Providers\Control\ZoomScaleProvider.cs" />
+    <Compile Include="Providers\StyleProvider.cs" />
+    <Compile Include="Providers\VolumeProvider.cs" />
+    <Compile Include="Providers\WorldManageNumberProvider.cs" />
+    <Compile Include="SettingModel\Book\HTStyle\HFStyleModernGridConfig.cs" />
+    <Compile Include="SettingModel\Book\HTStyle\HFStyleTraditionGridConfig.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\BoxLineageMapStyleSettingGridConfig.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\Converter\LineageMapStyleConverter.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\Converter\LinellaeThicknessStyleConverter.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\LineageMapStyleSettingGridConfig.cs" />
+    <Compile Include="SettingModel\Book\LMStyle\MessengerWireLineageMapStyleSettingGridConfig.cs" />
+    <Compile Include="SettingModel\ConventionalSettingGridConfig.cs" />
+    <Compile Include="SettingModel\CommonConvert\DisableInputTypeConvert.cs" />
+    <Compile Include="SettingModel\CommonConvert\MyFontEditor.cs" />
+    <Compile Include="SettingModel\Book\HTStyle\Converter\HFStyleConverter.cs" />
+    <Compile Include="SettingModel\Book\HTStyle\Converter\LineStyleConverter.cs" />
+    <Compile Include="SettingModel\CommonConvert\YesNOConverter.cs" />
+    <Compile Include="SettingModel\LineageGridConfig.cs" />
+    <Compile Include="TreeTest01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeTest01.Designer.cs">
+      <DependentUpon>TreeTest01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreeTest.Designer.cs">
+      <DependentUpon>TreeTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIUtils\PropertyGridUtil.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIUtils\GenealogyNoteKeyHandler.cs" />
+    <Compile Include="UIUtils\TextUtil.cs" />
+    <Compile Include="UIUtils\UICommonUtil.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseControl\BasePropertyGridSettingCtrl.resx">
+      <DependentUpon>BasePropertyGridSettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseControl\BaseSettingCtrl.resx">
+      <DependentUpon>BaseSettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateZP\CreateZPForm.resx">
+      <DependentUpon>CreateZPForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenealogyInfo\ClansmanAddForm.resx">
+      <DependentUpon>ClansmanAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenealogyInfo\ClansmanDetailedForm.resx">
+      <DependentUpon>ClansmanDetailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenealogyInfo\GenealogyEditForm.resx">
+      <DependentUpon>GenealogyEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LineageInfo\EditLineageForm.resx">
+      <DependentUpon>EditLineageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LineageInfo\InsertLineageForm.resx">
+      <DependentUpon>InsertLineageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LineageInfo\LineageManageForm.resx">
+      <DependentUpon>LineageManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PreambleInfo\PreambleCategoryManageForm.resx">
+      <DependentUpon>PreambleCategoryManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PreambleInfo\PreambleManageForm.resx">
+      <DependentUpon>PreambleManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintPreview\PrintPreviewMainForm.resx">
+      <DependentUpon>PrintPreviewMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintPreview\PrintPreviewSelectForm.resx">
+      <DependentUpon>PrintPreviewSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\Catalogue\CatalogueSettingCtrl.resx">
+      <DependentUpon>CatalogueSettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\Conventional\ConventionalSettingCtrl.resx">
+      <DependentUpon>ConventionalSettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\HFStyle\HeaderFooterStyleCtrl.resx">
+      <DependentUpon>HeaderFooterStyleCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\LayoutSettingForm.resx">
+      <DependentUpon>LayoutSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PartVolume\PartVolumeManage\PartVolumeDetailedForm.resx">
+      <DependentUpon>PartVolumeDetailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PartVolume\PartVolumeManage\PartVolumeManageForm.resx">
+      <DependentUpon>PartVolumeManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PartVolume\PartVolumeSettingForm.resx">
+      <DependentUpon>PartVolumeSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\LMStyle\LineageMapStyleCtrl.resx">
+      <DependentUpon>LineageMapStyleCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setting\Style\StyleEditForm.resx">
+      <DependentUpon>StyleEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tools\CopyGenealogySettingForm.resx">
+      <DependentUpon>CopyGenealogySettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tools\DBToolForm.resx">
+      <DependentUpon>DBToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertyGridTest.resx">
+      <DependentUpon>PropertyGridTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeTest01.resx">
+      <DependentUpon>TreeTest01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeTest.resx">
+      <DependentUpon>TreeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Selene.DB\Selene.DB.csproj">
+      <Project>{fd8e2717-5268-472f-9510-4cc185900bb9}</Project>
+      <Name>Selene.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Selene.Logical\Selene.BLL.csproj">
+      <Project>{55911e21-059c-41bf-a493-3c9b564a9e4e}</Project>
+      <Name>Selene.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Selene.Model\Selene.Model.csproj">
+      <Project>{311fdde0-24c5-4cde-96a3-6e9d224ed843}</Project>
+      <Name>Selene.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\createzp1.png" />
+    <Content Include="Resources\Images\tree.png" />
+    <None Include="Resources\Images\edit.png" />
+    <None Include="Resources\Images\find.png" />
+    <None Include="Resources\Images\delete.png" />
+    <Content Include="Resources\Images\personnel.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
