@@ -29,10 +29,20 @@ namespace Doit.Print.Test
 
         private void menuTest_CellStyleDesginer_Click(object sender, EventArgs e)
         {
-            Form frmCellStyleDesigner = Doit.UI.FormHelper.FindForm("CellStyleDesigner", typeof(FormCellStyleDesigner));
-            frmCellStyleDesigner.MdiParent = this;
-            frmCellStyleDesigner.Show();
-            frmCellStyleDesigner.Activate();
+            this.ShowForm(typeof(FormCellStyleDesigner));
+        }
+
+        private void menuTest_GDI_Click(object sender, EventArgs e)
+        {
+            this.ShowForm(typeof(FormGDI));
+        }
+
+        private void ShowForm(Type formType)
+        {
+            Form form = Doit.UI.FormHelper.FindForm(formType.FullName, formType);
+            form.MdiParent = this;
+            form.Show();
+            form.Activate();
         }
     }
 }

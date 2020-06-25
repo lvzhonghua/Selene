@@ -15,14 +15,9 @@ namespace Doit.Print.Models
         public Type AssociateType { get; set; }
 
         /// <summary>
-        /// 数据对象成员的字体设置信息
+        /// 字段或属性的样式
         /// </summary>
-        public Dictionary<string, Font> CellMemberFonts { get; set; } = new Dictionary<string, Font>();
-
-        /// <summary>
-        /// 数据对象成员的位置信息
-        /// </summary>
-        public Dictionary<string, PointF> CellMemberLocations { get; set; } = new Dictionary<string, PointF>();
+        public Dictionary<string, FieldStyle> FieldStyles { get; set; } = new Dictionary<string, FieldStyle>();
 
         /// <summary>
         /// 单元边界
@@ -32,7 +27,7 @@ namespace Doit.Print.Models
         /// <summary>
         /// 线条列表
         /// </summary>
-        public List<LineStyle> Lines { get; set; } = new List<LineStyle>();
+        public List<LineStyle> LineStyles { get; set; } = new List<LineStyle>();
 
     }
 }

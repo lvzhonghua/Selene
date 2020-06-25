@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyAnalyzer.cs" />
+    <Compile Include="FieldStyleHolder.cs" />
+    <Compile Include="StyleHolderStatus.cs" />
+    <Compile Include="Models\BorderStyle.cs" />
+    <Compile Include="Models\FieldStyle.cs" />
     <Compile Include="Models\CellStyle.cs" />
     <Compile Include="Models\LineStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFile_Exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest_CellStyleDesginer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuTest_GDI = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCellStyleDesigner = new System.Windows.Forms.ToolStripButton();
+            this.btnGDI = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -54,16 +56,54 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // menuFile
+            // 
+            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFile_Exit});
+            this.menuFile.Name = "menuFile";
+            this.menuFile.Size = new System.Drawing.Size(58, 21);
+            this.menuFile.Text = "文件(&F)";
+            // 
+            // menuFile_Exit
+            // 
+            this.menuFile_Exit.Name = "menuFile_Exit";
+            this.menuFile_Exit.Size = new System.Drawing.Size(116, 22);
+            this.menuFile_Exit.Text = "退出(&X)";
+            this.menuFile_Exit.Click += new System.EventHandler(this.menuFile_Exit_Click);
+            // 
+            // menuTest
+            // 
+            this.menuTest.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuTest_CellStyleDesginer,
+            this.menuTest_GDI});
+            this.menuTest.Name = "menuTest";
+            this.menuTest.Size = new System.Drawing.Size(59, 21);
+            this.menuTest.Text = "测试(&T)";
+            // 
+            // menuTest_CellStyleDesginer
+            // 
+            this.menuTest_CellStyleDesginer.Image = global::Doit.Print.Test.Properties.Resources.cell_16;
+            this.menuTest_CellStyleDesginer.Name = "menuTest_CellStyleDesginer";
+            this.menuTest_CellStyleDesginer.Size = new System.Drawing.Size(180, 22);
+            this.menuTest_CellStyleDesginer.Text = "单元样式(&C)";
+            this.menuTest_CellStyleDesginer.Click += new System.EventHandler(this.menuTest_CellStyleDesginer_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCellStyleDesigner,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.btnGDI});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1180, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // statusStrip1
             // 
@@ -81,40 +121,13 @@
             this.lblInfo.Size = new System.Drawing.Size(56, 17);
             this.lblInfo.Text = "状态信息";
             // 
-            // menuFile
+            // menuTest_GDI
             // 
-            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuFile_Exit});
-            this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(58, 21);
-            this.menuFile.Text = "文件(&F)";
-            // 
-            // menuFile_Exit
-            // 
-            this.menuFile_Exit.Name = "menuFile_Exit";
-            this.menuFile_Exit.Size = new System.Drawing.Size(116, 22);
-            this.menuFile_Exit.Text = "退出(&X)";
-            this.menuFile_Exit.Click += new System.EventHandler(this.menuFile_Exit_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // menuTest
-            // 
-            this.menuTest.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuTest_CellStyleDesginer});
-            this.menuTest.Name = "menuTest";
-            this.menuTest.Size = new System.Drawing.Size(59, 21);
-            this.menuTest.Text = "测试(&T)";
-            // 
-            // menuTest_CellStyleDesginer
-            // 
-            this.menuTest_CellStyleDesginer.Name = "menuTest_CellStyleDesginer";
-            this.menuTest_CellStyleDesginer.Size = new System.Drawing.Size(140, 22);
-            this.menuTest_CellStyleDesginer.Text = "单元样式(&C)";
-            this.menuTest_CellStyleDesginer.Click += new System.EventHandler(this.menuTest_CellStyleDesginer_Click);
+            this.menuTest_GDI.Image = global::Doit.Print.Test.Properties.Resources.ZoomAndMove_16;
+            this.menuTest_GDI.Name = "menuTest_GDI";
+            this.menuTest_GDI.Size = new System.Drawing.Size(180, 22);
+            this.menuTest_GDI.Text = "绘图(&G)";
+            this.menuTest_GDI.Click += new System.EventHandler(this.menuTest_GDI_Click);
             // 
             // btnCellStyleDesigner
             // 
@@ -124,6 +137,15 @@
             this.btnCellStyleDesigner.Size = new System.Drawing.Size(76, 22);
             this.btnCellStyleDesigner.Text = "单元样式";
             this.btnCellStyleDesigner.Click += new System.EventHandler(this.menuTest_CellStyleDesginer_Click);
+            // 
+            // btnGDI
+            // 
+            this.btnGDI.Image = global::Doit.Print.Test.Properties.Resources.ZoomAndMove_16;
+            this.btnGDI.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGDI.Name = "btnGDI";
+            this.btnGDI.Size = new System.Drawing.Size(52, 22);
+            this.btnGDI.Text = "绘图";
+            this.btnGDI.Click += new System.EventHandler(this.menuTest_GDI_Click);
             // 
             // FormMaint
             // 
@@ -162,6 +184,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuTest;
         private System.Windows.Forms.ToolStripMenuItem menuTest_CellStyleDesginer;
+        private System.Windows.Forms.ToolStripMenuItem menuTest_GDI;
+        private System.Windows.Forms.ToolStripButton btnGDI;
     }
 }
 

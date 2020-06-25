@@ -31,8 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CellStyleDesignerCtrl));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnLoadAssembly = new System.Windows.Forms.ToolStripButton();
+            this.btnLine = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tvTypeList = new System.Windows.Forms.TreeView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tvTypeToAssociated = new System.Windows.Forms.TreeView();
+            this.imgList2 = new System.Windows.Forms.ImageList(this.components);
+            this.lblTypeToAssociated = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panDesigner = new System.Windows.Forms.Panel();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -42,27 +50,19 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.pGridAssociate = new System.Windows.Forms.PropertyGrid();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.imgList2 = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTypeToAssociated = new System.Windows.Forms.Label();
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.tvTypeList = new System.Windows.Forms.TreeView();
-            this.tvTypeToAssociated = new System.Windows.Forms.TreeView();
             this.btnCellPreview = new System.Windows.Forms.ToolStripButton();
-            this.btnLoadAssembly = new System.Windows.Forms.ToolStripButton();
-            this.btnLine = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -75,6 +75,25 @@
             this.toolStrip1.Size = new System.Drawing.Size(1188, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnLoadAssembly
+            // 
+            this.btnLoadAssembly.Image = global::Doit.Print.Controls.Properties.Resources.关联图元_16;
+            this.btnLoadAssembly.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLoadAssembly.Name = "btnLoadAssembly";
+            this.btnLoadAssembly.Size = new System.Drawing.Size(76, 22);
+            this.btnLoadAssembly.Text = "加载对象";
+            this.btnLoadAssembly.Click += new System.EventHandler(this.btnLoadAssembly_Click);
+            // 
+            // btnLine
+            // 
+            this.btnLine.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnLine.Image = global::Doit.Print.Controls.Properties.Resources.线条_编辑_16;
+            this.btnLine.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLine.Name = "btnLine";
+            this.btnLine.Size = new System.Drawing.Size(52, 22);
+            this.btnLine.Text = "线条";
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // splitContainer1
             // 
@@ -98,6 +117,19 @@
             this.splitContainer1.SplitterDistance = 263;
             this.splitContainer1.TabIndex = 1;
             // 
+            // tvTypeList
+            // 
+            this.tvTypeList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tvTypeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvTypeList.ImageIndex = 0;
+            this.tvTypeList.ImageList = this.imgList;
+            this.tvTypeList.Location = new System.Drawing.Point(0, 288);
+            this.tvTypeList.Name = "tvTypeList";
+            this.tvTypeList.SelectedImageIndex = 0;
+            this.tvTypeList.Size = new System.Drawing.Size(261, 307);
+            this.tvTypeList.TabIndex = 12;
+            this.tvTypeList.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvTypeList_ItemDrag);
+            // 
             // imgList
             // 
             this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
@@ -107,6 +139,71 @@
             this.imgList.Images.SetKeyName(2, "日期_16.png");
             this.imgList.Images.SetKeyName(3, "字符串_16.png");
             this.imgList.Images.SetKeyName(4, "成员_16.png");
+            // 
+            // splitter3
+            // 
+            this.splitter3.BackColor = System.Drawing.SystemColors.Highlight;
+            this.splitter3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter3.Location = new System.Drawing.Point(0, 285);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(261, 3);
+            this.splitter3.TabIndex = 11;
+            this.splitter3.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tvTypeToAssociated);
+            this.panel1.Controls.Add(this.lblTypeToAssociated);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(261, 285);
+            this.panel1.TabIndex = 10;
+            // 
+            // tvTypeToAssociated
+            // 
+            this.tvTypeToAssociated.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tvTypeToAssociated.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvTypeToAssociated.FullRowSelect = true;
+            this.tvTypeToAssociated.HideSelection = false;
+            this.tvTypeToAssociated.ImageIndex = 0;
+            this.tvTypeToAssociated.ImageList = this.imgList2;
+            this.tvTypeToAssociated.ItemHeight = 30;
+            this.tvTypeToAssociated.Location = new System.Drawing.Point(0, 0);
+            this.tvTypeToAssociated.Name = "tvTypeToAssociated";
+            this.tvTypeToAssociated.SelectedImageIndex = 0;
+            this.tvTypeToAssociated.ShowLines = false;
+            this.tvTypeToAssociated.ShowPlusMinus = false;
+            this.tvTypeToAssociated.ShowRootLines = false;
+            this.tvTypeToAssociated.Size = new System.Drawing.Size(261, 259);
+            this.tvTypeToAssociated.TabIndex = 5;
+            this.tvTypeToAssociated.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvTypeToAssociated_ItemDrag);
+            // 
+            // imgList2
+            // 
+            this.imgList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList2.ImageStream")));
+            this.imgList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList2.Images.SetKeyName(0, "成员_48.png");
+            this.imgList2.Images.SetKeyName(1, "日期_48.png");
+            this.imgList2.Images.SetKeyName(2, "数字_48.png");
+            this.imgList2.Images.SetKeyName(3, "字符串_48.png");
+            // 
+            // lblTypeToAssociated
+            // 
+            this.lblTypeToAssociated.AllowDrop = true;
+            this.lblTypeToAssociated.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lblTypeToAssociated.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTypeToAssociated.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblTypeToAssociated.Location = new System.Drawing.Point(0, 259);
+            this.lblTypeToAssociated.Name = "lblTypeToAssociated";
+            this.lblTypeToAssociated.Size = new System.Drawing.Size(261, 26);
+            this.lblTypeToAssociated.TabIndex = 0;
+            this.lblTypeToAssociated.Text = "要关联的类型(空)";
+            this.lblTypeToAssociated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTypeToAssociated.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragDrop);
+            this.lblTypeToAssociated.DragEnter += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragEnter);
+            this.lblTypeToAssociated.DragOver += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragOver);
+            this.lblTypeToAssociated.DragLeave += new System.EventHandler(this.lblTypeToAssociated_DragLeave);
             // 
             // splitContainer2
             // 
@@ -210,84 +307,6 @@
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // imgList2
-            // 
-            this.imgList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList2.ImageStream")));
-            this.imgList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList2.Images.SetKeyName(0, "成员_48.png");
-            this.imgList2.Images.SetKeyName(1, "日期_48.png");
-            this.imgList2.Images.SetKeyName(2, "数字_48.png");
-            this.imgList2.Images.SetKeyName(3, "字符串_48.png");
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tvTypeToAssociated);
-            this.panel1.Controls.Add(this.lblTypeToAssociated);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 285);
-            this.panel1.TabIndex = 10;
-            // 
-            // lblTypeToAssociated
-            // 
-            this.lblTypeToAssociated.AllowDrop = true;
-            this.lblTypeToAssociated.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lblTypeToAssociated.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTypeToAssociated.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTypeToAssociated.Location = new System.Drawing.Point(0, 259);
-            this.lblTypeToAssociated.Name = "lblTypeToAssociated";
-            this.lblTypeToAssociated.Size = new System.Drawing.Size(261, 26);
-            this.lblTypeToAssociated.TabIndex = 0;
-            this.lblTypeToAssociated.Text = "要关联的类型(空)";
-            this.lblTypeToAssociated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTypeToAssociated.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragDrop);
-            this.lblTypeToAssociated.DragEnter += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragEnter);
-            this.lblTypeToAssociated.DragOver += new System.Windows.Forms.DragEventHandler(this.lblTypeToAssociated_DragOver);
-            this.lblTypeToAssociated.DragLeave += new System.EventHandler(this.lblTypeToAssociated_DragLeave);
-            // 
-            // splitter3
-            // 
-            this.splitter3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.splitter3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter3.Location = new System.Drawing.Point(0, 285);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(261, 3);
-            this.splitter3.TabIndex = 11;
-            this.splitter3.TabStop = false;
-            // 
-            // tvTypeList
-            // 
-            this.tvTypeList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tvTypeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvTypeList.ImageIndex = 0;
-            this.tvTypeList.ImageList = this.imgList;
-            this.tvTypeList.Location = new System.Drawing.Point(0, 288);
-            this.tvTypeList.Name = "tvTypeList";
-            this.tvTypeList.SelectedImageIndex = 0;
-            this.tvTypeList.Size = new System.Drawing.Size(261, 307);
-            this.tvTypeList.TabIndex = 12;
-            this.tvTypeList.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvTypeList_ItemDrag);
-            // 
-            // tvTypeToAssociated
-            // 
-            this.tvTypeToAssociated.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tvTypeToAssociated.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvTypeToAssociated.FullRowSelect = true;
-            this.tvTypeToAssociated.HideSelection = false;
-            this.tvTypeToAssociated.ImageIndex = 0;
-            this.tvTypeToAssociated.ImageList = this.imgList2;
-            this.tvTypeToAssociated.ItemHeight = 30;
-            this.tvTypeToAssociated.Location = new System.Drawing.Point(0, 0);
-            this.tvTypeToAssociated.Name = "tvTypeToAssociated";
-            this.tvTypeToAssociated.SelectedImageIndex = 0;
-            this.tvTypeToAssociated.ShowLines = false;
-            this.tvTypeToAssociated.ShowPlusMinus = false;
-            this.tvTypeToAssociated.ShowRootLines = false;
-            this.tvTypeToAssociated.Size = new System.Drawing.Size(261, 259);
-            this.tvTypeToAssociated.TabIndex = 5;
-            this.tvTypeToAssociated.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvTypeToAssociated_ItemDrag);
-            // 
             // btnCellPreview
             // 
             this.btnCellPreview.Image = global::Doit.Print.Controls.Properties.Resources.预览_16;
@@ -295,25 +314,6 @@
             this.btnCellPreview.Name = "btnCellPreview";
             this.btnCellPreview.Size = new System.Drawing.Size(76, 22);
             this.btnCellPreview.Text = "生成预览";
-            // 
-            // btnLoadAssembly
-            // 
-            this.btnLoadAssembly.Image = global::Doit.Print.Controls.Properties.Resources.关联图元_16;
-            this.btnLoadAssembly.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLoadAssembly.Name = "btnLoadAssembly";
-            this.btnLoadAssembly.Size = new System.Drawing.Size(76, 22);
-            this.btnLoadAssembly.Text = "加载对象";
-            this.btnLoadAssembly.Click += new System.EventHandler(this.btnLoadAssembly_Click);
-            // 
-            // btnLine
-            // 
-            this.btnLine.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnLine.Image = global::Doit.Print.Controls.Properties.Resources.线条_编辑_16;
-            this.btnLine.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(52, 22);
-            this.btnLine.Text = "线条";
-            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // CellStyleDesignerCtrl
             // 
@@ -329,6 +329,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
@@ -337,7 +338,6 @@
             this.tabPage1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
