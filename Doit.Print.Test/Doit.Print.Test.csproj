@@ -51,6 +51,12 @@
     <Compile Include="FormCellStyleDesigner.Designer.cs">
       <DependentUpon>FormCellStyleDesigner.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGEO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGEO.Designer.cs">
+      <DependentUpon>FormGEO.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,10 +69,16 @@
     <Compile Include="FormGDI.Designer.cs">
       <DependentUpon>FormGDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanelGDI.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCellStyleDesigner.resx">
       <DependentUpon>FormCellStyleDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGEO.resx">
+      <DependentUpon>FormGEO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaint.resx">
       <DependentUpon>FormMaint.cs</DependentUpon>
@@ -112,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ZoomAndMove_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GEO_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

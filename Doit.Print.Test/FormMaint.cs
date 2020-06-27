@@ -44,5 +44,10 @@ namespace Doit.Print.Test
             form.Show();
             form.Activate();
         }
+
+        private void menuTest_GEO_Click(object sender, EventArgs e)
+        {
+            this.ShowForm(typeof(FormGEO));
+        }
     }
 }

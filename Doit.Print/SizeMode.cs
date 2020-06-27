@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 namespace Doit.Print
 {
     /// <summary>
-    /// 设计器占位符的状态
+    /// 尺寸模式
     /// </summary>
-    public enum StyleHolderStatus
+    public enum SizeMode
     {
         /// <summary>
-        /// 正常
+        /// 自动大小
         /// </summary>
-        Normal,
+        AutoSize,
+        
+        /// <summary>
+        /// 固定大小
+        /// </summary>
+        Fixed,
+        
+        /// <summary>
+        /// 宽度固定
+        /// </summary>
+        WidthFixed,
 
         /// <summary>
-        /// 正在移动
+        /// 高度固定
         /// </summary>
-        Moving,
-
-        /// <summary>
-        /// 正在调整大小
-        /// </summary>
-        Resizing,
-
-        /// <summary>
-        /// 选中
-        /// </summary>
-        Selected
+        HeightFixed
     }
 }

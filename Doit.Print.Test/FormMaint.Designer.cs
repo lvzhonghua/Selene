@@ -32,14 +32,17 @@
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFile_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTest_CellStyleDesginer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuTest_GDI = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTest_GEO = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCellStyleDesigner = new System.Windows.Forms.ToolStripButton();
             this.btnGDI = new System.Windows.Forms.ToolStripButton();
+            this.btnGEO = new System.Windows.Forms.ToolStripButton();
+            this.menuTest_CellStyleDesginer = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTest_GDI = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -75,25 +78,20 @@
             // 
             this.menuTest.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuTest_CellStyleDesginer,
-            this.menuTest_GDI});
+            this.menuTest_GDI,
+            this.menuTest_GEO});
             this.menuTest.Name = "menuTest";
             this.menuTest.Size = new System.Drawing.Size(59, 21);
             this.menuTest.Text = "测试(&T)";
-            // 
-            // menuTest_CellStyleDesginer
-            // 
-            this.menuTest_CellStyleDesginer.Image = global::Doit.Print.Test.Properties.Resources.cell_16;
-            this.menuTest_CellStyleDesginer.Name = "menuTest_CellStyleDesginer";
-            this.menuTest_CellStyleDesginer.Size = new System.Drawing.Size(180, 22);
-            this.menuTest_CellStyleDesginer.Text = "单元样式(&C)";
-            this.menuTest_CellStyleDesginer.Click += new System.EventHandler(this.menuTest_CellStyleDesginer_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCellStyleDesigner,
             this.toolStripSeparator1,
-            this.btnGDI});
+            this.btnGDI,
+            this.toolStripSeparator2,
+            this.btnGEO});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1180, 25);
@@ -121,13 +119,18 @@
             this.lblInfo.Size = new System.Drawing.Size(56, 17);
             this.lblInfo.Text = "状态信息";
             // 
-            // menuTest_GDI
+            // menuTest_GEO
             // 
-            this.menuTest_GDI.Image = global::Doit.Print.Test.Properties.Resources.ZoomAndMove_16;
-            this.menuTest_GDI.Name = "menuTest_GDI";
-            this.menuTest_GDI.Size = new System.Drawing.Size(180, 22);
-            this.menuTest_GDI.Text = "绘图(&G)";
-            this.menuTest_GDI.Click += new System.EventHandler(this.menuTest_GDI_Click);
+            this.menuTest_GEO.Image = global::Doit.Print.Test.Properties.Resources.GEO_16;
+            this.menuTest_GEO.Name = "menuTest_GEO";
+            this.menuTest_GEO.Size = new System.Drawing.Size(180, 22);
+            this.menuTest_GEO.Text = "几何算法(&A)";
+            this.menuTest_GEO.Click += new System.EventHandler(this.menuTest_GEO_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // btnCellStyleDesigner
             // 
@@ -146,6 +149,32 @@
             this.btnGDI.Size = new System.Drawing.Size(52, 22);
             this.btnGDI.Text = "绘图";
             this.btnGDI.Click += new System.EventHandler(this.menuTest_GDI_Click);
+            // 
+            // btnGEO
+            // 
+            this.btnGEO.Image = global::Doit.Print.Test.Properties.Resources.GEO_16;
+            this.btnGEO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGEO.Name = "btnGEO";
+            this.btnGEO.Size = new System.Drawing.Size(76, 22);
+            this.btnGEO.Text = "几何算法";
+            this.btnGEO.ToolTipText = "几何算法";
+            this.btnGEO.Click += new System.EventHandler(this.menuTest_GEO_Click);
+            // 
+            // menuTest_CellStyleDesginer
+            // 
+            this.menuTest_CellStyleDesginer.Image = global::Doit.Print.Test.Properties.Resources.cell_16;
+            this.menuTest_CellStyleDesginer.Name = "menuTest_CellStyleDesginer";
+            this.menuTest_CellStyleDesginer.Size = new System.Drawing.Size(180, 22);
+            this.menuTest_CellStyleDesginer.Text = "单元样式(&C)";
+            this.menuTest_CellStyleDesginer.Click += new System.EventHandler(this.menuTest_CellStyleDesginer_Click);
+            // 
+            // menuTest_GDI
+            // 
+            this.menuTest_GDI.Image = global::Doit.Print.Test.Properties.Resources.ZoomAndMove_16;
+            this.menuTest_GDI.Name = "menuTest_GDI";
+            this.menuTest_GDI.Size = new System.Drawing.Size(180, 22);
+            this.menuTest_GDI.Text = "绘图(&G)";
+            this.menuTest_GDI.Click += new System.EventHandler(this.menuTest_GDI_Click);
             // 
             // FormMaint
             // 
@@ -186,6 +215,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuTest_CellStyleDesginer;
         private System.Windows.Forms.ToolStripMenuItem menuTest_GDI;
         private System.Windows.Forms.ToolStripButton btnGDI;
+        private System.Windows.Forms.ToolStripMenuItem menuTest_GEO;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnGEO;
     }
 }
 

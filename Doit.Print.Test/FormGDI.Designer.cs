@@ -31,7 +31,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panGDI = new System.Windows.Forms.Panel();
+            this.panGDI = new PanelGDI();
             this.pGridSelected = new System.Windows.Forms.PropertyGrid();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -81,6 +81,7 @@
             this.panGDI.Size = new System.Drawing.Size(935, 580);
             this.panGDI.TabIndex = 2;
             this.panGDI.Paint += new System.Windows.Forms.PaintEventHandler(this.panGDI_Paint);
+            this.panGDI.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panGDI_MouseClick);
             this.panGDI.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panGDI_MouseDown);
             this.panGDI.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panGDI_MouseMove);
             this.panGDI.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panGDI_MouseUp);
@@ -92,6 +93,7 @@
             this.pGridSelected.Name = "pGridSelected";
             this.pGridSelected.Size = new System.Drawing.Size(215, 580);
             this.pGridSelected.TabIndex = 0;
+            this.pGridSelected.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pGridSelected_PropertyValueChanged);
             // 
             // FormGDI
             // 
@@ -118,7 +120,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblInfo;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panGDI;
+        private PanelGDI panGDI;
         private System.Windows.Forms.PropertyGrid pGridSelected;
     }
 }

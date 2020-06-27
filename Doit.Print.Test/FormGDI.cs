@@ -14,8 +14,8 @@ namespace Doit.Print.Test
     {
         private List<Node> nodes = new List<Node>();
         private LayoutManager layoutManager = new LayoutManager();
-        private Point lastMousePosition = Point.Empty;
-
+        private Node selectedNode = null;
+       
         public FormGDI()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace Doit.Print.Test
                 Location = new PointF(150f, 150f),
                 Name = "Node2",
                 Text = "Node 2"
-            });
+            });            
         }
 
         private void Draw(Graphics graphics)
@@ -57,6 +57,8 @@ namespace Doit.Print.Test
             foreach (var node in this.nodes)
             {
                 node.Draw(graphics);
+
+                node.UpdateDisplay(this.layoutManager.Offset, this.layoutManager.Scale);
             }
 
             this.lblInfo.Text = $"Scale：{this.layoutManager.Scale} Offset：X = {this.layoutManager.Offset.X} Y = {this.layoutManager.Offset.Y}";
@@ -71,23 +73,55 @@ namespace Doit.Print.Test
         {
             if (e.Button != MouseButtons.Left) return;
 
-            this.layoutManager.Offset = new PointF(e.X - this.lastMousePosition.X, e.Y - this.lastMousePosition.Y);
+            if (this.selectedNode == null)
+            {
+                this.layoutManager.CurrentMousePosition = Control.MousePosition;
+            }
+            else
+            {
+                this.selectedNode.Location = new PointF()
+                {
+                    X = (e.Location.X - this.layoutManager.Offset.X) / this.layoutManager.Scale,
+                    Y = (e.Location.Y - this.layoutManager.Offset.Y) / this.layoutManager.Scale
+                };
+            }
 
-            this.panGDI.Invalidate();
+            this.panGDI.Refresh();
         }
 
         private void panGDI_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
-            this.lastMousePosition = e.Location;
+            if (this.selectedNode == null)
+            {
+                this.layoutManager.LastMousePosition = Control.MousePosition;
+            }
+            else
+            {
+            }
         }
 
         private void panGDI_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-
-            this.lastMousePosition = e.Location;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    break;
+                case MouseButtons.None:
+                    break;
+                case MouseButtons.Right:
+                    if (this.selectedNode != null) this.selectedNode = null;
+                    break;
+                case MouseButtons.Middle:
+                    break;
+                case MouseButtons.XButton1:
+                    break;
+                case MouseButtons.XButton2:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void panGDI_MouseWheel(object sender, MouseEventArgs e)
@@ -96,7 +130,31 @@ namespace Doit.Print.Test
             if (newScale < 0.1f || newScale > 5f) return;
 
             this.layoutManager.Scale = newScale;
-            this.panGDI.Invalidate();
+            this.panGDI.Refresh();
+        }
+
+        private void panGDI_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            this.selectedNode = this.GetSelectedNode(e.Location);
+            this.pGridSelected.SelectedObject = this.selectedNode;
+        }
+
+        private Node GetSelectedNode(PointF point)
+        {
+            Node selectedNode = null;
+
+            foreach (Node node in this.nodes)
+            {
+                if (node.ContainPointF(point) == true)
+                {
+                    selectedNode = node;
+                    break;
+                }
+            }
+
+            return selectedNode;
         }
 
         private class Node
@@ -122,6 +180,9 @@ namespace Doit.Print.Test
             [DisplayName("位置"), Description("节点的位置")]
             public PointF Location { get; set; }
 
+            [DisplayName("呈现边界"), Description("节点的呈现边界")]
+            public RectangleF DisplayBounds { get; set; } = RectangleF.Empty;
+
             public void Draw(Graphics graphics)
             {
                 SizeF textSize = graphics.MeasureString(this.Text, this.Font);
@@ -130,10 +191,42 @@ namespace Doit.Print.Test
 
                 Doit.UI.GDIHelper.FillRoundRectangleWithText(graphics, this.Bounds, this.Text, this.Font, this.BackColor, this.ForeColor, 2, 4, 5, true);
             }
+
+            public void UpdateDisplay(PointF offset, float scale)
+            {
+                this.DisplayBounds = new RectangleF()
+                {
+                    X = this.Bounds.X * scale + offset.X,
+                    Y = this.Bounds.Y * scale + offset.Y,
+                    Width = this.Bounds.Width * scale,
+                    Height = this.Bounds.Height * scale
+                };
+            }
+
+            public bool ContainPointF(PointF point)
+            {
+                return this.DisplayBounds.Contains(point);
+            }
         }
 
         private class LayoutManager
         {
+            private Point lastMousePosition = Point.Empty;
+
+            public Point LastMousePosition 
+            {
+                get { return this.lastMousePosition; }
+                set { this.lastMousePosition = value; }
+            }
+
+            private Point currentMousePosition = Point.Empty;
+
+            public Point CurrentMousePosition
+            {
+                get { return this.currentMousePosition; }
+                set { this.currentMousePosition = value; }
+            }
+
             private float scale = 1.0f;
 
             public float Scale
@@ -147,7 +240,6 @@ namespace Doit.Print.Test
             public PointF Offset 
             {
                 get { return this.offset; }
-                set { this.offset = value; }
             }
 
             private bool layoutChanged = false;
@@ -171,10 +263,18 @@ namespace Doit.Print.Test
             {
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                this.offset.X = this.currentMousePosition.X - this.lastMousePosition.X;
+                this.offset.Y = this.currentMousePosition.Y - this.lastMousePosition.Y;
+
                 graphics.Transform = new System.Drawing.Drawing2D.Matrix(this.scale, 0.0f, 0.0f, this.scale, this.offset.X, this.offset.Y);
             }
         }
 
+        private void pGridSelected_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            this.panGDI.Refresh();
+        }
     }
 
 }

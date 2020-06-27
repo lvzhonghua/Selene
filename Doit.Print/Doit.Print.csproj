@@ -43,13 +43,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyAnalyzer.cs" />
-    <Compile Include="FieldStyleHolder.cs" />
-    <Compile Include="StyleHolderStatus.cs" />
+    <Compile Include="HolderLayoutManager.cs" />
+    <Compile Include="Holders\CellStyleHolder.cs" />
+    <Compile Include="Holders\FieldStyleHolder.cs" />
+    <Compile Include="Holders\IHolder.cs" />
+    <Compile Include="Holders\LineStyleHolder.cs" />
+    <Compile Include="Holders\StyleHolder.cs" />
+    <Compile Include="Holders\StyleHolderCategory.cs" />
+    <Compile Include="Holders\StyleHolderFactory.cs" />
+    <Compile Include="Holders\StyleHolderStatus.cs" />
     <Compile Include="Models\BorderStyle.cs" />
     <Compile Include="Models\FieldStyle.cs" />
     <Compile Include="Models\CellStyle.cs" />
     <Compile Include="Models\LineStyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SizeMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

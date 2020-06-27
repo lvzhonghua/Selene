@@ -51,6 +51,7 @@
             this.pGridAssociate = new System.Windows.Forms.PropertyGrid();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCellPreview = new System.Windows.Forms.ToolStripButton();
+            this.pGridFieldStyle = new System.Windows.Forms.PropertyGrid();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,6 +60,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -215,8 +217,12 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.panDesigner);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.pGridFieldStyle);
             this.splitContainer2.Size = new System.Drawing.Size(921, 299);
-            this.splitContainer2.SplitterDistance = 768;
+            this.splitContainer2.SplitterDistance = 697;
             this.splitContainer2.TabIndex = 4;
             // 
             // panDesigner
@@ -226,7 +232,7 @@
             this.panDesigner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panDesigner.Location = new System.Drawing.Point(0, 0);
             this.panDesigner.Name = "panDesigner";
-            this.panDesigner.Size = new System.Drawing.Size(766, 297);
+            this.panDesigner.Size = new System.Drawing.Size(695, 297);
             this.panDesigner.TabIndex = 4;
             this.panDesigner.DragDrop += new System.Windows.Forms.DragEventHandler(this.panDesigner_DragDrop);
             this.panDesigner.DragEnter += new System.Windows.Forms.DragEventHandler(this.panDesigner_DragEnter);
@@ -315,6 +321,16 @@
             this.btnCellPreview.Size = new System.Drawing.Size(76, 22);
             this.btnCellPreview.Text = "生成预览";
             // 
+            // pGridFieldStyle
+            // 
+            this.pGridFieldStyle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pGridFieldStyle.Location = new System.Drawing.Point(0, 0);
+            this.pGridFieldStyle.Name = "pGridFieldStyle";
+            this.pGridFieldStyle.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+            this.pGridFieldStyle.Size = new System.Drawing.Size(218, 297);
+            this.pGridFieldStyle.TabIndex = 3;
+            this.pGridFieldStyle.ToolbarVisible = false;
+            // 
             // CellStyleDesignerCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -331,6 +347,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -366,5 +383,6 @@
         private System.Windows.Forms.Label lblTypeToAssociated;
         private System.Windows.Forms.TreeView tvTypeToAssociated;
         private System.Windows.Forms.ToolStripButton btnLine;
+        private System.Windows.Forms.PropertyGrid pGridFieldStyle;
     }
 }

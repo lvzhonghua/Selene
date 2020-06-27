@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Doit.Print.Models
 {
@@ -21,11 +18,11 @@ namespace Doit.Print.Models
         /// 名称
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// 根据内容自动调整大小
+        /// 尺寸模式
         /// </summary>
-        public bool AutoSize { get; set; }
+        public SizeMode SizeMode { get; set; } = SizeMode.AutoSize;
 
         /// <summary>
         /// 背景色（默认为白色）
@@ -53,13 +50,28 @@ namespace Doit.Print.Models
         public PointF Location { get; set; }
 
         /// <summary>
-        /// 大小
+        /// 宽度
         /// </summary>
-        public SizeF Size { get; set; }
+        public float Width { get; set; }
+
+        /// <summary>
+        /// 高度
+        /// </summary>
+        public float Height { get; set; }
 
         /// <summary>
         /// 内容
         /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        /// 边界
+        /// </summary>
+        public RectangleF Bounds { get; set; }
+
+        /// <summary>
+        /// 文本对齐方式
+        /// </summary>
+        public ContentAlignment TextAlign { get; set; } = ContentAlignment.MiddleCenter;
     }
 }

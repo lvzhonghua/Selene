@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+
 using Doit.Print.Models;
 
 namespace Doit.Print.Controls
@@ -94,6 +91,7 @@ namespace Doit.Print.Controls
             if (tvNode.Level != 0) return;
             Type type = tvNode.Tag as Type;
             if (type == null) return;
+
             this.tvTypeList.DoDragDrop(type, DragDropEffects.Copy);
         }
 
@@ -187,6 +185,7 @@ namespace Doit.Print.Controls
             if (tvNode.Level != 0) return;
             PropertyInfo propertyInfo = tvNode.Tag as PropertyInfo;
             if (propertyInfo == null) return;
+
             this.tvTypeToAssociated.DoDragDrop(propertyInfo, DragDropEffects.Copy);
         }
 
