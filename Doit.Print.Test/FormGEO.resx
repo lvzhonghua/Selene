@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>有些时候就是找不到自己业务持续增长的抓手，没有抓手很难持续专注
+
+运气不是一时间马上积累的，而是长期积累的认知、时运、资源的综合体
+绝不低估正在一个漫长赛道上，一个优秀的人持续的专注带来的复利
+持续地专注，慢慢来，比较快
+
+第一，试着摆脱位置的限制，去接触一些平时不会做的事情。比如：如果你是跟事打交道的，不妨试着跟人接触一下；如果你是跟人打交道的，也不妨试着磨练自己对产品的眼光和品味。
+第二，如果你一直埋头于某个行业、某个位置，试着跳出来，从整个商业链条去思考，去寻找新的机会和切入点，从而提升你看待事物的视角。
+第三，遇到和发现问题时，不要孤立地看待问题，而是把问题放到整个系统里面去思考：问题的根源在哪里？有哪些因素可能影响了问题的存在？</value>
+  </data>
 </root>

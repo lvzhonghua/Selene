@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Doit.UI;
 
 namespace Doit.Print.Test
 {
@@ -25,7 +28,7 @@ namespace Doit.Print.Test
         {
             base.OnLoad(e);
 
-            this.panGDI.MouseWheel += this.panGDI_MouseWheel;
+            this.panZoomAndMove.MouseWheel += this.panGDI_MouseWheel;
 
             this.nodes.Add(new Node 
             { 
@@ -86,7 +89,7 @@ namespace Doit.Print.Test
                 };
             }
 
-            this.panGDI.Refresh();
+            this.panZoomAndMove.Refresh();
         }
 
         private void panGDI_MouseDown(object sender, MouseEventArgs e)
@@ -130,7 +133,7 @@ namespace Doit.Print.Test
             if (newScale < 0.1f || newScale > 5f) return;
 
             this.layoutManager.Scale = newScale;
-            this.panGDI.Refresh();
+            this.panZoomAndMove.Refresh();
         }
 
         private void panGDI_MouseClick(object sender, MouseEventArgs e)
@@ -273,7 +276,200 @@ namespace Doit.Print.Test
 
         private void pGridSelected_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
-            this.panGDI.Refresh();
+            this.panZoomAndMove.Refresh();
+        }
+
+        private void MeasureCharacterRangesRegions1(PaintEventArgs e)
+        {
+            string measureString = "第一 and 第二 ranges";
+            Font stringFont = new Font("Times New Roman", 16.0F);
+
+            CharacterRange[] characterRanges = { new CharacterRange(0, 2), new CharacterRange(7, 2) };
+
+            float x = 10.0F;
+            float y = 10.0F;
+            float width = 35.0F;
+            float height = 200.0F;
+            RectangleF layoutRect = new RectangleF(x, y, width, height);
+
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.FormatFlags = StringFormatFlags.DirectionVertical;
+            stringFormat.SetMeasurableCharacterRanges(characterRanges);
+
+            e.Graphics.DrawString(measureString, stringFont, Brushes.Black, x, y, stringFormat);
+
+            Region[] stringRegions = e.Graphics.MeasureCharacterRanges(measureString, stringFont, layoutRect, stringFormat);
+
+            RectangleF measureRect1 = stringRegions[0].GetBounds(e.Graphics);
+            e.Graphics.DrawRectangle(new Pen(Color.Red, 1), Rectangle.Round(measureRect1));
+
+            RectangleF measureRect2 = stringRegions[1].GetBounds(e.Graphics);
+            e.Graphics.DrawRectangle(new Pen(Color.Blue, 1), Rectangle.Round(measureRect2));
+        }
+
+        private void MeasureCharacterRangesRegions2(PaintEventArgs e)
+        {
+            string measureString = "复利才是高利润的基础";
+            Font stringFont = new Font("宋体",26.0F);
+
+            CharacterRange[] characterRanges = { new CharacterRange(0, 2), new CharacterRange(4, 3), new CharacterRange(8, 2) };
+
+            float x = 100.0F;
+            float y = 100.0F;
+            float width = 1000F;
+            float height = 500F;
+            RectangleF layoutRect = new RectangleF(x, y, width, height);
+
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.FormatFlags = StringFormatFlags.NoWrap;
+            stringFormat.SetMeasurableCharacterRanges(characterRanges);
+
+            e.Graphics.DrawString(measureString, stringFont, Brushes.Black, x, y, stringFormat);
+
+            Region[] stringRegions = e.Graphics.MeasureCharacterRanges(measureString, stringFont, layoutRect, stringFormat);
+
+            RectangleF measureRect1 = stringRegions[0].GetBounds(e.Graphics);
+            e.Graphics.DrawRectangle(new Pen(Color.Red, 2), Rectangle.Round(measureRect1));
+
+            RectangleF measureRect2 = stringRegions[1].GetBounds(e.Graphics);
+            e.Graphics.DrawRectangle(new Pen(Color.Blue, 2), Rectangle.Round(measureRect2));
+
+            RectangleF measureRect3 = stringRegions[2].GetBounds(e.Graphics);
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), Rectangle.Round(measureRect3));
+        }
+
+        private void DrawALineOfText(PaintEventArgs e)
+        {
+            string[] stringsToPaint = { "Tail", "编程序", " Toys" };
+
+            Font[] fonts = { new Font("Arial", 14, FontStyle.Regular), new Font("华文中宋", 24, FontStyle.Italic), new Font("Arial", 14, FontStyle.Regular) };
+
+            Point startPoint = new Point(100, 20);
+
+            TextFormatFlags flags = TextFormatFlags.NoPadding;
+
+            Size proposedSize = new Size(int.MaxValue, int.MaxValue);
+
+            for (int index = 0; index < stringsToPaint.Length; index++)
+            {
+                Size size = TextRenderer.MeasureText(e.Graphics, stringsToPaint[index],  fonts[index], proposedSize, flags);
+                Rectangle rect = new Rectangle(startPoint, size);
+                TextRenderer.DrawText(e.Graphics, stringsToPaint[index], fonts[index], startPoint, Color.Black, flags);
+                startPoint.X += size.Width;
+            }
+        }
+
+        private void MeasureStringMin(PaintEventArgs e)
+        {
+            string measureString = "Measure String 1 2 3";
+            Font stringFont = new Font("Arial", 50);
+
+            SizeF stringSize = e.Graphics.MeasureString(measureString, stringFont);
+
+            PointF position = new PointF(100,150);
+
+            e.Graphics.DrawRectangle(new Pen(Color.Red, 1), position.X, position.Y, stringSize.Width, stringSize.Height);
+
+            e.Graphics.DrawString(measureString, stringFont, Brushes.Black, position);
+        }
+
+        private void DrawStringFloatFormat(PaintEventArgs e)
+        {
+            String drawString = "Sample是简单的意思。123 & ! = : ：,，; ；";
+
+            Font drawFont = new Font("Arial", 16);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            PointF point = new PointF(800.0f,10.0f);
+
+            StringFormat drawFormat = new StringFormat();
+            drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
+
+            SizeF size = e.Graphics.MeasureString(drawString, drawFont, point, drawFormat);
+
+            RectangleF rect = new RectangleF(point, size);
+
+            e.Graphics.DrawString(drawString, drawFont, drawBrush, rect, drawFormat);
+            e.Graphics.DrawRectangle(Pens.Red, Rectangle.Round(rect));
+        }
+
+        private void DrawStringRotated(PaintEventArgs e)
+        {
+            String drawString = "斜着绘制的文字";
+
+            Font drawFont = new Font("宋体", 16);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            PointF point = new PointF(300.0f, 100.0f);
+
+            SizeF size = e.Graphics.MeasureString(drawString, drawFont);
+
+            RectangleF rect = new RectangleF(point, size);
+
+            e.Graphics.TranslateTransform(point.X, point.Y);
+            e.Graphics.RotateTransform(30f);
+            e.Graphics.DrawString(drawString, drawFont, drawBrush, rect);
+            e.Graphics.DrawRectangle(Pens.Red, Rectangle.Round(rect));
+            e.Graphics.RotateTransform(-30f);
+            e.Graphics.TranslateTransform(-point.X, -point.Y);
+        }
+
+        private void DrawStringOnPath(PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+            Point[] myArray =
+            {
+                new Point(100, 400),
+                new Point(180, 575),
+                new Point(160, 425),
+                new Point(280, 400),
+                new Point(300, 510),
+                new Point(220, 450),
+                new Point(600, 600),
+                new Point(650, 550),
+                new Point(800, 500),
+                new Point(950, 550)
+            };
+
+            GraphicsPath myPath = new GraphicsPath();
+            myPath.AddBeziers(myArray);
+
+            Pen myPen = new Pen(Color.Blue, 1);
+            e.Graphics.DrawPath(myPen, myPath);
+
+            RectangleF[] regions = e.Graphics.MeasureString("一定要实现 Text on Path (文字沿着路径渲染)，我做到了",
+                                                                                new Font(FontFamily.GenericSerif, 24), 
+                                                                                new SolidBrush(Color.Red), 
+                                                                                TextPathAlign.Center, 
+                                                                                TextPathPosition.CenterPath, 
+                                                                                100, 
+                                                                                0, 
+                                                                                myPath);
+            foreach (var region in regions)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.GreenYellow), region);
+            }
+            e.Graphics.DrawString("一定要实现 Text on Path (文字沿着路径渲染)，我做到了", 
+                                            new Font(FontFamily.GenericSerif, 24), 
+                                            new SolidBrush(Color.Red),
+                                            TextPathAlign.Center, 
+                                            TextPathPosition.CenterPath, 
+                                            100,
+                                            0, 
+                                            myPath);
+        }
+
+        private void panString_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+            this.MeasureCharacterRangesRegions1(e);
+            this.MeasureCharacterRangesRegions2(e);
+            this.DrawALineOfText(e);
+            this.MeasureStringMin(e);
+            this.DrawStringFloatFormat(e);
+            this.DrawStringRotated(e);
+            this.DrawStringOnPath(e);
         }
     }
 
