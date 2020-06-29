@@ -118,6 +118,10 @@
       <Project>{63226eef-a94a-4bbf-a84f-632546155af8}</Project>
       <Name>Doit.Print.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Doit.Print\Doit.Print.csproj">
+      <Project>{87f821ba-0e9c-4ee7-bee2-82df37a0efb2}</Project>
+      <Name>Doit.Print</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cell_16.png" />

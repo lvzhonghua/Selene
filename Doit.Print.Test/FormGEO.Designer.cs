@@ -62,9 +62,9 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFontSelect = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTextContent = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -274,7 +274,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnFontSelect);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.comboBox3);
@@ -451,23 +451,24 @@
             this.treeView1.Size = new System.Drawing.Size(459, 316);
             this.treeView1.TabIndex = 12;
             // 
-            // button1
+            // btnFontSelect
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnFontSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(347, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 45);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "字体(宋体,12)";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFontSelect.Location = new System.Drawing.Point(347, 14);
+            this.btnFontSelect.Name = "btnFontSelect";
+            this.btnFontSelect.Size = new System.Drawing.Size(112, 45);
+            this.btnFontSelect.TabIndex = 13;
+            this.btnFontSelect.Text = "字体(宋体,12)";
+            this.btnFontSelect.UseVisualStyleBackColor = true;
+            this.btnFontSelect.Click += new System.EventHandler(this.btnFontSelect_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtTextContent);
             this.groupBox3.Location = new System.Drawing.Point(6, 73);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(465, 202);
@@ -475,16 +476,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "文字内容";
             // 
-            // textBox1
+            // txtTextContent
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 17);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(459, 182);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.txtTextContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTextContent.Location = new System.Drawing.Point(3, 17);
+            this.txtTextContent.Multiline = true;
+            this.txtTextContent.Name = "txtTextContent";
+            this.txtTextContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtTextContent.Size = new System.Drawing.Size(459, 182);
+            this.txtTextContent.TabIndex = 7;
+            this.txtTextContent.Text = resources.GetString("txtTextContent.Text");
             // 
             // FormGEO
             // 
@@ -555,8 +556,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFontSelect;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTextContent;
     }
 }

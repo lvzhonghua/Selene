@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using Doit.Print.Models;
+
 namespace Doit.Print.Test
 {
     public partial class FormGEO : Form
@@ -172,6 +174,12 @@ namespace Doit.Print.Test
         private void txtContent_TextChanged(object sender, EventArgs e)
         {
             this.panGDI.Refresh();
+        }
+
+        private void btnFontSelect_Click(object sender, EventArgs e)
+        {
+            TextDisassemblyResult disassemblyResult = TextDisassembly.Disassembly(null, this.txtTextContent.Text, 0, null);
+
         }
     }
 }

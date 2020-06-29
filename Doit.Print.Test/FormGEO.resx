@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
+  <data name="txtTextContent.Text" xml:space="preserve">
     <value>有些时候就是找不到自己业务持续增长的抓手，没有抓手很难持续专注
 
 运气不是一时间马上积累的，而是长期积累的认知、时运、资源的综合体
