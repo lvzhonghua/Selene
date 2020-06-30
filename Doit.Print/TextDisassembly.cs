@@ -45,6 +45,7 @@ namespace Doit.Print
 
             StringBuilder sbParagraphContent = new StringBuilder();
            
+            //段落拆分
             for (int index = 0; index < charLength; index++)
             {
                 char currentChar = chars[index];
@@ -76,6 +77,54 @@ namespace Doit.Print
             }
 
             disassemblyResult.Paragraphs.RemoveAt(disassemblyResult.Paragraphs.Count - 1);
+
+            //根据AreaWidth将段落才分成行
+            int lineHeight = paragraphStyle.Font.Height;
+            
+            SizeF sizeOfNormalChar = graphics.MeasureString("好", paragraphStyle.Font);
+            float normalCharWidth = sizeOfNormalChar.Width;
+            float normalCharHeight = sizeOfNormalChar.Height;
+            float beforeSpacing = normalCharHeight * paragraphStyle.BeforeSpacing;
+            float afterSpacing = normalCharHeight * paragraphStyle.AfterSpacing;
+
+            float xStartOfFirstLineInParagraph = paragraphStyle.Padding_Left + paragraphStyle.Indent * normalCharWidth;
+            float yOfLine = paragraphStyle.Padding_Top;
+
+            for (int index = 0; index < disassemblyResult.Paragraphs.Count; index++)
+            {
+                yOfLine += index * (beforeSpacing + afterSpacing);
+
+                Paragraph paragraphTemp = disassemblyResult.Paragraphs[index];
+                string paragrapContent = paragraphTemp.Content;
+                if (string.IsNullOrEmpty(paragrapContent)) continue; //空白行
+
+                SizeF sizeOfParagraphContent = graphics.MeasureString(paragrapContent, paragraphStyle.Font);
+                float maxFontHeightOfCurrentParagraph = sizeOfParagraphContent.Height;
+
+                if (xStartOfFirstLineInParagraph + sizeOfParagraphContent.Width + paragraphStyle.Padding_Right < areaWidth)
+                {
+                    //一行可以放下整个段落
+                    float xOfCharBounds = xStartOfFirstLineInParagraph;
+                    CharLine charLine = new CharLine() { Paragraph = paragraphTemp, IndexInParagraph = 0, Content = paragraphTemp.Content };
+                    char[] charsOfLine = charLine.Content.ToArray();
+                    for (int indexOfCharsOfLine = 0; indexOfCharsOfLine < charsOfLine.Length; indexOfCharsOfLine++)
+                    {
+                        CharInfo charInfo = new CharInfo() { Char = charsOfLine[indexOfCharsOfLine], IndexInLine = indexOfCharsOfLine };
+                        SizeF sizeOfChar = graphics.MeasureString(charsOfLine[indexOfCharsOfLine].ToString(), paragraphStyle.Font);
+                        charInfo.Bounds = new RectangleF(xOfCharBounds, yOfLine,sizeOfChar.Width,sizeOfChar.Height);
+                        charLine.Chars.Add(charInfo);
+                        xOfCharBounds += sizeOfChar.Width;
+                    }
+
+                    paragraphTemp.CharLines.Add(charLine);
+                }
+                else
+                {
+                    //一行放不下整个段落
+
+                }
+                yOfLine += maxFontHeightOfCurrentParagraph;
+            }
 
             return disassemblyResult;
         }

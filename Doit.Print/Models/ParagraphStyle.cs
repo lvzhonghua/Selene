@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,24 +39,24 @@ namespace Doit.Print.Models
         public Font Font { get; set; } = new Font("宋体",12f);
 
         /// <summary>
-        /// 颜色
+        /// 颜色（默认黑色）
         /// </summary>
         public Color Color { get; set; } = Color.Black;
 
         /// <summary>
-        /// 行间距
+        /// 行间距（默认值：1倍当前字体行间距）
         /// </summary>
-        public float LineSpacing { get; set; }
+        public float LineSpacing { get; set; } = 1f;
 
         /// <summary>
-        /// 段前间距
+        /// 段前间距（默认值：1倍当前字体行高）
         /// </summary>
-        public float BeforeSpacing { get; set; }
+        public float BeforeSpacing { get; set; } = 1f;
 
         /// <summary>
-        /// 段后间距
+        /// 段后间距（默认值：1倍当前字体行高）
         /// </summary>
-        public float AfterSpacing { get; set; }
+        public float AfterSpacing { get; set; } = 1f;
 
         /// <summary>
         /// 首行缩进（默认值：2个字符）

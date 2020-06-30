@@ -10,6 +10,9 @@ namespace Doit.Print.Test
     {
         private Font currentFont = new Font("宋体",12f);
         private SizeF sizeOfContent = SizeF.Empty;
+        private ParagraphStyle paragraphStyle = new ParagraphStyle();
+        private RectangleF selectedCharBounds = RectangleF.Empty;
+        private TextDisassemblyResult disassemblyResult = null;
 
         public FormGEO()
         {
@@ -176,10 +179,83 @@ namespace Doit.Print.Test
             this.panGDI.Refresh();
         }
 
+        private void ListDisassemblyResultInTreeView()
+        {
+            this.tvDisassemblyResult.Nodes.Clear();
+
+            string empty = "空白段落";
+
+            foreach (Paragraph paragraph in this.disassemblyResult.Paragraphs)
+            {
+                TreeNode nodeParagraph = this.tvDisassemblyResult.Nodes.Add($"({paragraph.Index}) - {(string.IsNullOrEmpty(paragraph.Content) ? empty : paragraph.Content)}");
+                nodeParagraph.ImageKey = nodeParagraph.SelectedImageKey = "paragraph_16.png";
+                foreach (CharLine charLine in paragraph.CharLines)
+                {
+                    TreeNode nodeCharLine = nodeParagraph.Nodes.Add($"({charLine.IndexInParagraph} - {charLine.Content})");
+                    foreach (CharInfo charInfo in charLine.Chars)
+                    {
+                        TreeNode nodeChar = nodeCharLine.Nodes.Add($"({charInfo.IndexInLine}) - {charInfo.Char} - [{charInfo.Bounds.Left},{charInfo.Bounds.Top},{charInfo.Bounds.Width},{charInfo.Bounds.Height}]");
+                        nodeChar.Tag = charInfo.Bounds;
+                    }
+                }
+            }
+        }
+
+
+
         private void btnFontSelect_Click(object sender, EventArgs e)
         {
-            TextDisassemblyResult disassemblyResult = TextDisassembly.Disassembly(null, this.txtTextContent.Text, 0, null);
+            FontDialog fontDlg = new FontDialog();
+            fontDlg.Font = this.paragraphStyle.Font;
 
+            if (fontDlg.ShowDialog() == DialogResult.Cancel) return;
+
+            this.paragraphStyle.Font = fontDlg.Font;
+
+            this.Style_Change(null, null);
+        }
+
+        private void Style_Change(object sender, EventArgs e)
+        {
+            this.selectedCharBounds = RectangleF.Empty;
+
+            if(string.IsNullOrEmpty(this.cboLineSpacing.Text) != true) this.paragraphStyle.LineSpacing = float.Parse(this.cboLineSpacing.Text);
+            if(string.IsNullOrEmpty(this.cboIndent.Text) != true) this.paragraphStyle.Indent = int.Parse(this.cboIndent.Text);
+            if(string.IsNullOrEmpty(this.cboBeforeSpacing.Text) != true) this.paragraphStyle.BeforeSpacing = float.Parse(this.cboBeforeSpacing.Text);
+            if(string.IsNullOrEmpty(this.cboAfterSpacing.Text) != true) this.paragraphStyle.AfterSpacing = float.Parse(this.cboAfterSpacing.Text);
+            if(string.IsNullOrEmpty(this.txtPadding_H.Text) != true) this.paragraphStyle.Padding_Left = this.paragraphStyle.Padding_Right = float.Parse(this.txtPadding_H.Text);
+            if(string.IsNullOrEmpty(this.txtPadding_V.Text) != true) this.paragraphStyle.Padding_Top = this.paragraphStyle.Padding_Bottom = float.Parse(this.txtPadding_V.Text);
+
+            Graphics graphics = this.panParagraph.CreateGraphics();
+            this.disassemblyResult = TextDisassembly.Disassembly(graphics, this.txtTextContent.Text, this.panParagraph.Width, this.paragraphStyle);
+
+            this.ListDisassemblyResultInTreeView();
+            this.panParagraph.Refresh();
+        }
+
+        private void panParagraph_Paint(object sender, PaintEventArgs e)
+        {
+            if (this.disassemblyResult == null) return;
+            e.Graphics.DrawRectangle(Pens.Red, Rectangle.Round(this.selectedCharBounds));
+            foreach (Paragraph paragraph in this.disassemblyResult.Paragraphs)
+            {
+                foreach (CharLine charLine in paragraph.CharLines)
+                {
+                    foreach (CharInfo charInfo in charLine.Chars)
+                    {
+                        e.Graphics.DrawString(charInfo.Char.ToString(), this.paragraphStyle.Font, Brushes.Gray, charInfo.Bounds);
+                    }
+                }
+            }
+        }
+
+        private void tvDisassemblyResult_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level == 2)
+            {
+                this.selectedCharBounds = (RectangleF)e.Node.Tag;
+                this.panParagraph.Refresh();
+            }
         }
     }
 }
