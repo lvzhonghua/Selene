@@ -13,6 +13,11 @@ namespace Doit.Print.Models
     public class TextDisassemblyResult
     {
         /// <summary>
+        /// 绘图板
+        /// </summary>
+        public Graphics Graphics { get; set; }
+
+        /// <summary>
         /// 渲染区宽度
         /// </summary>
         public float AreaWidth { get; set; }

@@ -23,6 +23,11 @@ namespace Doit.Print.Models
         public int IndexInLine { get; set; }
 
         /// <summary>
+        /// 字符所在的行
+        /// </summary>
+        public CharLine Line { get; set; }
+
+        /// <summary>
         /// 边界
         /// </summary>
         public RectangleF Bounds { get; set; } = RectangleF.Empty;

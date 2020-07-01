@@ -189,19 +189,21 @@ namespace Doit.Print.Test
             {
                 TreeNode nodeParagraph = this.tvDisassemblyResult.Nodes.Add($"({paragraph.Index}) - {(string.IsNullOrEmpty(paragraph.Content) ? empty : paragraph.Content)}");
                 nodeParagraph.ImageKey = nodeParagraph.SelectedImageKey = "paragraph_16.png";
+                nodeParagraph.Tag = paragraph.Bounds;
                 foreach (CharLine charLine in paragraph.CharLines)
                 {
-                    TreeNode nodeCharLine = nodeParagraph.Nodes.Add($"({charLine.IndexInParagraph} - {charLine.Content})");
+                    TreeNode nodeCharLine = nodeParagraph.Nodes.Add($"({charLine.IndexInParagraph}) - {charLine.Content})");
+                    nodeCharLine.ImageKey = nodeCharLine.SelectedImageKey = "内容_16.png";
+                    nodeCharLine.Tag = charLine.Bounds;
                     foreach (CharInfo charInfo in charLine.Chars)
                     {
                         TreeNode nodeChar = nodeCharLine.Nodes.Add($"({charInfo.IndexInLine}) - {charInfo.Char} - [{charInfo.Bounds.Left},{charInfo.Bounds.Top},{charInfo.Bounds.Width},{charInfo.Bounds.Height}]");
+                        nodeChar.ImageKey = nodeChar.SelectedImageKey = "字符_16.png";
                         nodeChar.Tag = charInfo.Bounds;
                     }
                 }
             }
         }
-
-
 
         private void btnFontSelect_Click(object sender, EventArgs e)
         {
@@ -221,8 +223,7 @@ namespace Doit.Print.Test
 
             if(string.IsNullOrEmpty(this.cboLineSpacing.Text) != true) this.paragraphStyle.LineSpacing = float.Parse(this.cboLineSpacing.Text);
             if(string.IsNullOrEmpty(this.cboIndent.Text) != true) this.paragraphStyle.Indent = int.Parse(this.cboIndent.Text);
-            if(string.IsNullOrEmpty(this.cboBeforeSpacing.Text) != true) this.paragraphStyle.BeforeSpacing = float.Parse(this.cboBeforeSpacing.Text);
-            if(string.IsNullOrEmpty(this.cboAfterSpacing.Text) != true) this.paragraphStyle.AfterSpacing = float.Parse(this.cboAfterSpacing.Text);
+            if(string.IsNullOrEmpty(this.cboParagraphSpacing.Text) != true) this.paragraphStyle.ParagraphSpacing = float.Parse(this.cboParagraphSpacing.Text);
             if(string.IsNullOrEmpty(this.txtPadding_H.Text) != true) this.paragraphStyle.Padding_Left = this.paragraphStyle.Padding_Right = float.Parse(this.txtPadding_H.Text);
             if(string.IsNullOrEmpty(this.txtPadding_V.Text) != true) this.paragraphStyle.Padding_Top = this.paragraphStyle.Padding_Bottom = float.Parse(this.txtPadding_V.Text);
 
@@ -230,6 +231,7 @@ namespace Doit.Print.Test
             this.disassemblyResult = TextDisassembly.Disassembly(graphics, this.txtTextContent.Text, this.panParagraph.Width, this.paragraphStyle);
 
             this.ListDisassemblyResultInTreeView();
+            this.panParagraph.Height = (int)this.disassemblyResult.Bounds.Height + 20;
             this.panParagraph.Refresh();
         }
 
@@ -243,7 +245,7 @@ namespace Doit.Print.Test
                 {
                     foreach (CharInfo charInfo in charLine.Chars)
                     {
-                        e.Graphics.DrawString(charInfo.Char.ToString(), this.paragraphStyle.Font, Brushes.Gray, charInfo.Bounds);
+                        e.Graphics.DrawString(charInfo.Char.ToString(), this.paragraphStyle.Font, Brushes.Blue, charInfo.Bounds);
                     }
                 }
             }
@@ -251,11 +253,11 @@ namespace Doit.Print.Test
 
         private void tvDisassemblyResult_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Level == 2)
-            {
+            //if (e.Node.Level == 2)
+            //{
                 this.selectedCharBounds = (RectangleF)e.Node.Tag;
                 this.panParagraph.Refresh();
-            }
+            //}
         }
     }
 }

@@ -39,6 +39,7 @@
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.tbarWidth = new System.Windows.Forms.TrackBar();
             this.panContainer = new System.Windows.Forms.Panel();
+            this.panGDI = new Doit.Print.Test.PanelGDI();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -47,13 +48,12 @@
             this.txtTextContent = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tvDisassemblyResult = new System.Windows.Forms.TreeView();
+            this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFontSelect = new System.Windows.Forms.Button();
             this.txtPadding_V = new System.Windows.Forms.TextBox();
             this.txtPadding_H = new System.Windows.Forms.TextBox();
-            this.cboAfterSpacing = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboBeforeSpacing = new System.Windows.Forms.ComboBox();
+            this.cboParagraphSpacing = new System.Windows.Forms.ComboBox();
             this.cboIndent = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -63,10 +63,8 @@
             this.cboLineSpacing = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.imgList = new System.Windows.Forms.ImageList(this.components);
-            this.panGDI = new Doit.Print.Test.PanelGDI();
             this.panParagraph = new Doit.Print.Test.PanelGDI();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -199,6 +197,15 @@
             this.panContainer.Size = new System.Drawing.Size(958, 621);
             this.panContainer.TabIndex = 2;
             // 
+            // panGDI
+            // 
+            this.panGDI.BackColor = System.Drawing.Color.White;
+            this.panGDI.Location = new System.Drawing.Point(0, 0);
+            this.panGDI.Name = "panGDI";
+            this.panGDI.Size = new System.Drawing.Size(900, 600);
+            this.panGDI.TabIndex = 2;
+            this.panGDI.Paint += new System.Windows.Forms.PaintEventHandler(this.panGDI_Paint);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -276,6 +283,7 @@
             this.txtTextContent.Size = new System.Drawing.Size(459, 182);
             this.txtTextContent.TabIndex = 7;
             this.txtTextContent.Text = resources.GetString("txtTextContent.Text");
+            this.txtTextContent.TextChanged += new System.EventHandler(this.Style_Change);
             // 
             // groupBox2
             // 
@@ -301,6 +309,15 @@
             this.tvDisassemblyResult.TabIndex = 12;
             this.tvDisassemblyResult.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDisassemblyResult_AfterSelect);
             // 
+            // imgList
+            // 
+            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
+            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList.Images.SetKeyName(0, "line_16.png");
+            this.imgList.Images.SetKeyName(1, "paragraph_16.png");
+            this.imgList.Images.SetKeyName(2, "内容_16.png");
+            this.imgList.Images.SetKeyName(3, "字符_16.png");
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -308,9 +325,7 @@
             this.groupBox1.Controls.Add(this.btnFontSelect);
             this.groupBox1.Controls.Add(this.txtPadding_V);
             this.groupBox1.Controls.Add(this.txtPadding_H);
-            this.groupBox1.Controls.Add(this.cboAfterSpacing);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cboBeforeSpacing);
+            this.groupBox1.Controls.Add(this.cboParagraphSpacing);
             this.groupBox1.Controls.Add(this.cboIndent);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label15);
@@ -356,44 +371,20 @@
             this.txtPadding_H.Text = "4";
             this.txtPadding_H.TextChanged += new System.EventHandler(this.Style_Change);
             // 
-            // cboAfterSpacing
+            // cboParagraphSpacing
             // 
-            this.cboAfterSpacing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAfterSpacing.FormattingEnabled = true;
-            this.cboAfterSpacing.Items.AddRange(new object[] {
+            this.cboParagraphSpacing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboParagraphSpacing.FormattingEnabled = true;
+            this.cboParagraphSpacing.Items.AddRange(new object[] {
             "0",
             "1",
             "1.5",
             "2"});
-            this.cboAfterSpacing.Location = new System.Drawing.Point(175, 38);
-            this.cboAfterSpacing.Name = "cboAfterSpacing";
-            this.cboAfterSpacing.Size = new System.Drawing.Size(68, 20);
-            this.cboAfterSpacing.TabIndex = 11;
-            this.cboAfterSpacing.TextChanged += new System.EventHandler(this.Style_Change);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(135, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "段后：";
-            // 
-            // cboBeforeSpacing
-            // 
-            this.cboBeforeSpacing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBeforeSpacing.FormattingEnabled = true;
-            this.cboBeforeSpacing.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "1.5",
-            "2"});
-            this.cboBeforeSpacing.Location = new System.Drawing.Point(56, 37);
-            this.cboBeforeSpacing.Name = "cboBeforeSpacing";
-            this.cboBeforeSpacing.Size = new System.Drawing.Size(64, 20);
-            this.cboBeforeSpacing.TabIndex = 9;
-            this.cboBeforeSpacing.TextChanged += new System.EventHandler(this.Style_Change);
+            this.cboParagraphSpacing.Location = new System.Drawing.Point(56, 37);
+            this.cboParagraphSpacing.Name = "cboParagraphSpacing";
+            this.cboParagraphSpacing.Size = new System.Drawing.Size(64, 20);
+            this.cboParagraphSpacing.TabIndex = 9;
+            this.cboParagraphSpacing.TextChanged += new System.EventHandler(this.Style_Change);
             // 
             // cboIndent
             // 
@@ -413,11 +404,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 41);
+            this.label5.Location = new System.Drawing.Point(6, 41);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 8;
-            this.label5.Text = "段前：";
+            this.label5.Text = "段间距：";
             // 
             // label15
             // 
@@ -489,33 +480,6 @@
             this.panel2.Size = new System.Drawing.Size(868, 621);
             this.panel2.TabIndex = 3;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1359, 629);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "内容分页";
-            // 
-            // imgList
-            // 
-            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
-            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList.Images.SetKeyName(0, "line_16.png");
-            this.imgList.Images.SetKeyName(1, "paragraph_16.png");
-            this.imgList.Images.SetKeyName(2, "内容_16.png");
-            // 
-            // panGDI
-            // 
-            this.panGDI.BackColor = System.Drawing.Color.White;
-            this.panGDI.Location = new System.Drawing.Point(0, 0);
-            this.panGDI.Name = "panGDI";
-            this.panGDI.Size = new System.Drawing.Size(900, 600);
-            this.panGDI.TabIndex = 2;
-            this.panGDI.Paint += new System.Windows.Forms.PaintEventHandler(this.panGDI_Paint);
-            // 
             // panParagraph
             // 
             this.panParagraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -526,6 +490,16 @@
             this.panParagraph.Size = new System.Drawing.Size(844, 600);
             this.panParagraph.TabIndex = 2;
             this.panParagraph.Paint += new System.Windows.Forms.PaintEventHandler(this.panParagraph_Paint);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1359, 629);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "内容分页";
             // 
             // FormGEO
             // 
@@ -582,9 +556,7 @@
         private System.Windows.Forms.ComboBox cboLineSpacing;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cboAfterSpacing;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboBeforeSpacing;
+        private System.Windows.Forms.ComboBox cboParagraphSpacing;
         private System.Windows.Forms.ComboBox cboIndent;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

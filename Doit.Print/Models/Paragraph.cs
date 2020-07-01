@@ -56,5 +56,15 @@ namespace Doit.Print.Models
         /// 边界
         /// </summary>
         public RectangleF Bounds { get; set; } = RectangleF.Empty;
+
+        /// <summary>
+        /// 边界的X轴坐标
+        /// </summary>
+        public float X { get; set; } = 0f;
+
+        /// <summary>
+        /// 边界的Y轴坐标
+        /// </summary>
+        public float Y { get; set; } = 0f;
     }
 }

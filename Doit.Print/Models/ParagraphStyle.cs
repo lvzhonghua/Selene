@@ -49,14 +49,9 @@ namespace Doit.Print.Models
         public float LineSpacing { get; set; } = 1f;
 
         /// <summary>
-        /// 段前间距（默认值：1倍当前字体行高）
+        /// 段间距（默认值：1倍当前字体行高）
         /// </summary>
-        public float BeforeSpacing { get; set; } = 1f;
-
-        /// <summary>
-        /// 段后间距（默认值：1倍当前字体行高）
-        /// </summary>
-        public float AfterSpacing { get; set; } = 1f;
+        public float ParagraphSpacing { get; set; } = 1f;
 
         /// <summary>
         /// 首行缩进（默认值：2个字符）
