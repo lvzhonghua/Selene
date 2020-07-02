@@ -43,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyAnalyzer.cs" />
+    <Compile Include="Models\ContentWithSuffix.cs" />
+    <Compile Include="Models\SuffixStyle.cs" />
+    <Compile Include="Renderers\ContentWithSuffixRenderer.cs" />
+    <Compile Include="Renderers\GraphicsExtension.cs" />
+    <Compile Include="SuffixType.cs" />
     <Compile Include="TextDisassembly.cs" />
     <Compile Include="HolderLayoutManager.cs" />
     <Compile Include="Holders\CellStyleHolder.cs" />

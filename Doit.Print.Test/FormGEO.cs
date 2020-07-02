@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
 using Doit.Print.Models;
+using Doit.Print.Renderers;
 
 namespace Doit.Print.Test
 {
@@ -13,6 +15,8 @@ namespace Doit.Print.Test
         private ParagraphStyle paragraphStyle = new ParagraphStyle();
         private RectangleF selectedCharBounds = RectangleF.Empty;
         private TextDisassemblyResult disassemblyResult = null;
+
+        private ContentWithSuffix contentWithSuffx = new ContentWithSuffix() {  X = 100, Y = 100 };
 
         public FormGEO()
         {
@@ -192,7 +196,7 @@ namespace Doit.Print.Test
                 nodeParagraph.Tag = paragraph.Bounds;
                 foreach (CharLine charLine in paragraph.CharLines)
                 {
-                    TreeNode nodeCharLine = nodeParagraph.Nodes.Add($"({charLine.IndexInParagraph}) - {charLine.Content})");
+                    TreeNode nodeCharLine = nodeParagraph.Nodes.Add($"({charLine.IndexInParagraph}) - {charLine.Content}");
                     nodeCharLine.ImageKey = nodeCharLine.SelectedImageKey = "内容_16.png";
                     nodeCharLine.Tag = charLine.Bounds;
                     foreach (CharInfo charInfo in charLine.Chars)
@@ -258,6 +262,85 @@ namespace Doit.Print.Test
                 this.selectedCharBounds = (RectangleF)e.Node.Tag;
                 this.panParagraph.Refresh();
             //}
+        }
+
+        private void panGDI_Suffix_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawContentWithSuffix(this.contentWithSuffx);
+
+            e.Graphics.DrawRectangle(Pens.Red, Rectangle.Round(this.contentWithSuffx.Bounds));
+
+        }
+
+        private void Text_Change(object sender, EventArgs e)
+        {
+            this.contentWithSuffx.Content = this.txtContentWithSuffix.Text.Trim();
+            this.contentWithSuffx.SuffixContent = this.txtSuffix.Text.Trim();
+
+            this.panGDI_Suffix.Refresh();
+        }
+
+        private void btnColor_ContextWithSuffix_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.Color = this.contentWithSuffx.Style.ContentColor;
+
+            if (colorDlg.ShowDialog() == DialogResult.Cancel) return;
+            this.contentWithSuffx.Style.ContentColor = colorDlg.Color;
+
+            this.panGDI_Suffix.Refresh();
+        }
+
+        private void btnColor_Suffix_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.Color = this.contentWithSuffx.Style.SuffixColor;
+
+            if (colorDlg.ShowDialog() == DialogResult.Cancel) return;
+            this.contentWithSuffx.Style.SuffixColor = colorDlg.Color;
+
+            this.panGDI_Suffix.Refresh();
+        }
+
+        private void cboSuffixType_TextChanged(object sender, EventArgs e)
+        {
+            switch (this.cboSuffixType.Text)
+            {
+                default:
+                case "上标":
+                    this.contentWithSuffx.Style.Type = SuffixType.Supper;
+                    break;
+                case "下标":
+                    this.contentWithSuffx.Style.Type = SuffixType.Sub;
+                    break;
+            }
+            this.panGDI_Suffix.Refresh();
+        }
+
+        private void btnFont_Context_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDlg = new FontDialog();
+            fontDlg.Font = this.contentWithSuffx.Style.ContentFont;
+
+            if (fontDlg.ShowDialog() == DialogResult.Cancel) return;
+            this.contentWithSuffx.Style.ContentFont = fontDlg.Font;
+
+            this.btnFont_Context.Text = $"{fontDlg.Font.FontFamily.Name},{fontDlg.Font.Size}";
+
+            this.panGDI_Suffix.Refresh();
+        }
+
+        private void btnFont_Suffix_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDlg = new FontDialog();
+            fontDlg.Font = this.contentWithSuffx.Style.SuffixFont;
+
+            if (fontDlg.ShowDialog() == DialogResult.Cancel) return;
+            this.contentWithSuffx.Style.SuffixFont = fontDlg.Font;
+
+            this.btnFont_Suffix.Text = $"{fontDlg.Font.FontFamily.Name},{fontDlg.Font.Size}";
+
+            this.panGDI_Suffix.Refresh();
         }
     }
 }

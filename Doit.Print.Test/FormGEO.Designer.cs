@@ -65,6 +65,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panParagraph = new Doit.Print.Test.PanelGDI();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panGDI_Suffix = new Doit.Print.Test.PanelGDI();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboSuffixType = new System.Windows.Forms.ComboBox();
+            this.btnColor_Suffix = new System.Windows.Forms.Button();
+            this.btnFont_Suffix = new System.Windows.Forms.Button();
+            this.btnColor_ContextWithSuffix = new System.Windows.Forms.Button();
+            this.btnFont_Context = new System.Windows.Forms.Button();
+            this.txtSuffix = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtContentWithSuffix = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +95,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -494,12 +508,150 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.panGDI_Suffix);
+            this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1359, 629);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "内容分页";
+            this.tabPage3.Text = "上下标";
+            // 
+            // panGDI_Suffix
+            // 
+            this.panGDI_Suffix.BackColor = System.Drawing.Color.White;
+            this.panGDI_Suffix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panGDI_Suffix.Location = new System.Drawing.Point(423, 3);
+            this.panGDI_Suffix.Name = "panGDI_Suffix";
+            this.panGDI_Suffix.Size = new System.Drawing.Size(933, 623);
+            this.panGDI_Suffix.TabIndex = 1;
+            this.panGDI_Suffix.Paint += new System.Windows.Forms.PaintEventHandler(this.panGDI_Suffix_Paint);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cboSuffixType);
+            this.groupBox4.Controls.Add(this.btnColor_Suffix);
+            this.groupBox4.Controls.Add(this.btnFont_Suffix);
+            this.groupBox4.Controls.Add(this.btnColor_ContextWithSuffix);
+            this.groupBox4.Controls.Add(this.btnFont_Context);
+            this.groupBox4.Controls.Add(this.txtSuffix);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtContentWithSuffix);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(420, 623);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "内容与格式";
+            // 
+            // cboSuffixType
+            // 
+            this.cboSuffixType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSuffixType.FormattingEnabled = true;
+            this.cboSuffixType.Items.AddRange(new object[] {
+            "上标",
+            "下标"});
+            this.cboSuffixType.Location = new System.Drawing.Point(52, 70);
+            this.cboSuffixType.Name = "cboSuffixType";
+            this.cboSuffixType.Size = new System.Drawing.Size(121, 20);
+            this.cboSuffixType.TabIndex = 5;
+            this.cboSuffixType.TextChanged += new System.EventHandler(this.cboSuffixType_TextChanged);
+            // 
+            // btnColor_Suffix
+            // 
+            this.btnColor_Suffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnColor_Suffix.Location = new System.Drawing.Point(359, 43);
+            this.btnColor_Suffix.Name = "btnColor_Suffix";
+            this.btnColor_Suffix.Size = new System.Drawing.Size(55, 23);
+            this.btnColor_Suffix.TabIndex = 4;
+            this.btnColor_Suffix.Text = "颜色";
+            this.btnColor_Suffix.UseVisualStyleBackColor = true;
+            this.btnColor_Suffix.Click += new System.EventHandler(this.btnColor_Suffix_Click);
+            // 
+            // btnFont_Suffix
+            // 
+            this.btnFont_Suffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFont_Suffix.Location = new System.Drawing.Point(245, 43);
+            this.btnFont_Suffix.Name = "btnFont_Suffix";
+            this.btnFont_Suffix.Size = new System.Drawing.Size(111, 23);
+            this.btnFont_Suffix.TabIndex = 4;
+            this.btnFont_Suffix.Text = "宋体，6f";
+            this.btnFont_Suffix.UseVisualStyleBackColor = true;
+            this.btnFont_Suffix.Click += new System.EventHandler(this.btnFont_Suffix_Click);
+            // 
+            // btnColor_ContextWithSuffix
+            // 
+            this.btnColor_ContextWithSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnColor_ContextWithSuffix.Location = new System.Drawing.Point(359, 16);
+            this.btnColor_ContextWithSuffix.Name = "btnColor_ContextWithSuffix";
+            this.btnColor_ContextWithSuffix.Size = new System.Drawing.Size(55, 23);
+            this.btnColor_ContextWithSuffix.TabIndex = 4;
+            this.btnColor_ContextWithSuffix.Text = "颜色";
+            this.btnColor_ContextWithSuffix.UseVisualStyleBackColor = true;
+            this.btnColor_ContextWithSuffix.Click += new System.EventHandler(this.btnColor_ContextWithSuffix_Click);
+            // 
+            // btnFont_Context
+            // 
+            this.btnFont_Context.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFont_Context.Location = new System.Drawing.Point(245, 16);
+            this.btnFont_Context.Name = "btnFont_Context";
+            this.btnFont_Context.Size = new System.Drawing.Size(111, 23);
+            this.btnFont_Context.TabIndex = 4;
+            this.btnFont_Context.Text = "宋体，12f";
+            this.btnFont_Context.UseVisualStyleBackColor = true;
+            this.btnFont_Context.Click += new System.EventHandler(this.btnFont_Context_Click);
+            // 
+            // txtSuffix
+            // 
+            this.txtSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSuffix.Location = new System.Drawing.Point(52, 44);
+            this.txtSuffix.Name = "txtSuffix";
+            this.txtSuffix.Size = new System.Drawing.Size(187, 21);
+            this.txtSuffix.TabIndex = 3;
+            this.txtSuffix.Text = "上下标";
+            this.txtSuffix.TextChanged += new System.EventHandler(this.Text_Change);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "类型：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(2, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "上下标：";
+            // 
+            // txtContentWithSuffix
+            // 
+            this.txtContentWithSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContentWithSuffix.Location = new System.Drawing.Point(52, 18);
+            this.txtContentWithSuffix.Name = "txtContentWithSuffix";
+            this.txtContentWithSuffix.Size = new System.Drawing.Size(187, 21);
+            this.txtContentWithSuffix.TabIndex = 1;
+            this.txtContentWithSuffix.Text = "内容";
+            this.txtContentWithSuffix.TextChanged += new System.EventHandler(this.Text_Change);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "内容：";
             // 
             // FormGEO
             // 
@@ -531,6 +683,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -572,5 +727,17 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtTextContent;
         private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtSuffix;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtContentWithSuffix;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnFont_Context;
+        private System.Windows.Forms.ComboBox cboSuffixType;
+        private System.Windows.Forms.Button btnColor_Suffix;
+        private System.Windows.Forms.Button btnFont_Suffix;
+        private System.Windows.Forms.Button btnColor_ContextWithSuffix;
+        private System.Windows.Forms.Label label7;
+        private PanelGDI panGDI_Suffix;
     }
 }
