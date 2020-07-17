@@ -12,6 +12,11 @@ namespace Doit.MindJet
     /// </summary>
     public class MindTree : MindNode
     {
+        /// <summary>
+        /// 选中的节点
+        /// </summary>
+        public MindNode SelectedNode { get; set; }
+
         public void AddNode(MindNode parent, MindNode node)
         {
             parent.AddNode(node);
@@ -69,6 +74,41 @@ namespace Doit.MindJet
                     node.DrawLinkLine(graphics);
                 }
             }
+        }
+
+        /// <summary>
+        /// 获得树的所有展开的节点
+        /// </summary>
+        /// <returns>所有展开的节点</returns>
+        public List<MindNode> GetAllExpandedNodes()
+        {
+            return MindTreeHelper.GetAllExpandedNodesOfTree(this);
+        }
+
+        /// <summary>
+        /// 获取被击中的接点
+        /// </summary>
+        /// <param name="point">击中测试点</param>
+        /// <returns></returns>
+        public MindNode GetNodeBeHit(Point point)
+        {
+            MindNode nodeBeHit = null;
+            List<MindNode> nodes = this.GetAllExpandedNodes();
+
+            foreach (var node in nodes)
+            {
+                if (node.HitTest(point))
+                {
+                    nodeBeHit = node;
+                    break;
+                }
+                else
+                {
+                    if(node != this.SelectedNode) node.Status = GlyphStatus.Normal;
+                }
+            }
+
+            return nodeBeHit;
         }
     }
 }

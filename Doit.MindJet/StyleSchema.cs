@@ -35,9 +35,19 @@ namespace Doit.MindJet
         public Color TextColor_Current { get; set; } = Color.Blue;
 
         /// <summary>
-        /// 边框的粗细
+        /// 正常状态边框的粗细
         /// </summary>
-        public float FrameWidth { get; set; } = 1f;
+        public float FrameWidth_Normal { get; set; } = 1f;
+
+        /// <summary>
+        /// 选择状态边框的粗细
+        /// </summary>
+        public float FrameWidth_Selected { get; set; } = 2f;
+
+        /// <summary>
+        /// 位于当前状态边框的粗细
+        /// </summary>
+        public float FrameWidth_Current { get; set; } = 2f;
 
         /// <summary>
         /// 正常状态的边框的颜色（默认：蓝色）
@@ -102,10 +112,10 @@ namespace Doit.MindJet
 
         private static Pen GetFramePen_Normal()
         {
-            if (framePen_Normal == null) framePen_Normal = new Pen(currentSchema.FrameColor_Normal, currentSchema.FrameWidth);
+            if (framePen_Normal == null) framePen_Normal = new Pen(currentSchema.FrameColor_Normal, currentSchema.FrameWidth_Normal);
 
             if (framePen_Normal.Color != currentSchema.FrameColor_Normal) framePen_Normal.Color = currentSchema.FrameColor_Normal;
-            if (framePen_Normal.Width != currentSchema.FrameWidth) framePen_Normal.Width = currentSchema.FrameWidth;
+            if (framePen_Normal.Width != currentSchema.FrameWidth_Normal) framePen_Normal.Width = currentSchema.FrameWidth_Normal;
             if (framePen_Normal.DashStyle != currentSchema.FrameDashStyle) framePen_Normal.DashStyle = currentSchema.FrameDashStyle;
 
             return framePen_Normal;
@@ -113,10 +123,10 @@ namespace Doit.MindJet
 
         private static Pen GetFramePen_Selected()
         {
-            if (framePen_Selected == null) framePen_Selected = new Pen(currentSchema.FrameColor_Selected, currentSchema.FrameWidth);
+            if (framePen_Selected == null) framePen_Selected = new Pen(currentSchema.FrameColor_Selected, currentSchema.FrameWidth_Selected);
 
             if (framePen_Selected.Color != currentSchema.FrameColor_Selected) framePen_Selected.Color = currentSchema.FrameColor_Selected;
-            if (framePen_Selected.Width != currentSchema.FrameWidth) framePen_Selected.Width = currentSchema.FrameWidth;
+            if (framePen_Selected.Width != currentSchema.FrameWidth_Selected) framePen_Selected.Width = currentSchema.FrameWidth_Selected;
             if (framePen_Selected.DashStyle != currentSchema.FrameDashStyle) framePen_Selected.DashStyle = currentSchema.FrameDashStyle;
 
             return framePen_Selected;
@@ -124,10 +134,10 @@ namespace Doit.MindJet
 
         private static Pen GetFramePen_Current()
         {
-            if (framePen_Current == null) framePen_Current = new Pen(currentSchema.FrameColor_Current, currentSchema.FrameWidth);
+            if (framePen_Current == null) framePen_Current = new Pen(currentSchema.FrameColor_Current, currentSchema.FrameWidth_Current);
 
             if (framePen_Current.Color != currentSchema.FrameColor_Current) framePen_Current.Color = currentSchema.FrameColor_Current;
-            if (framePen_Current.Width != currentSchema.FrameWidth) framePen_Current.Width = currentSchema.FrameWidth;
+            if (framePen_Current.Width != currentSchema.FrameWidth_Current) framePen_Current.Width = currentSchema.FrameWidth_Current;
             if (framePen_Current.DashStyle != currentSchema.FrameDashStyle) framePen_Current.DashStyle = currentSchema.FrameDashStyle;
 
             return framePen_Current;

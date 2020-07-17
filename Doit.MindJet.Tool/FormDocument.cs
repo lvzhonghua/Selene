@@ -14,6 +14,8 @@ namespace Doit.MindJet.Tool
     {
         private MindTree tree = new MindTree();
 
+        private TextBox txtInput = new TextBox() { Multiline = true };
+
         public FormDocument()
         {
             InitializeComponent();
@@ -33,6 +35,8 @@ namespace Doit.MindJet.Tool
             MindNode china = new MindNode() { Text = "中国公司" };
             MindNode china_RD = new MindNode() { Text = "研发中心" };
             MindNode china_COM = new MindNode() { Text = "微软中国" };
+            china_COM.Expanded = false;
+
             MindNode china_DSZ = new MindNode() { Text = "董事长" };
             MindNode china_CEO = new MindNode() { Text = "CEO" };
             MindNode china_CTO = new MindNode() { Text = "首席技术官" };
@@ -75,6 +79,24 @@ namespace Doit.MindJet.Tool
         private void FormDocument_Load(object sender, EventArgs e)
         {
             this.InitTestData();
+
+            this.txtInput.TextChanged += TxtInput_TextChanged;
+            this.txtInput.LostFocus += TxtInput_LostFocus;
+        }
+
+        private void TxtInput_LostFocus(object sender, EventArgs e)
+        {
+            this.panMindTree.Controls.Remove(this.txtInput);
+
+            this.panMindTree.Refresh();
+        }
+
+        private void TxtInput_TextChanged(object sender, EventArgs e)
+        {
+            if (this.tree.SelectedNode != null)
+            {
+                this.tree.SelectedNode.Text = this.txtInput.Text;
+            }
         }
 
         private void panMindTree_Paint(object sender, PaintEventArgs e)
@@ -107,6 +129,45 @@ namespace Doit.MindJet.Tool
 
                 this.ListNodes(tvSubNode, subNode);
             }
+        }
+
+        private void panMindTree_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.panMindTree.Controls.Remove(this.txtInput);
+
+            if (e.Button != MouseButtons.Left) return;
+            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
+            if (nodeBeHit == null) return;
+            nodeBeHit.Expanded = !nodeBeHit.Expanded;
+            this.panMindTree.Refresh();
+        }
+
+        private void panMindTree_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
+            if (nodeBeHit == null) return;
+            nodeBeHit.Status = GlyphStatus.Selected;
+            this.tree.SelectedNode = nodeBeHit;
+
+            this.txtInput.Location = new Point((int)nodeBeHit.Location.X + 2,(int)nodeBeHit.Location.Y + 2);
+            this.txtInput.Text = nodeBeHit.Text;
+            this.txtInput.Font = StyleSchema.CurrentSchema.TextFont;
+            this.txtInput.BorderStyle = BorderStyle.None;
+            this.txtInput.Size = new Size((int)nodeBeHit.Bounds.Width - 4, (int)nodeBeHit.Bounds.Height - 4);
+
+            this.panMindTree.Controls.Add(this.txtInput);
+
+            this.panMindTree.Refresh();
+        }
+
+        private void panMindTree_MouseMove(object sender, MouseEventArgs e)
+        {
+            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
+            if (nodeBeHit == null) return;
+            if(nodeBeHit.Status != GlyphStatus.Selected) nodeBeHit.Status = GlyphStatus.Current;
+
+            this.panMindTree.Refresh();
         }
     }
 }

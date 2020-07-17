@@ -47,11 +47,25 @@ namespace Doit.MindJet
         /// </summary>
         public RectangleF Bounds { get; private set; }
 
-        public PointF LeftLinker { get; private set; }
+        /// <summary>
+        /// 左侧节点位置
+        /// </summary>
+        public PointF LeftLinker { get; set; }
 
+        /// <summary>
+        /// 右侧节点位置
+        /// </summary>
         public PointF RightLinker { get; set; }
 
+        /// <summary>
+        /// 节点半径
+        /// </summary>
         public float LinkerRadius { get; set; } = 6;
+
+        /// <summary>
+        /// 子节点展开
+        /// </summary>
+        public bool Expanded { get; set; } = true;
 
         public void AddNode(MindNode node)
         {
@@ -75,6 +89,7 @@ namespace Doit.MindJet
         /// <param name="graphics"></param>
         public virtual void DrawLinkLine(Graphics graphics)
         {
+            if (this.Expanded == false) return;
             //绘制与子节点的连线
             foreach (MindNode childNode in this.Nodes)
             {
@@ -113,7 +128,7 @@ namespace Doit.MindJet
 
         public override bool HitTest(PointF point)
         {
-            return false;
+            return this.Bounds.Contains(point);
         }
     }
 }

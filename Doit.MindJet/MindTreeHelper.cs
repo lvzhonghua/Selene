@@ -22,26 +22,29 @@ namespace Doit.MindJet
             Doit.UI.GDIHelper.DrawArrowLine(graphics, fromNode.RightLinker, toNode.LeftLinker, pen.Color, 1, true);
         }
 
-        public static List<MindNode> GetAllNodeOfTree(MindTree tree)
+        public static List<MindNode> GetAllExpandedNodesOfTree(MindTree tree)
         {
             List<MindNode> nodes = new List<MindNode>();
 
             foreach (var node in tree.Nodes)
             {
                 nodes.Add(node);
-                nodes.AddRange(GetAllNodeOfNode(node));
+                nodes.AddRange(GetAllExpandedNodesOfNode(node));
             }
 
             return nodes;
         }
 
-        private static List<MindNode> GetAllNodeOfNode(MindNode node)
+        private static List<MindNode> GetAllExpandedNodesOfNode(MindNode node)
         {
             List<MindNode> nodes = new List<MindNode>();
+
+            if (node.Expanded == false) return nodes;
+
             foreach (var childNode in node.Nodes)
             {
                 nodes.Add(childNode);
-                nodes.AddRange(GetAllNodeOfNode(childNode));
+                nodes.AddRange(GetAllExpandedNodesOfNode(childNode));
             }
 
             return nodes;
@@ -49,7 +52,7 @@ namespace Doit.MindJet
 
         public static Dictionary<int, MindNodesOfSampleLevel> GetMaxWidthInSameLevel(MindTree tree, Graphics graphics)
         {
-            List<MindNode> nodes = GetAllNodeOfTree(tree);
+            List<MindNode> nodes = GetAllExpandedNodesOfTree(tree);
 
             int maxLevel = 0;
 

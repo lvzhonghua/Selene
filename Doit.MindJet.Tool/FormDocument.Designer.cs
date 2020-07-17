@@ -78,6 +78,9 @@
             this.panMindTree.Size = new System.Drawing.Size(967, 682);
             this.panMindTree.TabIndex = 2;
             this.panMindTree.Paint += new System.Windows.Forms.PaintEventHandler(this.panMindTree_Paint);
+            this.panMindTree.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panMindTree_MouseClick);
+            this.panMindTree.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panMindTree_MouseDoubleClick);
+            this.panMindTree.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panMindTree_MouseMove);
             // 
             // tvNodeInSameLevel
             // 
