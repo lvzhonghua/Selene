@@ -118,22 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="样式_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\样式_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="子节点_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\子节点_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="node-tree_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\node-tree_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="关联图元_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\关联图元_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="样式_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\样式_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="重做_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\重做_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="子级_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\子级_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="撤销_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\撤销_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="清空_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\清空_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="关联图元_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\关联图元_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="子节点_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\子节点_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stack_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stack_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

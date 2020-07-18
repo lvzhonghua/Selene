@@ -19,7 +19,7 @@ namespace Doit.MindJet
         {
             Pen pen = StyleSchema.GetLinkLinePen(GlyphStatus.Unknown);
 
-            Doit.UI.GDIHelper.DrawArrowLine(graphics, fromNode.RightLinker.Location, toNode.LeftLinker.Location, pen.Color, 1, true);
+            Doit.UI.GDIHelper.DrawArrowLine(graphics, fromNode.RightLinker.Location, toNode.LeftLinker.Location, pen.Color, 1,false);
         }
 
         public static List<MindNode> GetAllExpandedNodesOfTree(MindTree tree)

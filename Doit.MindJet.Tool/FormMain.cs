@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Doit.MindJet.Commands;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,10 @@ namespace Doit.MindJet.Tool
     public partial class FormMain : Form
     {
         private MindTree currentMindTree = null;
+        private CommandStack currentCommandStack = null;
         private FormNodeList frmNodeList = null;
+        private FormCommandStack frmCommandStack = null;
+
         public FormMain()
         {
             InitializeComponent();
@@ -33,10 +37,15 @@ namespace Doit.MindJet.Tool
         private void FrmDoc_Activated(object sender, EventArgs e)
         {
             this.currentMindTree = ((FormDocument)sender).MindTree;
+            this.currentCommandStack = ((FormDocument)sender).CommandStack;
 
             if (this.frmNodeList != null && this.frmNodeList.Visible == true)
             {
                 this.frmNodeList.MindTree = this.currentMindTree;
+            }
+            if (this.frmCommandStack != null && this.frmCommandStack.Visible == true)
+            {
+                this.frmCommandStack.CommandStack = this.currentCommandStack;
             }
         }
 
@@ -61,5 +70,18 @@ namespace Doit.MindJet.Tool
             this.frmNodeList = this.ShowDockContent(typeof(FormNodeList), DockState.DockRight) as FormNodeList;
             this.frmNodeList.MindTree = this.currentMindTree;
         }
+
+        private void btnCommandStack_Click(object sender, EventArgs e)
+        {
+            this.frmCommandStack = this.ShowDockContent(typeof(FormCommandStack), DockState.DockRight) as FormCommandStack;
+            this.frmCommandStack.CommandStack = this.currentCommandStack;
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = (MessageBox.Show("确定要退出程序吗？","确认",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.No);
+        }
+
+        
     }
 }

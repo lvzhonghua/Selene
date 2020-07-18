@@ -4,11 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B07198EF-B049-4737-BCA7-96D458D6DC9A}</ProjectGuid>
+    <ProjectGuid>{C461A4F3-920B-42A4-9C9B-F99649B6A463}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Doit.MindJet</RootNamespace>
-    <AssemblyName>Doit.MindJet</AssemblyName>
+    <RootNamespace>Doit.MindJet.Controls</RootNamespace>
+    <AssemblyName>Doit.MindJet.Controls</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,83 +32,67 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CommandStack.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\MacroCommand.cs" />
-    <Compile Include="Commands\MindNodeAddCommand.cs" />
-    <Compile Include="Commands\MindNodeRemoveCommand.cs" />
-    <Compile Include="Glyph.cs" />
-    <Compile Include="GlyphStatus.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="IHitable.cs" />
-    <Compile Include="LeftLinker.cs" />
-    <Compile Include="Linker.cs" />
-    <Compile Include="MindNode.cs" />
-    <Compile Include="MindNodesOfSameLevel.cs" />
-    <Compile Include="MindTree.cs" />
+    <Compile Include="CommandInfoCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommandInfoCtrl.Designer.cs">
+      <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandStackInfoCtrl.cs" />
+    <Compile Include="MindTreeCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MindTreeCtrl.Designer.cs">
+      <DependentUpon>MindTreeCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RightLinker.cs" />
-    <Compile Include="StyleSchema.cs" />
-    <Compile Include="MindTreeHelper.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Doit\Doit.UI\Doit.UI.csproj">
-      <Project>{d1f70a91-e4be-499b-9ed0-ad6dc9d52899}</Project>
-      <Name>Doit.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Commands\Command模式.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="CommandInfoCtrl.resx">
+      <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MindTreeCtrl.resx">
+      <DependentUpon>MindTreeCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Doit\Doit.Controls\Doit.Controls.csproj">
+      <Project>{7b24d70e-900e-4c99-ba78-66cdc2fafdf3}</Project>
+      <Name>Doit.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Doit.MindJet\Doit.MindJet.csproj">
+      <Project>{b07198ef-b049-4737-bca7-96d458d6dc9a}</Project>
+      <Name>Doit.MindJet</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\关联图元_16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\子级_16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\delete_16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\stack_16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\关联图元_48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stack_48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\子级_48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete_48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\指令集_16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\指令集_48.png" />
+    <None Include="Resources\子级_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

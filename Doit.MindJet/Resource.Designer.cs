@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Doit.MindJet.Tool.Properties {
+namespace Doit.MindJet {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Doit.MindJet.Tool.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Doit.MindJet.Tool.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Doit.MindJet.Tool.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Doit.MindJet.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -73,9 +73,9 @@ namespace Doit.MindJet.Tool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap node_tree_16 {
+        internal static System.Drawing.Bitmap delete_48 {
             get {
-                object obj = ResourceManager.GetObject("node-tree_16", resourceCulture);
+                object obj = ResourceManager.GetObject("delete_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,29 @@ namespace Doit.MindJet.Tool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap stack_48 {
+            get {
+                object obj = ResourceManager.GetObject("stack_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 关联图元_16 {
             get {
                 object obj = ResourceManager.GetObject("关联图元_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 关联图元_48 {
+            get {
+                object obj = ResourceManager.GetObject("关联图元_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace Doit.MindJet.Tool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 子节点_16 {
+        internal static System.Drawing.Bitmap 子级_48 {
             get {
-                object obj = ResourceManager.GetObject("子节点_16", resourceCulture);
+                object obj = ResourceManager.GetObject("子级_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,9 @@ namespace Doit.MindJet.Tool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 撤销_16 {
+        internal static System.Drawing.Bitmap 指令集_16 {
             get {
-                object obj = ResourceManager.GetObject("撤销_16", resourceCulture);
+                object obj = ResourceManager.GetObject("指令集_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,29 +153,9 @@ namespace Doit.MindJet.Tool.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 样式_16 {
+        internal static System.Drawing.Bitmap 指令集_48 {
             get {
-                object obj = ResourceManager.GetObject("样式_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 清空_16 {
-            get {
-                object obj = ResourceManager.GetObject("清空_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 重做_16 {
-            get {
-                object obj = ResourceManager.GetObject("重做_16", resourceCulture);
+                object obj = ResourceManager.GetObject("指令集_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

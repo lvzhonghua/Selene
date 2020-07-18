@@ -58,6 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCommandStack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCommandStack.Designer.cs">
+      <DependentUpon>FormCommandStack.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDocument.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCommandStack.resx">
+      <DependentUpon>FormCommandStack.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDocument.resx">
       <DependentUpon>FormDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +134,10 @@
       <Project>{7B24D70E-900E-4C99-BA78-66CDC2FAFDF3}</Project>
       <Name>Doit.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Doit.MindJet.Controls\Doit.MindJet.Controls.csproj">
+      <Project>{c461a4f3-920b-42a4-9c9b-f99649b6a463}</Project>
+      <Name>Doit.MindJet.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Doit.MindJet\Doit.MindJet.csproj">
       <Project>{b07198ef-b049-4737-bca7-96d458d6dc9a}</Project>
       <Name>Doit.MindJet</Name>
@@ -147,6 +160,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\子级_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\撤销_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\重做_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\清空_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stack_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

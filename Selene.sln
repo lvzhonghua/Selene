@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doit.MindJet", "Doit.MindJe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doit.MindJet.Tool", "Doit.MindJet.Tool\Doit.MindJet.Tool.csproj", "{3A026159-E2A9-42F6-A24C-594C9630946E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doit.MindJet.Controls", "Doit.MindJet.Controls\Doit.MindJet.Controls.csproj", "{C461A4F3-920B-42A4-9C9B-F99649B6A463}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{3A026159-E2A9-42F6-A24C-594C9630946E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A026159-E2A9-42F6-A24C-594C9630946E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A026159-E2A9-42F6-A24C-594C9630946E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C461A4F3-920B-42A4-9C9B-F99649B6A463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C461A4F3-920B-42A4-9C9B-F99649B6A463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C461A4F3-920B-42A4-9C9B-F99649B6A463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C461A4F3-920B-42A4-9C9B-F99649B6A463}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
