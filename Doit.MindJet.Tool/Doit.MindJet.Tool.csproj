@@ -70,6 +70,18 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNodeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNodeList.Designer.cs">
+      <DependentUpon>FormNodeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStyleSchema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStyleSchema.Designer.cs">
+      <DependentUpon>FormStyleSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDocument.resx">
@@ -77,6 +89,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNodeList.resx">
+      <DependentUpon>FormNodeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStyleSchema.resx">
+      <DependentUpon>FormStyleSchema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,6 +104,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -110,6 +129,12 @@
       <Project>{b07198ef-b049-4737-bca7-96d458d6dc9a}</Project>
       <Name>Doit.MindJet</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\样式_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\node-tree_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,7 @@ namespace Doit.MindJet
 
         public override void Draw(Graphics graphics)
         {
-            Dictionary<int, MindNodesOfSampleLevel> nodeDict = MindTreeHelper.GetMaxWidthInSameLevel(this, graphics);
+            Dictionary<int, MindNodesOfSameLevel> nodeDict = MindTreeHelper.GetMaxWidthInSameLevel(this, graphics);
 
             int maxLevel = nodeDict.Keys.Max();
 
@@ -45,7 +45,7 @@ namespace Doit.MindJet
 
             for (int level = 0; level <= maxLevel; level++)
             {
-                MindNodesOfSampleLevel nodeList = nodeDict[level];
+                MindNodesOfSameLevel nodeList = nodeDict[level];
 
                 int nodeIndex = 0;
 
@@ -86,29 +86,34 @@ namespace Doit.MindJet
         }
 
         /// <summary>
-        /// 获取被击中的接点
+        /// 获取被击中的元素
         /// </summary>
         /// <param name="point">击中测试点</param>
-        /// <returns></returns>
-        public MindNode GetNodeBeHit(Point point)
+        /// <returns>被击中的元素</returns>
+        public Glyph GetGlyphBeHit(Point point)
         {
-            MindNode nodeBeHit = null;
+            Glyph glyphBeHit = null;
             List<MindNode> nodes = this.GetAllExpandedNodes();
 
             foreach (var node in nodes)
             {
-                if (node.HitTest(point))
-                {
-                    nodeBeHit = node;
-                    break;
-                }
-                else
-                {
-                    if(node != this.SelectedNode) node.Status = GlyphStatus.Normal;
-                }
+                if (node != this.SelectedNode) node.Status = GlyphStatus.Normal;
+
+                glyphBeHit = node.HitTest(point);
+                if (glyphBeHit != null) break;
             }
 
-            return nodeBeHit;
+            return glyphBeHit;
+        }
+
+        /// <summary>
+        /// 获取被击中的节点
+        /// </summary>
+        /// <param name="point">探测点</param>
+        /// <returns>被击中的节点</returns>
+        public MindNode GetNodeBeHit(Point point)
+        {
+            return this.GetGlyphBeHit(point) as MindNode;
         }
     }
 }

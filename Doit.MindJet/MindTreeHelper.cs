@@ -19,7 +19,7 @@ namespace Doit.MindJet
         {
             Pen pen = StyleSchema.GetLinkLinePen(GlyphStatus.Unknown);
 
-            Doit.UI.GDIHelper.DrawArrowLine(graphics, fromNode.RightLinker, toNode.LeftLinker, pen.Color, 1, true);
+            Doit.UI.GDIHelper.DrawArrowLine(graphics, fromNode.RightLinker.Location, toNode.LeftLinker.Location, pen.Color, 1, true);
         }
 
         public static List<MindNode> GetAllExpandedNodesOfTree(MindTree tree)
@@ -50,7 +50,7 @@ namespace Doit.MindJet
             return nodes;
         }
 
-        public static Dictionary<int, MindNodesOfSampleLevel> GetMaxWidthInSameLevel(MindTree tree, Graphics graphics)
+        public static Dictionary<int, MindNodesOfSameLevel> GetMaxWidthInSameLevel(MindTree tree, Graphics graphics)
         {
             List<MindNode> nodes = GetAllExpandedNodesOfTree(tree);
 
@@ -61,13 +61,13 @@ namespace Doit.MindJet
                 if (maxLevel < node.Level) maxLevel = node.Level;
             }
 
-            Dictionary<int, MindNodesOfSampleLevel> nodeDict = new Dictionary<int, MindNodesOfSampleLevel>();
+            Dictionary<int, MindNodesOfSameLevel> nodeDict = new Dictionary<int, MindNodesOfSameLevel>();
 
             for (int level = 0; level <= maxLevel; level++)
             {
                 float maxWidth = 0;
                 float maxHeight = 0;
-                MindNodesOfSampleLevel nodeList = new MindNodesOfSampleLevel()
+                MindNodesOfSameLevel nodeList = new MindNodesOfSameLevel()
                 {
                     Level = level
                 };

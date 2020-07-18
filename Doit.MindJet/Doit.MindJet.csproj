@@ -46,10 +46,13 @@
     <Compile Include="GlyphStatus.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="IHitable.cs" />
+    <Compile Include="LeftLinker.cs" />
+    <Compile Include="Linker.cs" />
     <Compile Include="MindNode.cs" />
-    <Compile Include="MindNodesOfSampleLevel.cs" />
+    <Compile Include="MindNodesOfSameLevel.cs" />
     <Compile Include="MindTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightLinker.cs" />
     <Compile Include="StyleSchema.cs" />
     <Compile Include="MindTreeHelper.cs" />
   </ItemGroup>

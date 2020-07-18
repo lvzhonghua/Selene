@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace Doit.MindJet
 {
@@ -17,81 +18,97 @@ namespace Doit.MindJet
         /// <summary>
         /// 文字字体（默认：宋体，12f）
         /// </summary>
+        [DisplayName("文本字体"),Description("显示文本所使用的字体")]
         public Font TextFont { get; set; } = new Font("宋体",12f);
 
         /// <summary>
         /// 正常状态的文字的颜色（默认：黑色）
         /// </summary>
+        [DisplayName("正常文本颜色"), Description("文本正常状态的颜色")]
         public Color TextColor_Normal { get; set; } = Color.Black;
 
         /// <summary>
         /// 选中状态的文字的颜色（默认：红色）
         /// </summary>
+        [DisplayName("选中文本颜色"), Description("文本选中状态的颜色")]
         public Color TextColor_Selected { get; set; } = Color.Red;
 
         /// <summary>
         /// 位于当前状态的文字的颜色（默认：蓝色）
         /// </summary>
+        [DisplayName("当前文本颜色"), Description("文本当前状态的颜色")]
         public Color TextColor_Current { get; set; } = Color.Blue;
 
         /// <summary>
         /// 正常状态边框的粗细
         /// </summary>
+        [DisplayName("正常边框宽度"), Description("正常状态边框的粗细")]
         public float FrameWidth_Normal { get; set; } = 1f;
 
         /// <summary>
         /// 选择状态边框的粗细
         /// </summary>
+        [DisplayName("选中边框宽度"), Description("选中状态边框的粗细")]
         public float FrameWidth_Selected { get; set; } = 2f;
 
         /// <summary>
         /// 位于当前状态边框的粗细
         /// </summary>
+        [DisplayName("当前边框宽度"), Description("当前状态边框的粗细")]
         public float FrameWidth_Current { get; set; } = 2f;
 
         /// <summary>
         /// 正常状态的边框的颜色（默认：蓝色）
         /// </summary>
+        [DisplayName("正常边框颜色"), Description("正常状态边框的颜色")]
         public Color FrameColor_Normal { get; set; } = Color.Blue;
 
         /// <summary>
         /// 选状态的边框的颜色（默认：红色）
         /// </summary>
+        [DisplayName("选中边框颜色"), Description("选中状态边框的颜色")]
         public Color FrameColor_Selected { get; set; } = Color.Red;
 
         /// <summary>
         /// 位于当前状态的边框的颜色（默认：绿色）
         /// </summary>
+        [DisplayName("当前边框颜色"), Description("当前状态边框的颜色")]
         public Color FrameColor_Current { get; set; } = Color.Green;
 
         /// <summary>
         /// 边框的线型
         /// </summary>
+        [DisplayName("边框线型"), Description("边框的线型")]
         public DashStyle FrameDashStyle { get; set; } = DashStyle.Solid;
 
         /// <summary>
         /// 连接线的粗细
         /// </summary>
+        [DisplayName("连接线粗细"), Description("连接线的粗细")]
         public float LinkLineWidth { get; set; } = 1f;
-        
+
         /// <summary>
         /// 正常连接线的颜色（默认：蓝色）
         /// </summary>
+        [DisplayName("正常连接线颜色"), Description("正常连接线的颜色")]
         public Color LinkLineColor_Normal { get; set; } = Color.Blue;
 
         /// <summary>
         /// 选择状态的连接线的颜色（默认：红色）
         /// </summary>
+        [DisplayName("选择状态的连接线颜色"), Description("选择状态的连接线的颜色")]
         public Color LinkLineColor_Selected { get; set; } = Color.Red;
 
         /// <summary>
         /// 位于当前状态的连接线的颜色（默认：绿色）
         /// </summary>
+        [DisplayName("当前状态连接线颜色"), Description("位于当前状态的连接线的颜色")]
         public Color LinkLineColor_Current { get; set; } = Color.Green;
 
         /// <summary>
-        /// 连接线的线性
+        /// 连接线的线型
         /// </summary>
+        [DisplayName("连接线线型"), Description("连接线的线型")]
         public DashStyle LinkLineDashStyle { get; set; } = DashStyle.Dash;
 
         private StyleSchema() {}

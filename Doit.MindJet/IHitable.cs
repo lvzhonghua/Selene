@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Doit.MindJet
 {
     /// <summary>
-    /// 可击中接口
+    /// 图元的可击中接口
     /// </summary>
     public interface IHitable
     {
@@ -16,7 +16,7 @@ namespace Doit.MindJet
         /// 击中测试
         /// </summary>
         /// <param name="point">探测点</param>
-        /// <returns>是否击中</returns>
-        bool HitTest(PointF point);
+        /// <returns>击中的图元</returns>
+        Glyph HitTest(PointF point);
     }
 }

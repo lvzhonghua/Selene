@@ -12,7 +12,9 @@ namespace Doit.MindJet.Tool
 {
     public partial class FormDocument : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        private MindTree tree = new MindTree();
+        private MindTree mindTree = new MindTree();
+
+        public MindTree MindTree { get { return this.mindTree; } }
 
         private TextBox txtInput = new TextBox() { Multiline = true };
 
@@ -25,7 +27,7 @@ namespace Doit.MindJet.Tool
         {
             MindNode root = new MindNode() { Text = "微软公司", Level = 0 };
 
-            this.tree.AddNode(root);
+            this.mindTree.AddNode(root);
 
             MindNode usa = new MindNode() { Text = "美国总部" };
             MindNode global_YJ = new MindNode() { Text = "研究院" };
@@ -52,28 +54,28 @@ namespace Doit.MindJet.Tool
             MindNode jp_BZ = new MindNode() { Text = "商务中心" };
             MindNode jp_YF = new MindNode() { Text = "研发中心" };
 
-            this.tree.AddNode(root, usa);
-            this.tree.AddNode(usa, global_YJ);
-            this.tree.AddNode(usa, global_DV);
+            this.mindTree.AddNode(root, usa);
+            this.mindTree.AddNode(usa, global_YJ);
+            this.mindTree.AddNode(usa, global_DV);
 
-            this.tree.AddNode(root, ocean);
-            this.tree.AddNode(ocean, china);
-            this.tree.AddNode(china, china_RD);
-            this.tree.AddNode(china, china_COM);
-            this.tree.AddNode(china_COM, china_DSZ);
-            this.tree.AddNode(china_COM, china_CEO);
-            this.tree.AddNode(china_COM, china_CTO);
-            this.tree.AddNode(china, ocean_YJ);
-            this.tree.AddNode(china, ocean_DV);
-            this.tree.AddNode(china, china_TK);
-            this.tree.AddNode(china_TK, china_TK_01);
-            this.tree.AddNode(china_TK, china_TK_02);
-            this.tree.AddNode(china_TK, china_TK_03);
-            this.tree.AddNode(china_TK, china_TK_04);
+            this.mindTree.AddNode(root, ocean);
+            this.mindTree.AddNode(ocean, china);
+            this.mindTree.AddNode(china, china_RD);
+            this.mindTree.AddNode(china, china_COM);
+            this.mindTree.AddNode(china_COM, china_DSZ);
+            this.mindTree.AddNode(china_COM, china_CEO);
+            this.mindTree.AddNode(china_COM, china_CTO);
+            this.mindTree.AddNode(china, ocean_YJ);
+            this.mindTree.AddNode(china, ocean_DV);
+            this.mindTree.AddNode(china, china_TK);
+            this.mindTree.AddNode(china_TK, china_TK_01);
+            this.mindTree.AddNode(china_TK, china_TK_02);
+            this.mindTree.AddNode(china_TK, china_TK_03);
+            this.mindTree.AddNode(china_TK, china_TK_04);
 
-            this.tree.AddNode(ocean, jp);
-            this.tree.AddNode(jp, jp_BZ);
-            this.tree.AddNode(jp, jp_YF);
+            this.mindTree.AddNode(ocean, jp);
+            this.mindTree.AddNode(jp, jp_BZ);
+            this.mindTree.AddNode(jp, jp_YF);
         }
 
         private void FormDocument_Load(object sender, EventArgs e)
@@ -93,9 +95,12 @@ namespace Doit.MindJet.Tool
 
         private void TxtInput_TextChanged(object sender, EventArgs e)
         {
-            if (this.tree.SelectedNode != null)
+            SizeF size = this.CreateGraphics().MeasureString(this.txtInput.Text, this.txtInput.Font);
+            this.txtInput.Size = Size.Round(size);
+
+            if (this.mindTree.SelectedNode != null)
             {
-                this.tree.SelectedNode.Text = this.txtInput.Text;
+                this.mindTree.SelectedNode.Text = this.txtInput.Text;
             }
         }
 
@@ -103,32 +108,7 @@ namespace Doit.MindJet.Tool
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-            this.tree.Draw(e.Graphics);
-        }
-
-        private void ListTree()
-        {
-            this.tvTest.Nodes.Clear();
-
-            foreach (var node in this.tree.Nodes)
-            {
-                TreeNode tvNode = this.tvTest.Nodes.Add($"{node.Text} - {node.Level}");
-                tvNode.Tag = node;
-                this.ListNodes(tvNode, node);
-            }
-
-            this.tvTest.ExpandAll();
-        }
-
-        private void ListNodes(TreeNode tvNode, MindNode node)
-        {
-            foreach (var subNode in node.Nodes)
-            {
-                TreeNode tvSubNode = tvNode.Nodes.Add($"{subNode.Name} - {subNode.Level}");
-                tvSubNode.Tag = subNode;
-
-                this.ListNodes(tvSubNode, subNode);
-            }
+            this.mindTree.Draw(e.Graphics);
         }
 
         private void panMindTree_MouseClick(object sender, MouseEventArgs e)
@@ -136,19 +116,19 @@ namespace Doit.MindJet.Tool
             this.panMindTree.Controls.Remove(this.txtInput);
 
             if (e.Button != MouseButtons.Left) return;
-            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
-            if (nodeBeHit == null) return;
-            nodeBeHit.Expanded = !nodeBeHit.Expanded;
+            RightLinker rightLinker = this.mindTree.GetGlyphBeHit(e.Location) as RightLinker;
+            if (rightLinker == null) return;
+            rightLinker.Node.Expanded = !rightLinker.Node.Expanded;
             this.panMindTree.Refresh();
         }
 
         private void panMindTree_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
-            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
+            MindNode nodeBeHit = this.mindTree.GetNodeBeHit(e.Location);
             if (nodeBeHit == null) return;
             nodeBeHit.Status = GlyphStatus.Selected;
-            this.tree.SelectedNode = nodeBeHit;
+            this.mindTree.SelectedNode = nodeBeHit;
 
             this.txtInput.Location = new Point((int)nodeBeHit.Location.X + 2,(int)nodeBeHit.Location.Y + 2);
             this.txtInput.Text = nodeBeHit.Text;
@@ -163,11 +143,12 @@ namespace Doit.MindJet.Tool
 
         private void panMindTree_MouseMove(object sender, MouseEventArgs e)
         {
-            MindNode nodeBeHit = this.tree.GetNodeBeHit(e.Location);
+            MindNode nodeBeHit = this.mindTree.GetNodeBeHit(e.Location);
             if (nodeBeHit == null) return;
             if(nodeBeHit.Status != GlyphStatus.Selected) nodeBeHit.Status = GlyphStatus.Current;
 
             this.panMindTree.Refresh();
         }
+
     }
 }

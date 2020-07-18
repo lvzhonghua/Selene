@@ -38,29 +38,14 @@ namespace Doit.MindJet
         public int Level { get; set; }
 
         /// <summary>
-        /// 位置
+        /// 左侧节点
         /// </summary>
-        public PointF Location { get; set; }
+        public Linker LeftLinker { get; set; } = new LeftLinker();
 
         /// <summary>
-        /// 边界
+        /// 右侧节点
         /// </summary>
-        public RectangleF Bounds { get; private set; }
-
-        /// <summary>
-        /// 左侧节点位置
-        /// </summary>
-        public PointF LeftLinker { get; set; }
-
-        /// <summary>
-        /// 右侧节点位置
-        /// </summary>
-        public PointF RightLinker { get; set; }
-
-        /// <summary>
-        /// 节点半径
-        /// </summary>
-        public float LinkerRadius { get; set; } = 6;
+        public Linker RightLinker { get; set; } = new RightLinker();
 
         /// <summary>
         /// 子节点展开
@@ -79,8 +64,10 @@ namespace Doit.MindJet
             SizeF sizeOfName = graphics.MeasureString(this.Text,StyleSchema.CurrentSchema.TextFont);
             this.Bounds = new RectangleF(this.Location, new SizeF(sizeOfName.Width + 2f, sizeOfName.Height + 4f));
 
-            this.LeftLinker = new PointF(this.Bounds.Left, (this.Bounds.Top + this.Bounds.Bottom) / 2);
-            this.RightLinker = new PointF(this.Bounds.Right, (this.Bounds.Top + this.Bounds.Bottom) / 2);
+            this.LeftLinker.Location = new PointF(this.Bounds.Left, (this.Bounds.Top + this.Bounds.Bottom) / 2);
+            this.LeftLinker.Node = this;
+            this.RightLinker.Location = new PointF(this.Bounds.Right, (this.Bounds.Top + this.Bounds.Bottom) / 2);
+            this.RightLinker.Node = this;
         }
 
         /// <summary>
@@ -109,26 +96,21 @@ namespace Doit.MindJet
                                           StyleSchema.GetTextBrush(this.Status), 
                                           new PointF(this.Location.X + 2, this.Location.Y + 4));
             //绘制左边节点标志
-            RectangleF leftRect = new RectangleF();
-            leftRect.X = this.LeftLinker.X - this.LinkerRadius;
-            leftRect.Y = this.LeftLinker.Y - this.LinkerRadius;
-            leftRect.Width = leftRect.Height = this.LinkerRadius * 2;
-            graphics.FillPie(StyleSchema.GetFrameBrush(this.Status), Rectangle.Round(leftRect), 90, 180);
+            this.LeftLinker.Draw(graphics);
+            this.RightLinker.Measure(graphics);
             //绘制右边节点标志
-            if (this.Nodes.Count > 0)
-            {
-                RectangleF rightRect = new RectangleF();
-                rightRect.X = this.RightLinker.X - this.LinkerRadius;
-                rightRect.Y = this.RightLinker.Y - this.LinkerRadius;
-                rightRect.Width = rightRect.Height = this.LinkerRadius * 2;
+            if (this.Nodes.Count > 0) this.RightLinker.Draw(graphics);
 
-                graphics.FillPie(StyleSchema.GetFrameBrush(this.Status), Rectangle.Round(rightRect), -90, 180);
-            }
         }
 
-        public override bool HitTest(PointF point)
+        public override Glyph HitTest(PointF point)
         {
-            return this.Bounds.Contains(point);
+            if (this.Bounds.Contains(point))  return this;
+
+            if(this.LeftLinker.HitTest(point) != null) return this.LeftLinker;
+            if(this.RightLinker.HitTest(point) != null) return this.RightLinker;
+
+            return null;
         }
     }
 }

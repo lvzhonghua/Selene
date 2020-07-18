@@ -9,7 +9,7 @@ namespace Doit.MindJet
     /// <summary>
     /// 一棵树中，位于同一层级的节点集合
     /// </summary>
-    public class MindNodesOfSampleLevel
+    public class MindNodesOfSameLevel
     {
         /// <summary>
         /// 节点的层级

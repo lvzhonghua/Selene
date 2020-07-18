@@ -29,16 +29,47 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnStyleSchema = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnNodeList = new System.Windows.Forms.ToolStripButton();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnStyleSchema,
+            this.toolStripSeparator1,
+            this.btnNodeList});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1183, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnStyleSchema
+            // 
+            this.btnStyleSchema.Image = global::Doit.MindJet.Tool.Properties.Resources.样式_16;
+            this.btnStyleSchema.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStyleSchema.Name = "btnStyleSchema";
+            this.btnStyleSchema.Size = new System.Drawing.Size(52, 22);
+            this.btnStyleSchema.Text = "样式";
+            this.btnStyleSchema.Click += new System.EventHandler(this.btnStyleSchema_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnNodeList
+            // 
+            this.btnNodeList.Image = global::Doit.MindJet.Tool.Properties.Resources.node_tree_16;
+            this.btnNodeList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNodeList.Name = "btnNodeList";
+            this.btnNodeList.Size = new System.Drawing.Size(52, 22);
+            this.btnNodeList.Text = "节点";
+            this.btnNodeList.Click += new System.EventHandler(this.btnNodeList_Click);
             // 
             // dockPanel
             // 
@@ -60,6 +91,8 @@
             this.Name = "FormMain";
             this.Text = "脑图工具";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -69,6 +102,9 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
+        private System.Windows.Forms.ToolStripButton btnStyleSchema;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnNodeList;
     }
 }
 
