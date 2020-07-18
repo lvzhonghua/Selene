@@ -136,5 +136,17 @@
   <ItemGroup>
     <None Include="Resources\node-tree_16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关联图元_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\子节点_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\子级_16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

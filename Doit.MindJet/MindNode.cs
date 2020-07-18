@@ -52,11 +52,24 @@ namespace Doit.MindJet
         /// </summary>
         public bool Expanded { get; set; } = true;
 
+        /// <summary>
+        /// 添加节点
+        /// </summary>
+        /// <param name="node">节点</param>
         public void AddNode(MindNode node)
         {
             node.Level = this.Level + 1;
             node.Parent = this;
             this.Nodes.Add(node);
+        }
+
+        /// <summary>
+        /// 移除节点
+        /// </summary>
+        /// <param name="node">节点</param>
+        public void RemoveNode(MindNode node)
+        {
+            this.Nodes.Remove(node);
         }
 
         public override void Measure(Graphics graphics)

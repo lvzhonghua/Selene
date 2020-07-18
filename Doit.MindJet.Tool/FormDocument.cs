@@ -82,8 +82,14 @@ namespace Doit.MindJet.Tool
         {
             this.InitTestData();
 
+            this.txtInput.GotFocus += TxtInput_GotFocus;
             this.txtInput.TextChanged += TxtInput_TextChanged;
             this.txtInput.LostFocus += TxtInput_LostFocus;
+        }
+
+        private void TxtInput_GotFocus(object sender, EventArgs e)
+        {
+            this.txtInput.SelectAll();
         }
 
         private void TxtInput_LostFocus(object sender, EventArgs e)
@@ -115,11 +121,34 @@ namespace Doit.MindJet.Tool
         {
             this.panMindTree.Controls.Remove(this.txtInput);
 
-            if (e.Button != MouseButtons.Left) return;
-            RightLinker rightLinker = this.mindTree.GetGlyphBeHit(e.Location) as RightLinker;
-            if (rightLinker == null) return;
-            rightLinker.Node.Expanded = !rightLinker.Node.Expanded;
-            this.panMindTree.Refresh();
+            MindNode mindNode = null;
+
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    Glyph glyph = this.mindTree.GetGlyphBeHit(e.Location);
+                    if (glyph is Linker)
+                    {
+                        Linker linker = glyph as Linker;
+                        mindNode = linker.Node;
+                        if (linker is RightLinker)
+                        {
+                            mindNode.Expanded = !mindNode.Expanded;
+                            this.panMindTree.Refresh();
+                        }
+                        if (linker is LeftLinker) this.contextMenu.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
+                    } 
+                    break;
+                case MouseButtons.Right:
+                    mindNode = this.mindTree.GetNodeBeHit(e.Location);
+                    if (mindNode != null) this.contextMenu.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
+                    break;
+            }
+
+            if (mindNode == null) return;
+            mindNode.Status = GlyphStatus.Selected;
+            this.mindTree.SelectedNode = mindNode;
+
         }
 
         private void panMindTree_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -135,8 +164,8 @@ namespace Doit.MindJet.Tool
             this.txtInput.Font = StyleSchema.CurrentSchema.TextFont;
             this.txtInput.BorderStyle = BorderStyle.None;
             this.txtInput.Size = new Size((int)nodeBeHit.Bounds.Width - 4, (int)nodeBeHit.Bounds.Height - 4);
-
             this.panMindTree.Controls.Add(this.txtInput);
+            this.txtInput.Focus();
 
             this.panMindTree.Refresh();
         }
@@ -150,5 +179,42 @@ namespace Doit.MindJet.Tool
             this.panMindTree.Refresh();
         }
 
+        private void menuDeleteNode_Click(object sender, EventArgs e)
+        {
+            if (this.mindTree.SelectedNode == null) return;
+            if (this.mindTree.SelectedNode.Parent == null) return;
+
+            if (this.mindTree.SelectedNode.Nodes.Count > 0)
+            {
+                DialogResult dlgResult = MessageBox.Show("确定要删除选定的节点吗？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dlgResult == DialogResult.No) return;
+            }
+
+            this.mindTree.SelectedNode.Parent.RemoveNode(this.mindTree.SelectedNode);
+            this.mindTree.SelectedNode = null;
+
+            this.panMindTree.Refresh();
+        }
+
+        private void menuAddSubNode_Click(object sender, EventArgs e)
+        {
+            if (this.mindTree.SelectedNode == null) return;
+
+            MindNode mindNode = new MindNode() { Text = "新增节点" };
+            this.mindTree.SelectedNode.AddNode(mindNode);
+
+            this.panMindTree.Refresh();
+        }
+
+        private void menuAddNode_Click(object sender, EventArgs e)
+        {
+            if (this.mindTree.SelectedNode == null) return;
+            if (this.mindTree.SelectedNode.Parent == null) return;
+
+            MindNode mindNode = new MindNode() { Text = "新增节点" };
+            this.mindTree.SelectedNode.Parent.AddNode(mindNode);
+
+            this.panMindTree.Refresh();
+        }
     }
 }
