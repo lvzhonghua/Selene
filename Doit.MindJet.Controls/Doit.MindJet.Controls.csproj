@@ -49,6 +49,12 @@
       <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="CommandStackInfoCtrl.cs" />
+    <Compile Include="MindFlowCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MindFlowCtrl.Designer.cs">
+      <DependentUpon>MindFlowCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MindTreeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CommandInfoCtrl.resx">
       <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MindFlowCtrl.resx">
+      <DependentUpon>MindFlowCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MindTreeCtrl.resx">
       <DependentUpon>MindTreeCtrl.cs</DependentUpon>
@@ -102,6 +111,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\清空_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开始_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\结束_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\普通_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\合并_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\分离_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\判断_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

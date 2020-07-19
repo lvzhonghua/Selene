@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Doit.MindJet.Trees
+namespace Doit.MindJet.MindTrees
 {
     public class MindTreeHelper
     {

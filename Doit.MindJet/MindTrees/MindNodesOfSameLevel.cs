@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doit.MindJet.Trees
+namespace Doit.MindJet.MindTrees
 {
     /// <summary>
     /// 一棵树中，位于同一层级的节点集合

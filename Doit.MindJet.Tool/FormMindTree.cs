@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 using Doit.MindJet.Commands;
 
 namespace Doit.MindJet.Tool
 {
-    public partial class FormDocument : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class FormMindTree : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         /// <summary>
         /// 脑图
@@ -25,7 +25,7 @@ namespace Doit.MindJet.Tool
         /// </summary>
         public CommandStack CommandStack { get { return this.mindTreeCtrl.CommandStack; } }
 
-        public FormDocument()
+        public FormMindTree()
         {
             InitializeComponent();
         }

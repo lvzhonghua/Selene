@@ -11,12 +11,12 @@ namespace Doit.MindJet.Linkers
     /// <summary>
     /// 节点的连接点
     /// </summary>
-    public class Linker : Glyph
+    public abstract class Linker : Glyph
     {
         /// <summary>
         /// 半径
         /// </summary>
-        public float Radius { get; set; } = 6f;
+        public float Radius { get; set; } = 5f;
 
         /// <summary>
         /// 关联的图元

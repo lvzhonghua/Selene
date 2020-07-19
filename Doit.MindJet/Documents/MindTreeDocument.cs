@@ -1,9 +1,10 @@
-﻿using Doit.MindJet.Trees;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Doit.MindJet.MindTrees;
 
 namespace Doit.MindJet.Documents
 {

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doit.MindJet.Flows
+namespace Doit.MindJet.MindFlows
 {
-    class MindFlowNode
+    /// <summary>
+    /// 思维流程
+    /// </summary>
+    public class MindFlow : Glyph
     {
     }
 }

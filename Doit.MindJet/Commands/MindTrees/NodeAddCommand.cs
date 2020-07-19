@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 
-namespace Doit.MindJet.Commands
+namespace Doit.MindJet.Commands.MindTrees
 {
     /// <summary>
     /// 添加MindNode节点指令
     /// </summary>
-    public class MindNodeAddCommand : ICommand
+    public class NodeAddCommand : ICommand
     {
         protected MindNode parent;
         protected MindNode node;
@@ -23,7 +23,7 @@ namespace Doit.MindJet.Commands
 
         public Image Image { get { return global::Doit.MindJet.Resource.关联图元_48; } }
 
-        public MindNodeAddCommand(MindNode parent, MindNode node)
+        public NodeAddCommand(MindNode parent, MindNode node)
         {
             this.parent = parent;
             this.node = node;

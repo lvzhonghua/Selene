@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 
 namespace Doit.MindJet.Tool
 {

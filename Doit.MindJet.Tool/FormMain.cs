@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 using WeifenLuo.WinFormsUI.Docking;
 
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 
 namespace Doit.MindJet.Tool
 {
@@ -31,15 +31,24 @@ namespace Doit.MindJet.Tool
         {
             this.dockPanel.Theme = new VS2015LightTheme();
 
-            FormDocument frmDoc = new FormDocument();
-            frmDoc.Activated += FrmDoc_Activated;
-            frmDoc.Show(this.dockPanel,DockState.Document);
+            FormMindTree frmMindTree = new FormMindTree();
+            frmMindTree.Activated += FrmMindTree_Activated;
+            frmMindTree.Show(this.dockPanel,DockState.Document);
+
+            FormMindFlow frmMindFlow = new FormMindFlow();
+            frmMindFlow.Activated += FrmMindFlow_Activated;
+            frmMindFlow.Show(this.dockPanel, DockState.Document);
+
         }
 
-        private void FrmDoc_Activated(object sender, EventArgs e)
+        private void FrmMindFlow_Activated(object sender, EventArgs e)
         {
-            this.currentMindTree = ((FormDocument)sender).MindTree;
-            this.currentCommandStack = ((FormDocument)sender).CommandStack;
+        }
+
+        private void FrmMindTree_Activated(object sender, EventArgs e)
+        {
+            this.currentMindTree = ((FormMindTree)sender).MindTree;
+            this.currentCommandStack = ((FormMindTree)sender).CommandStack;
 
             if (this.frmNodeList != null && this.frmNodeList.Visible == true)
             {

@@ -16,6 +16,18 @@ namespace Doit.MindJet
     public class StyleSchema
     {
         /// <summary>
+        /// 水平间隙（默认：4f）
+        /// </summary>
+        [DisplayName("水平间隙"), Description("水平方向的间隙")]
+        public float HorizontalSpace { get; set; } = 4;
+
+        /// <summary>
+        /// 垂直间隙（默认：4f）
+        /// </summary>
+        [DisplayName("垂直间隙"), Description("垂直方向的间隙")]
+        public float VerticalSpace { get; set; } = 4;
+
+        /// <summary>
         /// 文字字体（默认：宋体，12f）
         /// </summary>
         [DisplayName("文本字体"),Description("显示文本所使用的字体")]
@@ -104,6 +116,12 @@ namespace Doit.MindJet
         /// </summary>
         [DisplayName("当前状态连接线颜色"), Description("位于当前状态的连接线的颜色")]
         public Color LinkLineColor_Current { get; set; } = Color.Green;
+
+        /// <summary>
+        /// 连接点的半径（默认：5f）
+        /// </summary>
+        [DisplayName("连接点半径"), Description("连接点的半径")]
+        public float LinkerRadius { get; set; } = 5f;
 
         /// <summary>
         /// 连接线的线型

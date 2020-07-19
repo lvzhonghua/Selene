@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Doit.MindJet.Linkers;
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 using Doit.MindJet.Commands;
+using Doit.MindJet.Commands.MindTrees;
 
 namespace Doit.MindJet.Controls
 {
@@ -110,7 +111,7 @@ namespace Doit.MindJet.Controls
         {  
             this.panMindTree.Controls.Remove(this.txtInput);
 
-            MindeNodeTextModifyCommand modifyCommand = new MindeNodeTextModifyCommand(this.mindTree.SelectedNode, this.oldTextOfNode, this.txtInput.Text);
+            NodeTextModifyCommand modifyCommand = new NodeTextModifyCommand(this.mindTree.SelectedNode, this.oldTextOfNode, this.txtInput.Text);
             this.commandStack.AppendAndExecute(modifyCommand);
 
             this.panMindTree.Refresh();
@@ -209,7 +210,7 @@ namespace Doit.MindJet.Controls
 
             MindNode mindNode = new MindNode() { Text = "新增节点" };
 
-            MindNodeAddCommand addCommand = new MindNodeAddCommand(this.mindTree.SelectedNode, mindNode);
+            NodeAddCommand addCommand = new NodeAddCommand(this.mindTree.SelectedNode, mindNode);
             this.commandStack.AppendAndExecute(addCommand);
 
             this.panMindTree.Refresh();
@@ -222,7 +223,7 @@ namespace Doit.MindJet.Controls
 
             MindNode mindNode = new MindNode() { Text = "新增节点" };
 
-            MindNodeAddCommand addCommand = new MindNodeAddCommand(this.mindTree.SelectedNode.Parent, mindNode);
+            NodeAddCommand addCommand = new NodeAddCommand(this.mindTree.SelectedNode.Parent, mindNode);
             this.commandStack.AppendAndExecute(addCommand);
 
             this.panMindTree.Refresh();
@@ -239,7 +240,7 @@ namespace Doit.MindJet.Controls
                 if (dlgResult == DialogResult.No) return;
             }
 
-            MindNodeRemoveCommand removeCommand = new MindNodeRemoveCommand(this.mindTree.SelectedNode.Parent,
+            NodeRemoveCommand removeCommand = new NodeRemoveCommand(this.mindTree.SelectedNode.Parent,
                                                                                                                                    this.mindTree.SelectedNode);
             this.commandStack.AppendAndExecute(removeCommand);
 

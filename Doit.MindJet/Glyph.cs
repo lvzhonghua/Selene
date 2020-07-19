@@ -15,6 +15,16 @@ namespace Doit.MindJet
     public abstract class Glyph : IHitable, IDrawable
     {
         /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 文字
+        /// </summary>
+        public string Text { get; set; }
+
+        /// <summary>
         /// 图元状态
         /// </summary>
         public GlyphStatus Status { get; set; }
@@ -39,6 +49,10 @@ namespace Doit.MindJet
         /// </summary>
         protected GraphicsPath GraphicsPath { get; set; } = new GraphicsPath(FillMode.Winding);
 
+        /// <summary>
+        /// 文字的位子
+        /// </summary>
+        protected PointF locationOfText = PointF.Empty;
 
         public virtual Glyph HitTest(PointF point)
         {

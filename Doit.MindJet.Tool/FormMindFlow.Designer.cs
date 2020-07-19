@@ -1,6 +1,6 @@
 ﻿namespace Doit.MindJet.Tool
 {
-    partial class FormDocument
+    partial class FormMindFlow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mindTreeCtrl = new Doit.MindJet.Controls.MindTreeCtrl();
+            this.mindFlowCtrl = new Doit.MindJet.Controls.MindFlowCtrl();
             this.SuspendLayout();
             // 
-            // mindTreeCtrl
+            // mindFlowCtrl
             // 
-            this.mindTreeCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mindTreeCtrl.Location = new System.Drawing.Point(0, 0);
-            this.mindTreeCtrl.Name = "mindTreeCtrl";
-            this.mindTreeCtrl.Size = new System.Drawing.Size(1227, 698);
-            this.mindTreeCtrl.TabIndex = 1;
+            this.mindFlowCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mindFlowCtrl.Location = new System.Drawing.Point(0, 0);
+            this.mindFlowCtrl.Name = "mindFlowCtrl";
+            this.mindFlowCtrl.Size = new System.Drawing.Size(1015, 568);
+            this.mindFlowCtrl.TabIndex = 0;
             // 
-            // FormDocument
+            // FormMindFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 698);
-            this.Controls.Add(this.mindTreeCtrl);
+            this.ClientSize = new System.Drawing.Size(1015, 568);
+            this.Controls.Add(this.mindFlowCtrl);
             this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.Document)));
-            this.Name = "FormDocument";
-            this.Text = "文档";
+            this.Name = "FormMindFlow";
+            this.Text = "思维流程文档";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Controls.MindTreeCtrl mindTreeCtrl;
+
+        private Controls.MindFlowCtrl mindFlowCtrl;
     }
 }

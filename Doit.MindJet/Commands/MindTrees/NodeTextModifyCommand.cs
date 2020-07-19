@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-using Doit.MindJet.Trees;
+using Doit.MindJet.MindTrees;
 
-namespace Doit.MindJet.Commands
+namespace Doit.MindJet.Commands.MindTrees
 {
     /// <summary>
     /// 修改节点文字的指令
     /// </summary>
-    public class MindeNodeTextModifyCommand : ICommand
+    public class NodeTextModifyCommand : ICommand
     {
         protected MindNode node;
 
@@ -25,7 +25,7 @@ namespace Doit.MindJet.Commands
 
         public Image Image { get { return global::Doit.MindJet.Resource.修改_48; } }
 
-        public MindeNodeTextModifyCommand(MindNode node, string oldText, string text)
+        public NodeTextModifyCommand(MindNode node, string oldText, string text)
         {
             this.node = node;
             this.oldText = oldText;

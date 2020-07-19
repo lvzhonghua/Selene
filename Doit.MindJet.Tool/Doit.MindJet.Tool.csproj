@@ -64,11 +64,17 @@
     <Compile Include="FormCommandStack.Designer.cs">
       <DependentUpon>FormCommandStack.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDocument.cs">
+    <Compile Include="FormMindFlow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDocument.Designer.cs">
-      <DependentUpon>FormDocument.cs</DependentUpon>
+    <Compile Include="FormMindFlow.Designer.cs">
+      <DependentUpon>FormMindFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMindTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMindTree.Designer.cs">
+      <DependentUpon>FormMindTree.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -93,8 +99,11 @@
     <EmbeddedResource Include="FormCommandStack.resx">
       <DependentUpon>FormCommandStack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDocument.resx">
-      <DependentUpon>FormDocument.cs</DependentUpon>
+    <EmbeddedResource Include="FormMindFlow.resx">
+      <DependentUpon>FormMindFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMindTree.resx">
+      <DependentUpon>FormMindTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

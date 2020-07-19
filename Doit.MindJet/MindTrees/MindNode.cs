@@ -7,23 +7,13 @@ using System.Drawing;
 
 using Doit.MindJet.Linkers;
 
-namespace Doit.MindJet.Trees
+namespace Doit.MindJet.MindTrees
 {
     /// <summary>
     /// 脑图节点
     /// </summary>
     public class MindNode : Glyph
     {
-        /// <summary>
-        /// 节点名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 节点文字
-        /// </summary>
-        public string Text { get; set; }
-
         /// <summary>
         /// 父节点
         /// </summary>
@@ -76,13 +66,16 @@ namespace Doit.MindJet.Trees
 
         public override void Measure(Graphics graphics)
         {
-            SizeF sizeOfName = graphics.MeasureString(this.Text,StyleSchema.CurrentSchema.TextFont);
-            this.Bounds = new RectangleF(this.Location, new SizeF(sizeOfName.Width + 2f, sizeOfName.Height + 4f));
+            SizeF sizeOfText = graphics.MeasureString(this.Text,StyleSchema.CurrentSchema.TextFont);
+            this.Bounds = new RectangleF(this.Location, new SizeF(sizeOfText.Width + 2f, sizeOfText.Height + 4f));
 
             this.LeftLinker.Location = new PointF(this.Bounds.Left, (this.Bounds.Top + this.Bounds.Bottom) / 2);
             this.LeftLinker.Parent = this;
             this.RightLinker.Location = new PointF(this.Bounds.Right, (this.Bounds.Top + this.Bounds.Bottom) / 2);
             this.RightLinker.Parent = this;
+
+            this.locationOfText.X = this.Location.X + 2;
+            this.locationOfText.Y = this.Location.Y + 4;
         }
 
         /// <summary>
@@ -105,11 +98,11 @@ namespace Doit.MindJet.Trees
        
             //绘制边框
             graphics.DrawRectangle(StyleSchema.GetFramePen(this.Status), Rectangle.Round(this.Bounds));
-            //绘制Name
+            //绘制Text
             graphics.DrawString(this.Text,
                                           StyleSchema.CurrentSchema.TextFont,
                                           StyleSchema.GetTextBrush(this.Status), 
-                                          new PointF(this.Location.X + 2, this.Location.Y + 4));
+                                          this.locationOfText);
             //绘制左边节点标志
             this.LeftLinker.Draw(graphics);
             this.RightLinker.Measure(graphics);
