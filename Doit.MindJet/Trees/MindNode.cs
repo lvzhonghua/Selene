@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Doit.MindJet
+using Doit.MindJet.Linkers;
+
+namespace Doit.MindJet.Trees
 {
     /// <summary>
     /// 脑图节点
@@ -40,12 +42,12 @@ namespace Doit.MindJet
         /// <summary>
         /// 左侧节点
         /// </summary>
-        public Linker LeftLinker { get; set; } = new LeftLinker();
+        public Linker LeftLinker { get; set; } = new MindNodeLeftLinker();
 
         /// <summary>
         /// 右侧节点
         /// </summary>
-        public Linker RightLinker { get; set; } = new RightLinker();
+        public Linker RightLinker { get; set; } = new MindNodeRightLinker();
 
         /// <summary>
         /// 子节点展开
@@ -78,9 +80,9 @@ namespace Doit.MindJet
             this.Bounds = new RectangleF(this.Location, new SizeF(sizeOfName.Width + 2f, sizeOfName.Height + 4f));
 
             this.LeftLinker.Location = new PointF(this.Bounds.Left, (this.Bounds.Top + this.Bounds.Bottom) / 2);
-            this.LeftLinker.Node = this;
+            this.LeftLinker.Parent = this;
             this.RightLinker.Location = new PointF(this.Bounds.Right, (this.Bounds.Top + this.Bounds.Bottom) / 2);
-            this.RightLinker.Node = this;
+            this.RightLinker.Parent = this;
         }
 
         /// <summary>

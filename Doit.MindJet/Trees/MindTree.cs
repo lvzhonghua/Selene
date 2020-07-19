@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Doit.MindJet
+namespace Doit.MindJet.Trees
 {
     /// <summary>
     /// 老图树

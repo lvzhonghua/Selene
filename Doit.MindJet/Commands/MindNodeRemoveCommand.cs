@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+using Doit.MindJet.Trees;
+
 namespace Doit.MindJet.Commands
 {
     /// <summary>
@@ -15,7 +17,7 @@ namespace Doit.MindJet.Commands
         protected MindNode parent;
         protected MindNode node;
 
-        public DateTime ExecuteTime { get; protected set; }
+        public DateTime Time { get; protected set; }
 
         public string Description { get { return "移除MindNode节点"; } }
 
@@ -31,7 +33,14 @@ namespace Doit.MindJet.Commands
         {
             this.parent.RemoveNode(this.node);
 
-            this.ExecuteTime = DateTime.Now;
+            this.Time = DateTime.Now;
+        }
+
+        public void Unexecute()
+        {
+            this.parent.AddNode(this.node);
+
+            this.Time = DateTime.Now;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Doit.MindJet.Commands
         private List<ICommand> commands = new List<ICommand>();
         public string Description { get { return "组合指令"; } }
 
-        public DateTime ExecuteTime { get; private set; }
+        public DateTime Time { get; private set; }
 
         public Image Image { get { return global::Doit.MindJet.Resource.指令集_48; } }
 
@@ -37,7 +37,16 @@ namespace Doit.MindJet.Commands
                 command.Execute();
             }
 
-            this.ExecuteTime = DateTime.Now;
+            this.Time = DateTime.Now;
+        }
+
+        public void Unexecute()
+        {
+            for (int index = this.commands.Count - 1; index > 0; index--)
+            {
+                ICommand command = this.commands[index];
+                command.Unexecute();
+            }
         }
     }
 }

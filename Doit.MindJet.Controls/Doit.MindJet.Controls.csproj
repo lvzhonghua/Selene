@@ -94,5 +94,14 @@
   <ItemGroup>
     <None Include="Resources\子级_16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\撤销_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\重做_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\清空_16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

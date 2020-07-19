@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Doit.MindJet.Trees;
+
 namespace Doit.MindJet.Tool
 {
     public partial class FormNodeList : WeifenLuo.WinFormsUI.Docking.DockContent

@@ -14,7 +14,9 @@ namespace Doit.MindJet.Commands
     {
         private Stack<ICommand> commands = new Stack<ICommand>();
 
-        public DateTime Time { get; private set; }
+        private Stack<ICommand> commandsOfUndo = new Stack<ICommand>();
+
+        public DateTime LastTime { get; private set; }
 
         /// <summary>
         /// 获得指令集合
@@ -36,21 +38,38 @@ namespace Doit.MindJet.Commands
             this.commands.Push(command);
             command.Execute();
 
-            this.Time = DateTime.Now;
+            this.LastTime = DateTime.Now;
         }
 
         /// <summary>
         ///  撤销指令
         /// </summary>
-        /// <returns>被撤销的指令</returns>
-        public ICommand Undo()
+        public void Undo()
         {
-            ICommand command = null;
-            if (this.commands.Count > 0) command = this.commands.Pop();
+            if (this.commands.Count == 0) return;
 
-            this.Time = DateTime.Now;
+            ICommand command = this.commands.Pop();
+            command.Unexecute();
 
-            return command;
+            this.commandsOfUndo.Push(command);
+
+            this.LastTime = DateTime.Now;
+        }
+
+        /// <summary>
+        /// 重做指令
+        /// </summary>
+        public void Redo()
+        {
+            if (this.commandsOfUndo.Count == 0) return;
+
+            ICommand command = this.commandsOfUndo.Pop();
+            command.Execute();
+
+            this.commands.Push(command);
+
+            this.LastTime = DateTime.Now;
+
         }
 
         /// <summary>
@@ -59,7 +78,8 @@ namespace Doit.MindJet.Commands
         public void Clear()
         {
             this.commands.Clear();
-            this.Time = DateTime.Now;
+            this.commandsOfUndo.Clear();
+            this.LastTime = DateTime.Now;
         }
     }
 }

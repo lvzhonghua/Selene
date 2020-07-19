@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Doit.MindJet.Linkers;
+using Doit.MindJet.Trees;
 using Doit.MindJet.Commands;
 
 namespace Doit.MindJet.Controls
@@ -16,6 +18,7 @@ namespace Doit.MindJet.Controls
     {
         private MindTree mindTree = new MindTree();
 
+        private string oldTextOfNode = string.Empty;
         /// <summary>
         /// 脑图
         /// </summary>
@@ -104,8 +107,11 @@ namespace Doit.MindJet.Controls
         }
 
         private void TxtInput_LostFocus(object sender, EventArgs e)
-        {
+        {  
             this.panMindTree.Controls.Remove(this.txtInput);
+
+            MindeNodeTextModifyCommand modifyCommand = new MindeNodeTextModifyCommand(this.mindTree.SelectedNode, this.oldTextOfNode, this.txtInput.Text);
+            this.commandStack.AppendAndExecute(modifyCommand);
 
             this.panMindTree.Refresh();
         }
@@ -141,25 +147,31 @@ namespace Doit.MindJet.Controls
                     if (glyph is Linker)
                     {
                         Linker linker = glyph as Linker;
-                        mindNode = linker.Node;
-                        if (linker is RightLinker)
+                        mindNode = linker.Parent as MindNode;
+                        if (linker is MindNodeRightLinker)
                         {
                             mindNode.Expanded = !mindNode.Expanded;
                             this.panMindTree.Refresh();
                         }
-                        if (linker is LeftLinker) this.contextMenu.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
+                        if (linker is MindNodeLeftLinker) this.contextMenuDo.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
                     }
                     break;
                 case MouseButtons.Right:
                     mindNode = this.mindTree.GetNodeBeHit(e.Location);
-                    if (mindNode != null) this.contextMenu.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
+                    if (mindNode != null)
+                    {
+                        this.contextMenuDo.Show(this.panMindTree, new Point((int)mindNode.Bounds.Right, (int)mindNode.Bounds.Top));
+                    }
+                    else
+                    {
+                        this.contextMenuUndo.Show(this.panMindTree, e.Location);
+                    }
                     break;
             }
 
             if (mindNode == null) return;
             mindNode.Status = GlyphStatus.Selected;
             this.mindTree.SelectedNode = mindNode;
-
         }
 
         private void panMindTree_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -169,6 +181,7 @@ namespace Doit.MindJet.Controls
             if (nodeBeHit == null) return;
             nodeBeHit.Status = GlyphStatus.Selected;
             this.mindTree.SelectedNode = nodeBeHit;
+            this.oldTextOfNode = this.mindTree.SelectedNode.Text;
 
             this.txtInput.Location = new Point((int)nodeBeHit.Location.X + 2, (int)nodeBeHit.Location.Y + 2);
             this.txtInput.Text = nodeBeHit.Text;
@@ -233,6 +246,25 @@ namespace Doit.MindJet.Controls
             this.mindTree.SelectedNode = null;
 
             this.panMindTree.Refresh();
+        }
+
+        private void menuUndo_Click(object sender, EventArgs e)
+        {
+            this.commandStack.Undo();
+
+            this.panMindTree.Refresh();
+        }
+
+        private void menuRedo_Click(object sender, EventArgs e)
+        {
+            this.commandStack.Redo();
+
+            this.panMindTree.Refresh();
+        }
+
+        private void menuClearCommandStack_Click(object sender, EventArgs e)
+        {
+            this.commandStack.Clear();
         }
     }
 }

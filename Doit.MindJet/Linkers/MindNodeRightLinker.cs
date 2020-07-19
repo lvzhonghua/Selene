@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doit.MindJet
+namespace Doit.MindJet.Linkers
 {
     /// <summary>
-    /// 左侧连接点
+    /// 右侧连接点
     /// </summary>
-    public class LeftLinker : Linker
+    public class MindNodeRightLinker : Linker
     {
         public override void Measure(Graphics graphics)
         {
@@ -25,7 +25,7 @@ namespace Doit.MindJet
 
             this.GraphicsPath.Reset();
             this.GraphicsPath.FillMode = FillMode.Winding;
-            this.GraphicsPath.AddPie(Rectangle.Round(this.Bounds), 90, 180);
+            this.GraphicsPath.AddPie(Rectangle.Round(this.Bounds), -90, 180);
 
             this.Region.MakeEmpty();
             this.Region.Union(this.GraphicsPath);

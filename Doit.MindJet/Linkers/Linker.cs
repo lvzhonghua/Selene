@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doit.MindJet
+namespace Doit.MindJet.Linkers
 {
     /// <summary>
     /// 节点的连接点
@@ -19,9 +19,9 @@ namespace Doit.MindJet
         public float Radius { get; set; } = 6f;
 
         /// <summary>
-        /// 关联的节点
+        /// 关联的图元
         /// </summary>
-        public MindNode Node { get; set; }
+        public Glyph Parent { get; set; }
 
         public override void Draw(Graphics graphics)
         {

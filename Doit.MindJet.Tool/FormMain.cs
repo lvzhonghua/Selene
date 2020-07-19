@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 using WeifenLuo.WinFormsUI.Docking;
 
+using Doit.MindJet.Trees;
+
 namespace Doit.MindJet.Tool
 {
     public partial class FormMain : Form

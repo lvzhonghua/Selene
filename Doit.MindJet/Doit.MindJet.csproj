@@ -45,26 +45,32 @@
     <Compile Include="Commands\CommandStack.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\MacroCommand.cs" />
+    <Compile Include="Commands\MindeNodeTextModifyCommand.cs" />
     <Compile Include="Commands\MindNodeAddCommand.cs" />
     <Compile Include="Commands\MindNodeRemoveCommand.cs" />
+    <Compile Include="Documents\MindFlowDocument.cs" />
+    <Compile Include="Documents\IDocument.cs" />
+    <Compile Include="Documents\MindTreeDocument.cs" />
+    <Compile Include="Flows\MindFlow.cs" />
+    <Compile Include="Flows\MindFlowNode.cs" />
     <Compile Include="Glyph.cs" />
     <Compile Include="GlyphStatus.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="IHitable.cs" />
-    <Compile Include="LeftLinker.cs" />
-    <Compile Include="Linker.cs" />
-    <Compile Include="MindNode.cs" />
-    <Compile Include="MindNodesOfSameLevel.cs" />
-    <Compile Include="MindTree.cs" />
+    <Compile Include="Linkers\MindNodeLeftLinker.cs" />
+    <Compile Include="Linkers\Linker.cs" />
+    <Compile Include="Trees\MindNode.cs" />
+    <Compile Include="Trees\MindNodesOfSameLevel.cs" />
+    <Compile Include="Trees\MindTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="RightLinker.cs" />
+    <Compile Include="Linkers\MindNodeRightLinker.cs" />
     <Compile Include="StyleSchema.cs" />
-    <Compile Include="MindTreeHelper.cs" />
+    <Compile Include="Trees\MindTreeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Doit\Doit.UI\Doit.UI.csproj">
@@ -110,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\指令集_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

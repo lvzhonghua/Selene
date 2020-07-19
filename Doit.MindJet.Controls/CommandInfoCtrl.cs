@@ -35,7 +35,7 @@ namespace Doit.MindJet.Controls
                 {
                     this.picImage.Image = this.command.Image;
                     this.lblDescription.Text = this.command.Description;
-                    this.lblExecuteTime.Text = this.command.ExecuteTime.ToLongTimeString();
+                    this.lblExecuteTime.Text = this.command.Time.ToLongTimeString();
                 }
             }
         }

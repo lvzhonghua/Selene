@@ -10,35 +10,38 @@ using Doit.MindJet.Trees;
 namespace Doit.MindJet.Commands
 {
     /// <summary>
-    /// 添加MindNode节点指令
+    /// 修改节点文字的指令
     /// </summary>
-    public class MindNodeAddCommand : ICommand
+    public class MindeNodeTextModifyCommand : ICommand
     {
-        protected MindNode parent;
         protected MindNode node;
+
+        protected string oldText;
+        protected string text;
 
         public DateTime Time { get; protected set; }
 
-        public string Description { get { return "添加MindNode节点"; } }
+        public string Description { get { return "修改节点文字"; } }
 
-        public Image Image { get { return global::Doit.MindJet.Resource.关联图元_48; } }
+        public Image Image { get { return global::Doit.MindJet.Resource.修改_48; } }
 
-        public MindNodeAddCommand(MindNode parent, MindNode node)
+        public MindeNodeTextModifyCommand(MindNode node, string oldText, string text)
         {
-            this.parent = parent;
             this.node = node;
+            this.oldText = oldText;
+            this.text = text;
         }
 
         public virtual void Execute()
         {
-            this.parent.AddNode(this.node);
+            this.node.Text = text;
 
             this.Time = DateTime.Now;
         }
 
         public void Unexecute()
         {
-            this.parent.RemoveNode(this.node);
+            this.node.Text = this.oldText;
 
             this.Time = DateTime.Now;
         }

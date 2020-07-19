@@ -20,7 +20,7 @@ namespace Doit.MindJet.Commands
         /// <summary>
         /// 指令执行的时间
         /// </summary>
-        DateTime ExecuteTime { get; }
+        DateTime Time { get; }
 
         /// <summary>
         /// 指令图标
@@ -31,5 +31,10 @@ namespace Doit.MindJet.Commands
         /// 执行
         /// </summary>
         void Execute();
+
+        /// <summary>
+        /// 反执行，对撤销的支持
+        /// </summary>
+        void Unexecute();
     }
 }
