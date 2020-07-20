@@ -96,5 +96,14 @@ namespace Doit.MindJet.MindFlows
             this.LeftLinker.Draw(graphics);
             this.RightLinker.Draw(graphics);
         }
+
+        public override Glyph HitTest(PointF point)
+        {
+            if (this.rectOfText.Contains(point)) return this;
+            if (this.rectOfLeft.Contains(point)) return this.LeftLinker;
+            if (this.rectOfRight.Contains(point)) return this.RightLinker;
+            
+            return null;
+        }
     }
 }

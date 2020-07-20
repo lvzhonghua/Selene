@@ -130,8 +130,6 @@ namespace Doit.MindJet.Controls
 
         private void panMindTree_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
             this.mindTree.Draw(e.Graphics);
         }
 

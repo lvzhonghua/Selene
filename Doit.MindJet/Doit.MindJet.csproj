@@ -52,6 +52,7 @@
     <Compile Include="Documents\IDocument.cs" />
     <Compile Include="Documents\MindTreeDocument.cs" />
     <Compile Include="Linkers\MindStepLinker.cs" />
+    <Compile Include="Linkers\TempLinker.cs" />
     <Compile Include="MindFlows\EndStep.cs" />
     <Compile Include="MindFlows\JudgeStep.cs" />
     <Compile Include="MindFlows\MergeStep.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Linkers\MindNodeLeftLinker.cs" />
     <Compile Include="Linkers\Linker.cs" />
     <Compile Include="MindFlows\MindStepCategory.cs" />
+    <Compile Include="MindFlows\MindStepConnection.cs" />
     <Compile Include="MindFlows\MindStepFactory.cs" />
     <Compile Include="MindFlows\MindStepItem.cs" />
     <Compile Include="MindFlows\MindStepItemDirection.cs" />

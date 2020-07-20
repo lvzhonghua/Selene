@@ -179,5 +179,20 @@ namespace Doit.MindJet.MindFlows
             //绘制StepItem
             this.DrawItems(graphics);
         }
+
+        public override Glyph HitTest(PointF point)
+        {
+            if (this.rectOfText.Contains(point)) return this;
+            if (this.rightTriangle.IsVisible(point)) return this.RightLinker;
+
+            Glyph glyph = null;
+            foreach (var item in this.Items)
+            {
+                glyph = item.HitTest(point);
+                if (glyph != null) return glyph;
+            }
+
+            return null;
+        }
     }
 }

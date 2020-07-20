@@ -143,5 +143,20 @@ namespace Doit.MindJet.MindFlows
             this.ItemOfYes.Draw(graphics);
             this.ItemOfNo.Draw(graphics);
         }
+
+        public override Glyph HitTest(PointF point)
+        {
+            if (this.rectOfText.Contains(point)) return this;
+            if (this.leftTriangle.IsVisible(point)) return this.LeftLinker;
+
+            Glyph glyph = null;
+            glyph = this.ItemOfYes.HitTest(point);
+            if (glyph != null) return glyph;
+
+            glyph = this.ItemOfNo.HitTest(point);
+            if (glyph != null) return glyph;
+
+            return null;
+        }
     }
 }

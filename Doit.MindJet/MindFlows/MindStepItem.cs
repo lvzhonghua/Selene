@@ -113,5 +113,14 @@ namespace Doit.MindJet.MindFlows
             //绘制连接点
             this.Linker.Draw(graphics);
         }
+
+        public override Glyph HitTest(PointF point)
+        {
+            if (this.rectOfText.Contains(point)) return this;
+
+            if (this.rectOfLinker.Contains(point)) return this.Linker;
+
+            return null;
+        }
     }
 }

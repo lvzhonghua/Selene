@@ -30,10 +30,15 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStartStep = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnNormalStep = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMergeStep = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSplitStep = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnJudgeStep = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEndStep = new System.Windows.Forms.ToolStripButton();
             this.panContainer = new System.Windows.Forms.Panel();
             this.panMindFlow = new Doit.Controls.BufferedGraphicsPanel();
@@ -45,10 +50,15 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnStartStep,
+            this.toolStripSeparator1,
             this.btnNormalStep,
+            this.toolStripSeparator2,
             this.btnMergeStep,
+            this.toolStripSeparator3,
             this.btnSplitStep,
+            this.toolStripSeparator4,
             this.btnJudgeStep,
+            this.toolStripSeparator5,
             this.btnEndStep});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -63,7 +73,12 @@
             this.btnStartStep.Name = "btnStartStep";
             this.btnStartStep.Size = new System.Drawing.Size(52, 22);
             this.btnStartStep.Text = "起始";
-            this.btnStartStep.Click += new System.EventHandler(this.btnStartStep_Click);
+            this.btnStartStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // btnNormalStep
             // 
@@ -72,7 +87,12 @@
             this.btnNormalStep.Name = "btnNormalStep";
             this.btnNormalStep.Size = new System.Drawing.Size(52, 22);
             this.btnNormalStep.Text = "普通";
-            this.btnNormalStep.Click += new System.EventHandler(this.btnNormalStep_Click);
+            this.btnNormalStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // btnMergeStep
             // 
@@ -81,7 +101,12 @@
             this.btnMergeStep.Name = "btnMergeStep";
             this.btnMergeStep.Size = new System.Drawing.Size(52, 22);
             this.btnMergeStep.Text = "合并";
-            this.btnMergeStep.Click += new System.EventHandler(this.btnMergeStep_Click);
+            this.btnMergeStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnSplitStep
             // 
@@ -90,7 +115,12 @@
             this.btnSplitStep.Name = "btnSplitStep";
             this.btnSplitStep.Size = new System.Drawing.Size(52, 22);
             this.btnSplitStep.Text = "拆分";
-            this.btnSplitStep.Click += new System.EventHandler(this.btnSplitStep_Click);
+            this.btnSplitStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // btnJudgeStep
             // 
@@ -99,7 +129,12 @@
             this.btnJudgeStep.Name = "btnJudgeStep";
             this.btnJudgeStep.Size = new System.Drawing.Size(52, 22);
             this.btnJudgeStep.Text = "判断";
-            this.btnJudgeStep.Click += new System.EventHandler(this.btnJudgeStep_Click);
+            this.btnJudgeStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // btnEndStep
             // 
@@ -108,7 +143,7 @@
             this.btnEndStep.Name = "btnEndStep";
             this.btnEndStep.Size = new System.Drawing.Size(52, 22);
             this.btnEndStep.Text = "结束";
-            this.btnEndStep.Click += new System.EventHandler(this.btnEndStep_Click);
+            this.btnEndStep.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnStep_MouseMove);
             // 
             // panContainer
             // 
@@ -122,11 +157,19 @@
             // 
             // panMindFlow
             // 
+            this.panMindFlow.AllowDrop = true;
             this.panMindFlow.Location = new System.Drawing.Point(1, 1);
             this.panMindFlow.Name = "panMindFlow";
-            this.panMindFlow.Size = new System.Drawing.Size(1073, 659);
+            this.panMindFlow.Size = new System.Drawing.Size(1170, 690);
             this.panMindFlow.TabIndex = 3;
+            this.panMindFlow.DragDrop += new System.Windows.Forms.DragEventHandler(this.panMindFlow_DragDrop);
+            this.panMindFlow.DragEnter += new System.Windows.Forms.DragEventHandler(this.panMindFlow_DragEnter);
+            this.panMindFlow.DragOver += new System.Windows.Forms.DragEventHandler(this.panMindFlow_DragOver);
+            this.panMindFlow.DragLeave += new System.EventHandler(this.panMindFlow_DragLeave);
             this.panMindFlow.Paint += new System.Windows.Forms.PaintEventHandler(this.panMindFlow_Paint);
+            this.panMindFlow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panMindFlow_MouseDown);
+            this.panMindFlow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panMindFlow_MouseMove);
+            this.panMindFlow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panMindFlow_MouseUp);
             // 
             // MindFlowCtrl
             // 
@@ -155,5 +198,10 @@
         private System.Windows.Forms.ToolStripButton btnMergeStep;
         private System.Windows.Forms.ToolStripButton btnSplitStep;
         private System.Windows.Forms.ToolStripButton btnJudgeStep;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
