@@ -19,19 +19,19 @@ namespace Doit.MindJet
         /// 水平间隙（默认：4f）
         /// </summary>
         [DisplayName("水平间隙"), Description("水平方向的间隙")]
-        public float HorizontalSpace { get; set; } = 4;
+        public float HorizontalSpace { get; set; } = 4f;
 
         /// <summary>
         /// 垂直间隙（默认：4f）
         /// </summary>
         [DisplayName("垂直间隙"), Description("垂直方向的间隙")]
-        public float VerticalSpace { get; set; } = 4;
+        public float VerticalSpace { get; set; } = 4f;
 
         /// <summary>
         /// 文字字体（默认：宋体，12f）
         /// </summary>
         [DisplayName("文本字体"),Description("显示文本所使用的字体")]
-        public Font TextFont { get; set; } = new Font("宋体",12f);
+        public Font TextFont { get; set; } = new Font("宋体",10f);
 
         /// <summary>
         /// 正常状态的文字的颜色（默认：黑色）

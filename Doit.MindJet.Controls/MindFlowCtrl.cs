@@ -74,7 +74,7 @@ namespace Doit.MindJet.Controls
 
         private void btnSplitStep_Click(object sender, EventArgs e)
         {
-            this.splitStepOfTest = MindStepFactory.Create(MindStepCategory.Split, new PointF(300, 200));
+            this.splitStepOfTest = MindStepFactory.Create(MindStepCategory.Split, new PointF(400, 200));
 
             this.panMindFlow.Refresh();
         }

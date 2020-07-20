@@ -31,7 +31,7 @@ namespace Doit.MindJet.MindFlows
         public NormalStep()
         {
             this.Category = MindStepCategory.Normal;
-            this.Text = "普通步骤";
+            this.Text = "步骤";
 
             this.LeftLinker.Parent = this;
             this.RightLinker.Parent = this;

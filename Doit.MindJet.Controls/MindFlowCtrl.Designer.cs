@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.panContainer = new System.Windows.Forms.Panel();
-            this.panMindFlow = new Doit.Controls.BufferedGraphicsPanel();
             this.btnStartStep = new System.Windows.Forms.ToolStripButton();
             this.btnNormalStep = new System.Windows.Forms.ToolStripButton();
-            this.btnEndStep = new System.Windows.Forms.ToolStripButton();
             this.btnMergeStep = new System.Windows.Forms.ToolStripButton();
             this.btnSplitStep = new System.Windows.Forms.ToolStripButton();
             this.btnJudgeStep = new System.Windows.Forms.ToolStripButton();
+            this.btnEndStep = new System.Windows.Forms.ToolStripButton();
+            this.panContainer = new System.Windows.Forms.Panel();
+            this.panMindFlow = new Doit.Controls.BufferedGraphicsPanel();
             this.toolStrip1.SuspendLayout();
             this.panContainer.SuspendLayout();
             this.SuspendLayout();
@@ -56,24 +56,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // panContainer
-            // 
-            this.panContainer.AutoScroll = true;
-            this.panContainer.Controls.Add(this.panMindFlow);
-            this.panContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panContainer.Location = new System.Drawing.Point(0, 25);
-            this.panContainer.Name = "panContainer";
-            this.panContainer.Size = new System.Drawing.Size(1144, 678);
-            this.panContainer.TabIndex = 2;
-            // 
-            // panMindFlow
-            // 
-            this.panMindFlow.Location = new System.Drawing.Point(1, 1);
-            this.panMindFlow.Name = "panMindFlow";
-            this.panMindFlow.Size = new System.Drawing.Size(1073, 659);
-            this.panMindFlow.TabIndex = 3;
-            this.panMindFlow.Paint += new System.Windows.Forms.PaintEventHandler(this.panMindFlow_Paint);
-            // 
             // btnStartStep
             // 
             this.btnStartStep.Image = global::Doit.MindJet.Controls.Properties.Resources.开始_16;
@@ -92,15 +74,6 @@
             this.btnNormalStep.Text = "普通";
             this.btnNormalStep.Click += new System.EventHandler(this.btnNormalStep_Click);
             // 
-            // btnEndStep
-            // 
-            this.btnEndStep.Image = global::Doit.MindJet.Controls.Properties.Resources.结束_16;
-            this.btnEndStep.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEndStep.Name = "btnEndStep";
-            this.btnEndStep.Size = new System.Drawing.Size(52, 22);
-            this.btnEndStep.Text = "结束";
-            this.btnEndStep.Click += new System.EventHandler(this.btnEndStep_Click);
-            // 
             // btnMergeStep
             // 
             this.btnMergeStep.Image = global::Doit.MindJet.Controls.Properties.Resources.合并_16;
@@ -116,7 +89,7 @@
             this.btnSplitStep.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSplitStep.Name = "btnSplitStep";
             this.btnSplitStep.Size = new System.Drawing.Size(52, 22);
-            this.btnSplitStep.Text = "分离";
+            this.btnSplitStep.Text = "拆分";
             this.btnSplitStep.Click += new System.EventHandler(this.btnSplitStep_Click);
             // 
             // btnJudgeStep
@@ -127,6 +100,33 @@
             this.btnJudgeStep.Size = new System.Drawing.Size(52, 22);
             this.btnJudgeStep.Text = "判断";
             this.btnJudgeStep.Click += new System.EventHandler(this.btnJudgeStep_Click);
+            // 
+            // btnEndStep
+            // 
+            this.btnEndStep.Image = global::Doit.MindJet.Controls.Properties.Resources.结束_16;
+            this.btnEndStep.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEndStep.Name = "btnEndStep";
+            this.btnEndStep.Size = new System.Drawing.Size(52, 22);
+            this.btnEndStep.Text = "结束";
+            this.btnEndStep.Click += new System.EventHandler(this.btnEndStep_Click);
+            // 
+            // panContainer
+            // 
+            this.panContainer.AutoScroll = true;
+            this.panContainer.Controls.Add(this.panMindFlow);
+            this.panContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panContainer.Location = new System.Drawing.Point(0, 25);
+            this.panContainer.Name = "panContainer";
+            this.panContainer.Size = new System.Drawing.Size(1144, 678);
+            this.panContainer.TabIndex = 2;
+            // 
+            // panMindFlow
+            // 
+            this.panMindFlow.Location = new System.Drawing.Point(1, 1);
+            this.panMindFlow.Name = "panMindFlow";
+            this.panMindFlow.Size = new System.Drawing.Size(1073, 659);
+            this.panMindFlow.TabIndex = 3;
+            this.panMindFlow.Paint += new System.Windows.Forms.PaintEventHandler(this.panMindFlow_Paint);
             // 
             // MindFlowCtrl
             // 

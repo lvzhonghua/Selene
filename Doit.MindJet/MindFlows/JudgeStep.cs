@@ -40,6 +40,7 @@ namespace Doit.MindJet.MindFlows
             this.Category = MindStepCategory.Judge;
             this.Text = "判断";
 
+            this.LeftLinker.Parent = this;
             this.ItemOfYes.Parent = this;
             this.ItemOfNo.Parent = this;
         }
@@ -98,6 +99,8 @@ namespace Doit.MindJet.MindFlows
 
             this.ItemOfYes.Location = new PointF(this.rectOfText.Right + hSpace,this.Bounds.Top);
             this.ItemOfNo.Location = new PointF(this.rectOfText.Right + hSpace, this.Bounds.Top + this.ItemOfYes.Bounds.Height - 1);
+            this.ItemOfYes.Measure(graphics);
+            this.ItemOfNo.Measure(graphics);
 
             this.leftTriangle.Reset();
             this.leftTriangle.AddPolygon(new PointF[]  { 
@@ -106,8 +109,7 @@ namespace Doit.MindJet.MindFlows
                                                         new PointF(this.Bounds.Left, this.Bounds.Bottom)
                                                     });
 
-            this.ItemOfYes.Measure(graphics);
-            this.ItemOfNo.Measure(graphics);
+
 
             this.locationOfText.X = this.rectOfText.X + 2;
             this.locationOfText.Y = this.rectOfText.Y + 2;
