@@ -69,9 +69,6 @@
     <Compile Include="FormGDI.Designer.cs">
       <DependentUpon>FormGDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="PanelGDI.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCellStyleDesigner.resx">
@@ -110,6 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Doit\Doit.Controls\Doit.Controls.csproj">
+      <Project>{7b24d70e-900e-4c99-ba78-66cdc2fafdf3}</Project>
+      <Name>Doit.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Doit\Doit.UI\Doit.UI.csproj">
       <Project>{d1f70a91-e4be-499b-9ed0-ad6dc9d52899}</Project>
       <Name>Doit.UI</Name>

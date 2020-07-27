@@ -31,12 +31,14 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panZoomAndMove = new Doit.Print.Test.PanelGDI();
+            this.panZoomAndMove = new Doit.Controls.BufferedGraphicsPanel();
             this.pGridSelected = new System.Windows.Forms.PropertyGrid();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panString = new Doit.Print.Test.PanelGDI();
+            this.panString = new Doit.Controls.BufferedGraphicsPanel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panBesizer = new Doit.Controls.BufferedGraphicsPanel();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -45,6 +47,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -106,6 +109,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -144,6 +148,28 @@
             this.panString.TabIndex = 0;
             this.panString.Paint += new System.Windows.Forms.PaintEventHandler(this.panString_Paint);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panBesizer);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1150, 556);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "比萨尔曲线";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panBesizer
+            // 
+            this.panBesizer.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.panBesizer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panBesizer.Location = new System.Drawing.Point(3, 3);
+            this.panBesizer.Name = "panBesizer";
+            this.panBesizer.Size = new System.Drawing.Size(1144, 550);
+            this.panBesizer.TabIndex = 0;
+            this.panBesizer.Paint += new System.Windows.Forms.PaintEventHandler(this.panBesizer_Paint);
+            this.panBesizer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panBesizer_MouseMove);
+            // 
             // FormGDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -162,6 +188,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,11 +199,13 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblInfo;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private PanelGDI panZoomAndMove;
+        private Doit.Controls.BufferedGraphicsPanel panZoomAndMove;
         private System.Windows.Forms.PropertyGrid pGridSelected;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private PanelGDI panString;
+        private Doit.Controls.BufferedGraphicsPanel panString;
+        private System.Windows.Forms.TabPage tabPage3;
+        private Doit.Controls.BufferedGraphicsPanel panBesizer;
     }
 }

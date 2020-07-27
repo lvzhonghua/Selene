@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.VisualStyles;
 using Doit.UI;
 
 namespace Doit.Print.Test
@@ -18,6 +18,14 @@ namespace Doit.Print.Test
         private List<Node> nodes = new List<Node>();
         private LayoutManager layoutManager = new LayoutManager();
         private Node selectedNode = null;
+
+        private Besizer besizer = new Besizer()
+        {
+            From = new PointF(100,100),
+            P2 = new PointF(350,50),
+            P3 = new PointF(200,350),
+            To = new PointF(700,500)
+        };
        
         public FormGDI()
         {
@@ -470,6 +478,38 @@ namespace Doit.Print.Test
             this.DrawStringFloatFormat(e);
             this.DrawStringRotated(e);
             this.DrawStringOnPath(e);
+        }
+
+        private void panBesizer_Paint(object sender, PaintEventArgs e)
+        {  
+            this.besizer.Draw(e.Graphics);
+        }
+
+        private void panBesizer_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            BesizerPart partBeHit = this.besizer.HitTest(e.Location);
+
+            if (partBeHit == BesizerPart.None) return;
+
+            switch (partBeHit)
+            {
+                case BesizerPart.From:
+                    this.besizer.From = e.Location;
+                    break;
+                case BesizerPart.P2:
+                    this.besizer.P2 = e.Location;
+                    break;
+                case BesizerPart.P3:
+                    this.besizer.P3 = e.Location;
+                    break;
+                case BesizerPart.To:
+                    this.besizer.To = e.Location;
+                    break;
+            }
+
+            this.panBesizer.Refresh();
         }
     }
 

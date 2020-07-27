@@ -39,7 +39,7 @@
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.tbarWidth = new System.Windows.Forms.TrackBar();
             this.panContainer = new System.Windows.Forms.Panel();
-            this.panGDI = new Doit.Print.Test.PanelGDI();
+            this.panGDI = new Doit.Controls.BufferedGraphicsPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -63,9 +63,9 @@
             this.cboLineSpacing = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panParagraph = new Doit.Print.Test.PanelGDI();
+            this.panParagraph = new Doit.Controls.BufferedGraphicsPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panGDI_Suffix = new Doit.Print.Test.PanelGDI();
+            this.panGDI_Suffix = new Doit.Controls.BufferedGraphicsPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cboSuffixType = new System.Windows.Forms.ComboBox();
             this.btnColor_Suffix = new System.Windows.Forms.Button();
@@ -700,7 +700,7 @@
         private System.Windows.Forms.TextBox txtContent;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Panel panContainer;
-        private PanelGDI panGDI;
+        private Doit.Controls.BufferedGraphicsPanel panGDI;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -716,7 +716,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private PanelGDI panParagraph;
+        private Doit.Controls.BufferedGraphicsPanel panParagraph;
         private System.Windows.Forms.TextBox txtPadding_V;
         private System.Windows.Forms.TextBox txtPadding_H;
         private System.Windows.Forms.Label label15;
@@ -738,6 +738,6 @@
         private System.Windows.Forms.Button btnFont_Suffix;
         private System.Windows.Forms.Button btnColor_ContextWithSuffix;
         private System.Windows.Forms.Label label7;
-        private PanelGDI panGDI_Suffix;
+        private Doit.Controls.BufferedGraphicsPanel panGDI_Suffix;
     }
 }
