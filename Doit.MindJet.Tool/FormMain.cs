@@ -39,6 +39,9 @@ namespace Doit.MindJet.Tool
             frmMindFlow.Activated += FrmMindFlow_Activated;
             frmMindFlow.Show(this.dockPanel, DockState.Document);
 
+            FormMindDraft frmMindDraft = new FormMindDraft();
+            frmMindDraft.Show(this.dockPanel, DockState.Document);
+
         }
 
         private void FrmMindFlow_Activated(object sender, EventArgs e)

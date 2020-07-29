@@ -49,6 +49,12 @@
       <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="CommandStackInfoCtrl.cs" />
+    <Compile Include="MindDraftCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MindDraftCtrl.Designer.cs">
+      <DependentUpon>MindDraftCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MindFlowCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CommandInfoCtrl.resx">
       <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MindDraftCtrl.resx">
+      <DependentUpon>MindDraftCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MindFlowCtrl.resx">
       <DependentUpon>MindFlowCtrl.cs</DependentUpon>
