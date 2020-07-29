@@ -19,14 +19,17 @@ namespace Doit.Print.Test
         private LayoutManager layoutManager = new LayoutManager();
         private Node selectedNode = null;
 
-        private Besizer besizer = new Besizer()
-        {
-            From = new PointF(100,100),
-            P2 = new PointF(350,50),
-            P3 = new PointF(200,350),
-            To = new PointF(700,500)
-        };
-       
+        private List<Besizer> besizers = new List<Besizer>(new Besizer[] {
+            new Besizer() {  From = new PointF(100,100),  P2 = new PointF(350,50), P3 = new PointF(200,350), To = new PointF(200,500)},
+            new Besizer() {  From = new PointF(200,200),  P2 = new PointF(350,50), P3 = new PointF(300,350), To = new PointF(900,700)},
+            new Besizer() {  From = new PointF(300,300),  P2 = new PointF(350,50), P3 = new PointF(200,450), To = new PointF(700,500)},
+            new Besizer() {  From = new PointF(400,400),  P2 = new PointF(350,50), P3 = new PointF(400,550), To = new PointF(1000,800)},
+        });
+
+        private Point mouseLocation = Point.Empty;
+        private BesizerPart partBeHit = BesizerPart.None;
+        private Besizer besizerBeHit = null;
+
         public FormGDI()
         {
             InitializeComponent();
@@ -38,15 +41,15 @@ namespace Doit.Print.Test
 
             this.panZoomAndMove.MouseWheel += this.panGDI_MouseWheel;
 
-            this.nodes.Add(new Node 
-            { 
-                BackColor = Color.Red, 
+            this.nodes.Add(new Node
+            {
+                BackColor = Color.Red,
                 Font = new Font("宋体", 20f),
-                ForeColor = Color.Blue, 
-                Location = new PointF(100f,100f), 
-                Name = "Node1", 
-                Text = "Node 1" 
-            }) ;
+                ForeColor = Color.Blue,
+                Location = new PointF(100f, 100f),
+                Name = "Node1",
+                Text = "Node 1"
+            });
 
             this.nodes.Add(new Node
             {
@@ -56,7 +59,7 @@ namespace Doit.Print.Test
                 Location = new PointF(150f, 150f),
                 Name = "Node2",
                 Text = "Node 2"
-            });            
+            });
         }
 
         private void Draw(Graphics graphics)
@@ -177,12 +180,12 @@ namespace Doit.Print.Test
             public Color ForeColor { get; set; } = Color.White;
 
             [DisplayName("字体"), Description("节点的文字的字体")]
-            public Font Font { get; set; } = new Font("宋体",10);
+            public Font Font { get; set; } = new Font("宋体", 10);
 
-            [DisplayName("名称"),Description("节点的名称")]
+            [DisplayName("名称"), Description("节点的名称")]
             public string Name { get; set; }
-            
-            [DisplayName("文字"),Description("显示的文字")]
+
+            [DisplayName("文字"), Description("显示的文字")]
             public string Text { get; set; }
 
             [DisplayName("边界"), Description("节点的边界")]
@@ -224,7 +227,7 @@ namespace Doit.Print.Test
         {
             private Point lastMousePosition = Point.Empty;
 
-            public Point LastMousePosition 
+            public Point LastMousePosition
             {
                 get { return this.lastMousePosition; }
                 set { this.lastMousePosition = value; }
@@ -248,15 +251,15 @@ namespace Doit.Print.Test
 
             private PointF offset = PointF.Empty;
 
-            public PointF Offset 
+            public PointF Offset
             {
                 get { return this.offset; }
             }
 
             private bool layoutChanged = false;
 
-            public bool LayoutChange 
-            { 
+            public bool LayoutChange
+            {
                 get { return this.layoutChanged; }
             }
 
@@ -270,7 +273,7 @@ namespace Doit.Print.Test
                 this.DrawGraph(graphics, PointF.Empty);
             }
 
-            public void DrawGraph(Graphics graphics,  PointF graphMousePosition)
+            public void DrawGraph(Graphics graphics, PointF graphMousePosition)
             {
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -318,7 +321,7 @@ namespace Doit.Print.Test
         private void MeasureCharacterRangesRegions2(PaintEventArgs e)
         {
             string measureString = "复利才是高利润的基础";
-            Font stringFont = new Font("宋体",26.0F);
+            Font stringFont = new Font("宋体", 26.0F);
 
             CharacterRange[] characterRanges = { new CharacterRange(0, 2), new CharacterRange(4, 3), new CharacterRange(8, 2) };
 
@@ -360,7 +363,7 @@ namespace Doit.Print.Test
 
             for (int index = 0; index < stringsToPaint.Length; index++)
             {
-                Size size = TextRenderer.MeasureText(e.Graphics, stringsToPaint[index],  fonts[index], proposedSize, flags);
+                Size size = TextRenderer.MeasureText(e.Graphics, stringsToPaint[index], fonts[index], proposedSize, flags);
                 Rectangle rect = new Rectangle(startPoint, size);
                 TextRenderer.DrawText(e.Graphics, stringsToPaint[index], fonts[index], startPoint, Color.Black, flags);
                 startPoint.X += size.Width;
@@ -374,7 +377,7 @@ namespace Doit.Print.Test
 
             SizeF stringSize = e.Graphics.MeasureString(measureString, stringFont);
 
-            PointF position = new PointF(100,150);
+            PointF position = new PointF(100, 150);
 
             e.Graphics.DrawRectangle(new Pen(Color.Red, 1), position.X, position.Y, stringSize.Width, stringSize.Height);
 
@@ -388,7 +391,7 @@ namespace Doit.Print.Test
             Font drawFont = new Font("Arial", 16);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            PointF point = new PointF(800.0f,10.0f);
+            PointF point = new PointF(800.0f, 10.0f);
 
             StringFormat drawFormat = new StringFormat();
             drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
@@ -446,24 +449,24 @@ namespace Doit.Print.Test
             e.Graphics.DrawPath(myPen, myPath);
 
             RectangleF[] regions = e.Graphics.MeasureString("一定要实现 Text on Path (文字沿着路径渲染)，我做到了",
-                                                                                new Font(FontFamily.GenericSerif, 24), 
-                                                                                new SolidBrush(Color.Red), 
-                                                                                TextPathAlign.Center, 
-                                                                                TextPathPosition.CenterPath, 
-                                                                                100, 
-                                                                                0, 
+                                                                                new Font(FontFamily.GenericSerif, 24),
+                                                                                new SolidBrush(Color.Red),
+                                                                                TextPathAlign.Center,
+                                                                                TextPathPosition.CenterPath,
+                                                                                100,
+                                                                                0,
                                                                                 myPath);
             foreach (var region in regions)
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.GreenYellow), region);
             }
-            e.Graphics.DrawString("一定要实现 Text on Path (文字沿着路径渲染)，我做到了", 
-                                            new Font(FontFamily.GenericSerif, 24), 
+            e.Graphics.DrawString("一定要实现 Text on Path (文字沿着路径渲染)，我做到了",
+                                            new Font(FontFamily.GenericSerif, 24),
                                             new SolidBrush(Color.Red),
-                                            TextPathAlign.Center, 
-                                            TextPathPosition.CenterPath, 
+                                            TextPathAlign.Center,
+                                            TextPathPosition.CenterPath,
                                             100,
-                                            0, 
+                                            0,
                                             myPath);
         }
 
@@ -481,35 +484,90 @@ namespace Doit.Print.Test
         }
 
         private void panBesizer_Paint(object sender, PaintEventArgs e)
-        {  
-            this.besizer.Draw(e.Graphics);
+        {
+            foreach (var besizer in this.besizers)
+            {
+                besizer.Draw(e.Graphics);
+            }
         }
 
         private void panBesizer_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
-            BesizerPart partBeHit = this.besizer.HitTest(e.Location);
+            if (this.partBeHit == BesizerPart.None || this.besizerBeHit == null) return;
 
-            if (partBeHit == BesizerPart.None) return;
+            PointF offset = new PointF(Control.MousePosition.X - this.mouseLocation.X, 
+                                                  Control.MousePosition.Y - this.mouseLocation.Y);
 
-            switch (partBeHit)
+            PointF oldLocation = PointF.Empty;
+
+            switch (this.partBeHit)
             {
                 case BesizerPart.From:
-                    this.besizer.From = e.Location;
+                    oldLocation = this.besizerBeHit.From;
+                    this.besizerBeHit.From = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
                     break;
                 case BesizerPart.P2:
-                    this.besizer.P2 = e.Location;
+                    oldLocation = this.besizerBeHit.P2;
+                    this.besizerBeHit.P2 =  new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
                     break;
                 case BesizerPart.P3:
-                    this.besizer.P3 = e.Location;
+                    oldLocation = this.besizerBeHit.P3;
+                    this.besizerBeHit.P3 =  new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
                     break;
                 case BesizerPart.To:
-                    this.besizer.To = e.Location;
+                    oldLocation = this.besizerBeHit.To;
+                    this.besizerBeHit.To = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
+                    break;
+                case BesizerPart.Line:
+                    oldLocation = this.besizerBeHit.From;
+                    this.besizerBeHit.From = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
+                    oldLocation = this.besizerBeHit.P2;
+                    this.besizerBeHit.P2 = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
+                    oldLocation = this.besizerBeHit.P3;
+                    this.besizerBeHit.P3 = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
+                    oldLocation = this.besizerBeHit.To;
+                    this.besizerBeHit.To = new PointF(oldLocation.X + offset.X, oldLocation.Y + offset.Y);
                     break;
             }
 
+            this.mouseLocation = Control.MousePosition;
+
             this.panBesizer.Refresh();
+        }
+
+        private void panBesizer_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            foreach (var item in this.besizers)
+            {
+                this.partBeHit = item.HitTest(e.Location);
+
+                if (this.partBeHit != BesizerPart.None)
+                {
+                    this.besizerBeHit = item;
+                    this.besizerBeHit.Status = BesizerStatus.Selected;
+                    this.mouseLocation = Control.MousePosition;
+                    break;
+                }
+            }
+
+        }
+
+        private void panBesizer_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            this.mouseLocation = Point.Empty;
+            this.partBeHit = BesizerPart.None;
+            this.besizerBeHit = null;
+
+            foreach (var item in this.besizers)
+            {
+                item.Status = BesizerStatus.Normal;
+            }
         }
     }
 

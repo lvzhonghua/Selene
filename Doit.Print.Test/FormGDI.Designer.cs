@@ -168,7 +168,9 @@
             this.panBesizer.Size = new System.Drawing.Size(1144, 550);
             this.panBesizer.TabIndex = 0;
             this.panBesizer.Paint += new System.Windows.Forms.PaintEventHandler(this.panBesizer_Paint);
+            this.panBesizer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panBesizer_MouseDown);
             this.panBesizer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panBesizer_MouseMove);
+            this.panBesizer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panBesizer_MouseUp);
             // 
             // FormGDI
             // 
