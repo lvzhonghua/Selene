@@ -19,6 +19,13 @@ namespace Doit.MindJet.MindDrafts
 
         public MindShapeCategory Category { get; set; }
 
-        public List<MindShapeLinker> Linkers { get; protected set; } = new List<MindShapeLinker>();
+        public MindShapeLinker LeftLinker { get; set; } = new MindShapeLinker();
+
+        public MindShapeLinker TopLinker { get; set; } = new MindShapeLinker();
+
+        public MindShapeLinker RightLinker { get; set; } = new MindShapeLinker();
+
+        public MindShapeLinker BottomLinker { get; set; } = new MindShapeLinker();
+
     }
 }

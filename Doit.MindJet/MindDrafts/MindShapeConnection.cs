@@ -12,32 +12,34 @@ namespace Doit.MindJet.MindDrafts
     public class MindShapeConnection : Glyph
     {
         /// <summary>
-        /// 连接起始点
+        /// 连接起始
         /// </summary>
-        public Linker From { get; set; }
+        public MindShape From { get; set; }
 
         /// <summary>
-        /// 连接终止点
+        /// 连接终止
         /// </summary>
-        public Linker To { get; set; }
+        public MindShape To { get; set; }
 
-        private PointF from = PointF.Empty;
-        private PointF to = PointF.Empty;
+        private PointF fromPoint = PointF.Empty;
+        private PointF p2 = PointF.Empty;
+        private PointF p3 = PointF.Empty;
+        private PointF toPoint = PointF.Empty;
 
         public override void Measure(Graphics graphics)
         {
             if (this.From == null || this.To == null) return;
 
-            this.from.X = this.From.Location.X + StyleSchema.CurrentSchema.LinkerRadius;
-            this.from.Y = this.From.Location.Y;
-
-            this.to.X = this.To.Location.X + StyleSchema.CurrentSchema.LinkerRadius;
-            this.to.Y = this.To.Location.Y;
+            ConnectionPoints connectionPoints = PointCalculator.GetConnectionPoints(this.From, this.To);
+            this.fromPoint = connectionPoints.FromPoint;
+            this.p2 = connectionPoints.P2;
+            this.p3 = connectionPoints.P3;
+            this.toPoint = connectionPoints.ToPoint;
 
             this.GraphicsPath.Reset();
             this.GraphicsPath.FillMode = FillMode.Winding;
 
-            this.GraphicsPath.AddPath(Doit.UI.GEOHelper.CreateBezierPath(this.from, this.to), true);
+            this.GraphicsPath.AddLines(new PointF[] {this.fromPoint,this.p2,this.p3,this.toPoint });
 
             this.Region.MakeEmpty();
             this.Region.Union(this.GraphicsPath);
@@ -49,11 +51,7 @@ namespace Doit.MindJet.MindDrafts
 
             this.Measure(graphics);
 
-            Doit.UI.GDIHelper.DrawArrowLine(graphics,
-                                                              this.from,
-                                                              this.to,
-                                                              StyleSchema.GetLinkLinePen(this.Status).Color,
-                                                              3);
+            graphics.DrawPath(StyleSchema.GetLinkLinePen(this.Status), this.GraphicsPath);
         }
     }
 }

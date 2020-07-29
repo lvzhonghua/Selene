@@ -9,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace Doit.MindJet.MindDrafts
 {
+    /// <summary>
+    /// 矩形图案
+    /// </summary>
     class RectShape : MindShape
     {
         public RectShape()
         {
             this.Category = MindShapeCategory.Rect;
             this.Text = "矩形";
-
-            this.Linkers.AddRange(new MindShapeLinker[] {
-                new MindShapeLinker{ Name = "左侧连接点", Flag = "Left" , Parent = this },
-                new MindShapeLinker{ Name = "顶部连接点", Flag = "Top", Parent = this },
-                new MindShapeLinker{ Name = "右侧连接点", Flag = "Right", Parent = this },
-                new MindShapeLinker{ Name = "底部连接点", Flag = "Bottom", Parent = this }
-            });
         }
 
         public override void Measure(Graphics graphics)
@@ -43,10 +39,10 @@ namespace Doit.MindJet.MindDrafts
             bounds.Height = this.Padding.Top + this.rectOfText.Height + this.Padding.Bottom;
             this.Bounds = bounds;
 
-            this.Linkers[0].Location = new PointF(bounds.Left, (bounds.Top + bounds.Bottom)/2);
-            this.Linkers[1].Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Top);
-            this.Linkers[2].Location = new PointF(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
-            this.Linkers[3].Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Bottom);
+            this.LeftLinker.Location = new PointF(bounds.Left, (bounds.Top + bounds.Bottom)/2);
+            this.TopLinker.Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Top);
+            this.RightLinker.Location = new PointF(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
+            this.BottomLinker.Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Bottom);
 
             this.GraphicsPath.Reset();
             this.GraphicsPath.FillMode = FillMode.Winding;
@@ -69,10 +65,11 @@ namespace Doit.MindJet.MindDrafts
                                           this.locationOfText);
             //绘制连接点
             if (this.Status == GlyphStatus.Normal || this.Status == GlyphStatus.Unknown) return;
-            foreach (var linker in this.Linkers)
-            {
-                linker.Draw(graphics);
-            }
+
+            this.LeftLinker.Draw(graphics);
+            this.TopLinker.Draw(graphics);
+            this.RightLinker.Draw(graphics);
+            this.BottomLinker.Draw(graphics);
         }
 
         public override Glyph HitTest(PointF point)
@@ -80,12 +77,12 @@ namespace Doit.MindJet.MindDrafts
             if (this.rectOfText.Contains(point)) return this;
 
             Glyph beHit = null;
-            foreach (var linker in this.Linkers)
-            {
-                beHit = linker.HitTest(point);
+            //foreach (var linker in this.Linkers)
+            //{
+            //    beHit = linker.HitTest(point);
 
-                if (beHit != null) break;
-            }
+            //    if (beHit != null) break;
+            //}
 
             return beHit;
         }

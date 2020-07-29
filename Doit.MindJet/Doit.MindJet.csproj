@@ -54,9 +54,11 @@
     <Compile Include="Linkers\MindShapeLinker.cs" />
     <Compile Include="Linkers\MindStepLinker.cs" />
     <Compile Include="Linkers\TempLinker.cs" />
+    <Compile Include="MindDrafts\ConnectionPoints.cs" />
     <Compile Include="MindDrafts\MindDraft.cs" />
     <Compile Include="MindDrafts\MindShapeConnection.cs" />
     <Compile Include="MindDrafts\MindShapeFactory.cs" />
+    <Compile Include="MindDrafts\PointCalculator.cs" />
     <Compile Include="MindDrafts\RectShape.cs" />
     <Compile Include="MindDrafts\RhombShape.cs" />
     <Compile Include="MindDrafts\ShapePadding.cs" />

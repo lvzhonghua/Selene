@@ -10,8 +10,6 @@ namespace Doit.MindJet.Linkers
 {
     public class MindShapeLinker : Linker
     {
-        public string Flag { get; set; }
-
         public override void Measure(Graphics graphics)
         {
             this.Bounds = new RectangleF()
