@@ -51,8 +51,15 @@
     <Compile Include="Documents\MindFlowDocument.cs" />
     <Compile Include="Documents\IDocument.cs" />
     <Compile Include="Documents\MindTreeDocument.cs" />
+    <Compile Include="Linkers\MindShapeLinker.cs" />
     <Compile Include="Linkers\MindStepLinker.cs" />
     <Compile Include="Linkers\TempLinker.cs" />
+    <Compile Include="MindDrafts\MindDraft.cs" />
+    <Compile Include="MindDrafts\MindShapeConnection.cs" />
+    <Compile Include="MindDrafts\MindShapeFactory.cs" />
+    <Compile Include="MindDrafts\RectShape.cs" />
+    <Compile Include="MindDrafts\RhombShape.cs" />
+    <Compile Include="MindDrafts\ShapePadding.cs" />
     <Compile Include="MindFlows\EndStep.cs" />
     <Compile Include="MindFlows\JudgeStep.cs" />
     <Compile Include="MindFlows\MergeStep.cs" />
@@ -72,6 +79,8 @@
     <Compile Include="MindFlows\NormalStep.cs" />
     <Compile Include="MindFlows\StartStep.cs" />
     <Compile Include="MindFlows\SplitStep.cs" />
+    <Compile Include="MindDrafts\MindShape.cs" />
+    <Compile Include="MindDrafts\MindShapeCategory.cs" />
     <Compile Include="MindTrees\MindNode.cs" />
     <Compile Include="MindTrees\MindNodesOfSameLevel.cs" />
     <Compile Include="MindTrees\MindTree.cs" />
