@@ -54,9 +54,18 @@ namespace Doit.MindJet
         /// </summary>
         protected PointF locationOfText = PointF.Empty;
 
+        /// <summary>
+        /// 父图元
+        /// </summary>
+        public Glyph Parent { get; set; }
+
         public virtual Glyph HitTest(PointF point)
         {
-            if (this.Region.IsVisible(point)) return this;
+            if (this.Region.IsVisible(point))
+            {
+                this.Parent.Status = GlyphStatus.Selected;
+                return this;
+            }
 
             return null;
         }

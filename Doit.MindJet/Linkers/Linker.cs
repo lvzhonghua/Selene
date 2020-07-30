@@ -18,11 +18,6 @@ namespace Doit.MindJet.Linkers
         /// </summary>
         public float Radius { get; set; } = 5f;
 
-        /// <summary>
-        /// 关联的图元
-        /// </summary>
-        public Glyph Parent { get; set; }
-
         public override void Draw(Graphics graphics)
         {
             this.Measure(graphics);

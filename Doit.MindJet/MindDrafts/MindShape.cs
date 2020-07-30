@@ -43,7 +43,11 @@ namespace Doit.MindJet.MindDrafts
             beHit = this.BottomLinker.HitTest(point);
             if (beHit != null) return beHit;
 
-            if (this.Bounds.Contains(point)) beHit = this;
+            if (this.Bounds.Contains(point))
+            {
+                beHit = this;
+                this.Status = GlyphStatus.Selected;
+            }
 
             return beHit;
         }

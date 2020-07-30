@@ -36,32 +36,26 @@ namespace Doit.MindJet.Controls
         {
             MindShape rectShape1 = MindShapeFactory.Create(MindShapeCategory.Rect, new PointF(100f, 100f));
             rectShape1.Text = "测试的矩形";
-            rectShape1.Status = GlyphStatus.Current;
             this.mindDraft.AddShape(rectShape1);
 
             MindShape rectShape2 = MindShapeFactory.Create(MindShapeCategory.Rect, new PointF(300f, 300f));
             rectShape2.Text = "测试的矩形";
-            rectShape2.Status = GlyphStatus.Selected;
             this.mindDraft.AddShape(rectShape2);
 
             MindShape rectShape3 = MindShapeFactory.Create(MindShapeCategory.Rect, new PointF(300f, 100f));
             rectShape3.Text = "测试的矩形";
-            rectShape3.Status = GlyphStatus.Normal;
             this.mindDraft.AddShape(rectShape3);
 
             MindShape rhombShape1 = MindShapeFactory.Create(MindShapeCategory.Rhomb, new PointF(500f, 100f));
             rhombShape1.Text = "测试的菱形";
-            rhombShape1.Status = GlyphStatus.Current;
             this.mindDraft.AddShape(rhombShape1);
 
             MindShape rhombShape2 = MindShapeFactory.Create(MindShapeCategory.Rhomb, new PointF(200f, 100f));
             rhombShape2.Text = "测试的菱形";
-            rhombShape2.Status = GlyphStatus.Selected;
             this.mindDraft.AddShape(rhombShape2);
 
             MindShape rhombShape3 = MindShapeFactory.Create(MindShapeCategory.Rhomb, new PointF(400f, 200f));
             rhombShape3.Text = "测试的菱形";
-            rhombShape3.Status = GlyphStatus.Normal;
             this.mindDraft.AddShape(rhombShape3);
 
             MindShapeConnection connection1 = new MindShapeConnection() { From = rectShape1, To = rhombShape1 };
@@ -96,12 +90,8 @@ namespace Doit.MindJet.Controls
                             MindShape tempShape = MindShapeFactory.Create(MindShapeCategory.Temp, e.Location);
                             this.mindDraft.TempConnection.To = tempShape;
                         }
-                        else
-                        {
-                            this.mindDraft.TempConnection.To = linker.Parent as MindShape;
-                        }
-
                     }
+
                     break;
                 case MouseButtons.Right:
                     break;
@@ -125,10 +115,10 @@ namespace Doit.MindJet.Controls
                     if (linker.Parent != this.mindDraft.TempConnection.From)
                     {
                         this.mindDraft.TempConnection.To = linker.Parent as MindShape;
+                        linker.Parent.Status = GlyphStatus.Selected;
                         this.mindDraft.TempConnection.Status = GlyphStatus.Normal;
                         this.mindDraft.AddConnection(this.mindDraft.TempConnection);
                     }
-                   
                 }
             }
 
@@ -157,6 +147,9 @@ namespace Doit.MindJet.Controls
                     {
                         this.mindDraft.TempConnection.To.Location = e.Location;
                         this.mindDraft.TempConnection.Status = GlyphStatus.Selected;
+
+                        this.mindDraft.HitTest(e.Location);
+
                         this.panMindDraft.Refresh();
                     }
 

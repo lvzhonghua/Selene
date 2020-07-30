@@ -45,6 +45,7 @@
             // 
             // panMindDraft
             // 
+            this.panMindDraft.Cursor = System.Windows.Forms.Cursors.Cross;
             this.panMindDraft.Location = new System.Drawing.Point(1, 1);
             this.panMindDraft.Name = "panMindDraft";
             this.panMindDraft.Size = new System.Drawing.Size(924, 595);

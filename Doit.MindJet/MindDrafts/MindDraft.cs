@@ -44,7 +44,11 @@ namespace Doit.MindJet.MindDrafts
                 connection.Draw(graphics);
             }
 
-            if (this.TempConnection != null) this.TempConnection.Draw(graphics);
+            if (this.TempConnection != null)
+            {
+                this.TempConnection.Draw(graphics);
+                if (this.TempConnection.To != null) this.TempConnection.To.Draw(graphics);
+            }
         }
 
         public override Glyph HitTest(PointF point)
@@ -53,6 +57,7 @@ namespace Doit.MindJet.MindDrafts
 
             foreach (var shape in this.shapes)
             {
+                shape.Status = GlyphStatus.Normal;
                 glyph = shape.HitTest(point);
                 if (glyph != null) break;
             }

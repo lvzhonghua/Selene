@@ -37,9 +37,33 @@ namespace Doit.MindJet.MindDrafts
             this.toPoint = connectionPoints.ToPoint;
 
             this.GraphicsPath.Reset();
-            this.GraphicsPath.FillMode = FillMode.Winding;
+            this.GraphicsPath.FillMode = FillMode.Alternate;
 
             this.GraphicsPath.AddLines(new PointF[] {this.fromPoint,this.p2,this.p3,this.toPoint });
+
+            //箭头
+            int directOfX = this.toPoint.X > this.p3.X ? -1 : 1;
+            if (this.toPoint.X == this.p3.X) directOfX = 0;
+
+            int directOfY = this.toPoint.Y > this.p3.Y ? -1 : 1;
+            if (this.toPoint.Y == this.p3.Y) directOfY = 0;
+
+            PointF pointUp = new PointF(this.toPoint.X + 6 * directOfX,this.toPoint.Y + 6);
+            PointF pointDown = new PointF(this.toPoint.X + 6 * directOfX, this.toPoint.Y - 6);
+            PointF pointLeft = new PointF(this.toPoint.X - 6, this.toPoint.Y + 6 * directOfY);
+            PointF pointRight = new PointF(this.toPoint.X + 6, this.toPoint.Y + 6 * directOfY);
+
+            if (directOfX == 0)
+            {
+                this.GraphicsPath.AddLine(this.toPoint, pointLeft);
+                this.GraphicsPath.AddLine(this.toPoint, pointRight);
+            }
+
+            if (directOfY == 0)
+            {
+                this.GraphicsPath.AddLine(this.toPoint, pointUp);
+                this.GraphicsPath.AddLine(this.toPoint, pointDown);
+            }
 
             this.Region.MakeEmpty();
             this.Region.Union(this.GraphicsPath);
