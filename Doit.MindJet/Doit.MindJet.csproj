@@ -62,6 +62,7 @@
     <Compile Include="MindDrafts\RectShape.cs" />
     <Compile Include="MindDrafts\RhombShape.cs" />
     <Compile Include="MindDrafts\ShapePadding.cs" />
+    <Compile Include="MindDrafts\TempShape.cs" />
     <Compile Include="MindFlows\EndStep.cs" />
     <Compile Include="MindFlows\JudgeStep.cs" />
     <Compile Include="MindFlows\MergeStep.cs" />

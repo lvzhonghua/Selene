@@ -27,5 +27,26 @@ namespace Doit.MindJet.MindDrafts
 
         public MindShapeLinker BottomLinker { get; set; } = new MindShapeLinker();
 
+        public override Glyph HitTest(PointF point)
+        {
+            Glyph beHit = null;
+
+            beHit = this.LeftLinker.HitTest(point);
+            if (beHit != null) return beHit;
+
+            beHit = this.TopLinker.HitTest(point);
+            if (beHit != null) return beHit;
+
+            beHit = this.RightLinker.HitTest(point);
+            if (beHit != null) return beHit;
+
+            beHit = this.BottomLinker.HitTest(point);
+            if (beHit != null) return beHit;
+
+            if (this.Bounds.Contains(point)) beHit = this;
+
+            return beHit;
+        }
+
     }
 }

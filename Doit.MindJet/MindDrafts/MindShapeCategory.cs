@@ -15,6 +15,10 @@ namespace Doit.MindJet.MindDrafts
         /// <summary>
         /// 菱形
         /// </summary>
-        Rhomb
+        Rhomb,
+        /// <summary>
+        /// 临时图形
+        /// </summary>
+        Temp
     }
 }

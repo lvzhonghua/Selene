@@ -18,8 +18,13 @@ namespace Doit.MindJet.MindDrafts
 
         public RhombShape()
         {
-            this.Category = MindShapeCategory.Rect;
-            this.Text = "矩形";
+            this.Category = MindShapeCategory.Rhomb;
+            this.Text = "菱形";
+
+            this.LeftLinker.Parent = this;
+            this.TopLinker.Parent = this;
+            this.RightLinker.Parent = this;
+            this.BottomLinker.Parent = this;
         }
 
         public override void Measure(Graphics graphics)
@@ -39,7 +44,6 @@ namespace Doit.MindJet.MindDrafts
             boundsOfText.Y = this.rectOfText.Y - this.Padding.Top;
             boundsOfText.Width = this.Padding.Left + this.rectOfText.Width + this.Padding.Right;
             boundsOfText.Height = this.Padding.Top + this.rectOfText.Height + this.Padding.Bottom;
-            this.Bounds = boundsOfText;
 
             this.fourPoints[0].X = boundsOfText.Left - boundsOfText.Width / 3;
             this.fourPoints[0].Y = (boundsOfText.Top + boundsOfText.Bottom) / 2;
@@ -58,6 +62,11 @@ namespace Doit.MindJet.MindDrafts
             this.TopLinker.Location = this.fourPoints[1];
             this.RightLinker.Location = this.fourPoints[2];
             this.BottomLinker.Location = this.fourPoints[3];
+
+            this.LeftLinker.Measure(graphics);
+            this.TopLinker.Measure(graphics);
+            this.RightLinker.Measure(graphics);
+            this.BottomLinker.Measure(graphics);
 
             this.Bounds = new RectangleF(this.fourPoints[0].X,
                                                        this.fourPoints[1].Y,
@@ -92,19 +101,5 @@ namespace Doit.MindJet.MindDrafts
             this.BottomLinker.Draw(graphics);
         }
 
-        public override Glyph HitTest(PointF point)
-        {
-            if (this.rectOfText.Contains(point)) return this;
-
-            Glyph beHit = null;
-            //foreach (var linker in this.Linkers)
-            //{
-            //    beHit = linker.HitTest(point);
-
-            //    if (beHit != null) break;
-            //}
-
-            return beHit;
-        }
     }
 }

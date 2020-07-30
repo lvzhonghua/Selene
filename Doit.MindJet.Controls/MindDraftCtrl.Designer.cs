@@ -47,9 +47,12 @@
             // 
             this.panMindDraft.Location = new System.Drawing.Point(1, 1);
             this.panMindDraft.Name = "panMindDraft";
-            this.panMindDraft.Size = new System.Drawing.Size(735, 421);
+            this.panMindDraft.Size = new System.Drawing.Size(924, 595);
             this.panMindDraft.TabIndex = 3;
             this.panMindDraft.Paint += new System.Windows.Forms.PaintEventHandler(this.panMindDraft_Paint);
+            this.panMindDraft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panMindDraft_MouseDown);
+            this.panMindDraft.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panMindDraft_MouseMove);
+            this.panMindDraft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panMindDraft_MouseUp);
             // 
             // MindDraftCtrl
             // 
@@ -58,6 +61,7 @@
             this.Controls.Add(this.panContainer);
             this.Name = "MindDraftCtrl";
             this.Size = new System.Drawing.Size(987, 630);
+            this.Load += new System.EventHandler(this.MindDraftCtrl_Load);
             this.panContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -1,23 +1,19 @@
-﻿using Doit.MindJet.Linkers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Doit.MindJet.MindDrafts
 {
-    /// <summary>
-    /// 矩形图案
-    /// </summary>
-    class RectShape : MindShape
+    public class TempShape : MindShape
     {
-        public RectShape()
+        public TempShape()
         {
             this.Category = MindShapeCategory.Rect;
-            this.Text = "矩形";
+            this.Text = "临时图形";
 
             this.LeftLinker.Parent = this;
             this.TopLinker.Parent = this;
@@ -44,7 +40,7 @@ namespace Doit.MindJet.MindDrafts
             bounds.Height = this.Padding.Top + this.rectOfText.Height + this.Padding.Bottom;
             this.Bounds = bounds;
 
-            this.LeftLinker.Location = new PointF(bounds.Left, (bounds.Top + bounds.Bottom)/2);
+            this.LeftLinker.Location = new PointF(bounds.Left, (bounds.Top + bounds.Bottom) / 2);
             this.TopLinker.Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Top);
             this.RightLinker.Location = new PointF(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
             this.BottomLinker.Location = new PointF((bounds.Left + bounds.Right) / 2, bounds.Bottom);

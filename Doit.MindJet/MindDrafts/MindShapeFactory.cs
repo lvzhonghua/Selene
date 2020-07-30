@@ -31,6 +31,9 @@ namespace Doit.MindJet.MindDrafts
                 case MindShapeCategory.Rhomb:
                     mindShape = new RhombShape();
                     break;
+                case MindShapeCategory.Temp:
+                    mindShape = new TempShape();
+                    break;
             }
 
             return mindShape;
