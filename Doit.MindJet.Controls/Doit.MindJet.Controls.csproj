@@ -48,7 +48,9 @@
     <Compile Include="CommandInfoCtrl.Designer.cs">
       <DependentUpon>CommandInfoCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommandStackInfoCtrl.cs" />
+    <Compile Include="CommandStackInfoCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MindDraftCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
