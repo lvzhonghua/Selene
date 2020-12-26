@@ -34,13 +34,13 @@
             this.menuFile_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTechTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTechTest_Lineage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuTechTest_Paging = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuTechTest_PageStyle = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnLineage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPaging = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPageStyle = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -85,9 +85,23 @@
             // menuTechTest_Lineage
             // 
             this.menuTechTest_Lineage.Name = "menuTechTest_Lineage";
-            this.menuTechTest_Lineage.Size = new System.Drawing.Size(180, 22);
+            this.menuTechTest_Lineage.Size = new System.Drawing.Size(139, 22);
             this.menuTechTest_Lineage.Text = "世系图(&L)";
             this.menuTechTest_Lineage.Click += new System.EventHandler(this.menuTechTest_Lineage_Click);
+            // 
+            // menuTechTest_Paging
+            // 
+            this.menuTechTest_Paging.Name = "menuTechTest_Paging";
+            this.menuTechTest_Paging.Size = new System.Drawing.Size(139, 22);
+            this.menuTechTest_Paging.Text = "分页算法(&P)";
+            this.menuTechTest_Paging.Click += new System.EventHandler(this.menuTechTest_Paging_Click);
+            // 
+            // menuTechTest_PageStyle
+            // 
+            this.menuTechTest_PageStyle.Name = "menuTechTest_PageStyle";
+            this.menuTechTest_PageStyle.Size = new System.Drawing.Size(139, 22);
+            this.menuTechTest_PageStyle.Text = "样式设计(&S)";
+            this.menuTechTest_PageStyle.Click += new System.EventHandler(this.menuTechTest_PageStyle_Click);
             // 
             // toolStrip1
             // 
@@ -103,30 +117,6 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // menuTechTest_Paging
-            // 
-            this.menuTechTest_Paging.Name = "menuTechTest_Paging";
-            this.menuTechTest_Paging.Size = new System.Drawing.Size(180, 22);
-            this.menuTechTest_Paging.Text = "分页算法(&P)";
-            this.menuTechTest_Paging.Click += new System.EventHandler(this.menuTechTest_Paging_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // menuTechTest_PageStyle
-            // 
-            this.menuTechTest_PageStyle.Name = "menuTechTest_PageStyle";
-            this.menuTechTest_PageStyle.Size = new System.Drawing.Size(180, 22);
-            this.menuTechTest_PageStyle.Text = "样式设计(&S)";
-            this.menuTechTest_PageStyle.Click += new System.EventHandler(this.menuTechTest_PageStyle_Click);
-            // 
             // btnLineage
             // 
             this.btnLineage.Image = global::Selene.Test.Properties.Resources.树型_16;
@@ -136,6 +126,11 @@
             this.btnLineage.Text = "世系图";
             this.btnLineage.Click += new System.EventHandler(this.menuTechTest_Lineage_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // btnPaging
             // 
             this.btnPaging.Image = ((System.Drawing.Image)(resources.GetObject("btnPaging.Image")));
@@ -144,6 +139,11 @@
             this.btnPaging.Size = new System.Drawing.Size(76, 22);
             this.btnPaging.Text = "分页算法";
             this.btnPaging.Click += new System.EventHandler(this.menuTechTest_Paging_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // btnPageStyle
             // 
@@ -166,6 +166,7 @@
             this.Name = "FormMain";
             this.Text = "技术测试";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

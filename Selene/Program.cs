@@ -18,7 +18,8 @@ namespace Selene
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TreeTest01());
+            //Application.Run(new TreeTest01());
+            Application.Run(new LoginForm());
         }
 
         private static void CreateDataDir()

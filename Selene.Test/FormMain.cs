@@ -54,5 +54,16 @@ namespace Selene.Test
             frmPageStyle.Show();
             frmPageStyle.Activate();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            FormTestDrawPanel frmTestDrawPanel = new FormTestDrawPanel();
+            frmTestDrawPanel.MdiParent = this;
+            frmTestDrawPanel.Show();
+
+            FormPrintTest frmPrintTest = new FormPrintTest();
+            frmPrintTest.MdiParent = this;
+            frmPrintTest.Show();
+        }
     }
 }
